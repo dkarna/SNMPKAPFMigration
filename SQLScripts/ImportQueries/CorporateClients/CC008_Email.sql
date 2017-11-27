@@ -1,0 +1,29 @@
+SELECT DISTINCT
+'CO' + t1.ClientCode AS CORP_KEY
+,'EMAIL' AS PHONEEMAILTYPE
+,'EMAIL' AS PHONEOREMAIL
+,'' AS PHONENO
+,'' AS PHONENOLOCALCODE
+,'' AS PHONENOCITYCODE
+,'' AS PHONENOCOUNTRYCODE
+,'' AS WORKEXTENSION
+,t2.eMail AS EMAIL
+,'' AS EMAILPALM
+,t2.WebAddress AS URL
+,'N' AS PREFERREDFLAG
+,'' AS START_DATE
+,'' AS END_DATE
+,'' AS USERFIELD1
+,'' AS USERFIELD2
+,'' AS USERFIELD3
+,'' AS DATE1
+,'' AS DATE2
+,'' AS DATE3
+,'SNMANPKA' AS BANK_ID
+FROM Master t1 JOIN ClientTable t2 ON t1.ClientCode=t2.ClientCode
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+AND t1.MainCode IN
+(
+	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
+)
+ORDER BY CORP_KEY

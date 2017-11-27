@@ -1,0 +1,643 @@
+-- Query for RC001
+SELECT DISTINCT 
+'RO' + t1.ClientCode AS ORGKEY
+,'RO' + t1.ClientCode AS CIFID
+,'CUSTOMER' AS ENTITYTYPE
+,'RETAIL' AS CUST_TYPE_CODE
+,t2.Salutation AS SALUTATION_CODE
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as CUST_FIRST_NAME
+,'' AS CUST_MIDDLE_NAME
+,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(t2.Name)))) as CUST_LAST_NAME
+,t2.Name AS SHORT_NAME
+,REPLACE(REPLACE(CONVERT(VARCHAR,t2.DateOfBirth,106), ' ','-'), ',','') AS CUST_DOB
+,CASE WHEN t2.Gender = 'M' THEN 'MALE'
+WHEN t2.Gender = 'F' THEN 'FEMALE'
+ELSE 'OTHERS'
+END AS GENDER
+,'' AS OCCUPATION_CODE
+,CASE WHEN t2.CountryCode = '01' THEN 'NEPALESE'
+WHEN t2.CountryCode = '11' THEN 'INDIAN'
+WHEN t2.CountryCode = '21' THEN 'AMERICAN'
+WHEN t2.CountryCode = '23' THEN 'AUSTRALIAN'
+WHEN t2.CountryCode = '32' THEN 'AUSTRIAN'
+ELSE
+    'OTHERS'
+END AS NATIONALITY
+,'' AS NATIVELANGTITLE
+,'' AS NATIVELANGNAME
+,'Y' AS DOCUMENT_RECIEVED
+,CASE WHEN t2.ClientTag2 = '' THEN 'N'
+ELSE 'Y'
+END AS STAFFFLAG
+,CASE WHEN t2.ClientTag2 <> '' THEN t2.ClientTag2 
+ELSE ''
+END AS STAFFEMPLOYEEID
+,t1.AcOfficer AS MANAGER
+,CASE WHEN t4.CustType IN('CB','NB','XB','UB','AF','DB','MB','OB','RB','VB','WC') THEN 'Y'
+ELSE 'N'
+END AS CUSTOMERNREFLAG
+,tmaster.mindate AS DATEOFBECOMINGNRE
+,tminor.CUSTOMERMINOR  -- changed
+,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'CIFMINOR' 
+ELSE '' 
+END AS MINORGAURDIANID --changed
+,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'Mother' 
+ELSE '' 
+END AS MINOR_GUARD_CODE  --changed
+,'Default Value' AS MINOR_GUARD_NAME
+,'NEPAL' AS REGION
+,t1.BranchCode AS PRIMARY_SERVICE_CENTRE
+,tmaster.mindate AS RELATIONSHIPOPENINGDATE
+,CASE WHEN t2.ClientStatus = 'D' THEN 'DECEASED'
+WHEN t2.ClientStatus ='L' THEN 'LUNATIC' 
+WHEN t2.ClientStatus ='Z' THEN 'STOPPED' 
+WHEN t2.ClientStatus ='U' THEN 'UNRELIABLE'
+WHEN t2.ClientStatus ='W' THEN 'WANTED'
+WHEN t2.ClientStatus ='S' THEN 'SUSPECT'
+ELSE 'NORMAL'
+END AS STATUS_CODE
+,'' AS CUSTSTATUSCHGDATE
+,'' AS HOUSEHOLDID
+,'' AS HOUSEHOLDNAME
+,'NPR' AS CRNCY_CODE_RETAIL
+,'' AS RATING_CODE
+,'' AS RATINGDATE
+,'' AS CUST_PREF_TILL_DATE
+,'' AS TDS_TBL_CODE
+,'' AS INTRODUCERID
+,'' AS INTRODUCERSALUTATION
+,t2.IntroducedBy AS INTRODUCERNAME
+,'' AS INTRODUCERSTATUSCODE
+,'' AS OFFLINE_CUM_DEBIT_LIMIT
+,'' AS CUST_TOT_TOD_ALWD_TIMES
+,'' AS CUST_COMMU_CODE
+,'' AS CARD_HOLDER
+,'' AS CUST_HLTH
+,'NA' AS CUST_HLTH_CODE
+,t1.AcType AS TFPARTYFLAG
+,t1.BranchCode AS PRIMARY_SOL_ID
+,'' AS CONSTITUTION_REF_CODE
+,'' AS CUST_OTHR_BANK_CODE
+,'' AS CUST_FIRST_ACCT_DATE
+,'' AS CHRG_LEVEL_CODE
+,'' AS CHRG_DR_FORACID
+,'' AS CHRG_DR_SOL_ID
+,'N' AS CUST_CHRG_HISTORY_FLG
+,'N' AS COMBINED_STMT_REQD
+,'NA' AS LOANS_STMT_TYPE
+,'NA' AS TD_STMT_TYPE
+,'' AS COMB_STMT_CHRG_CODE
+,'' AS DESPATCH_MODE
+,'' AS CS_LAST_PRINTED_DATE
+,'' AS CS_NEXT_DUE_DATE
+,'N' AS ALLOW_SWEEPS
+,'' AS PS_FREQ_TYPE
+,'' AS PS_FREQ_WEEK_NUM
+,'' AS PS_FREQ_WEEK_DAY
+,'' AS PS_FREQ_START_DD
+,'' AS PS_FREQ_HLDY_STAT
+,'CUSTOMER' AS ENTITY_TYPE
+,'NA' AS LINKEDRETAILCIF
+,'N' AS HSHLDUFLAG
+,'NA' AS SMALL_STR1
+,'NA' AS SMALL_STR2
+,'NA' AS SMALL_STR3
+,'NA' AS SMALL_STR4
+,'NA' AS SMALL_STR5
+,'NA' AS SMALL_STR6
+,'NA' AS SMALL_STR7
+,'NA' AS SMALL_STR8
+,'NA' AS SMALL_STR9
+,'NA' AS SMALL_STR10
+,'NA' AS MED_STR1
+,'NA' AS MED_STR2
+,'NA' AS MED_STR3
+,'NA' AS MED_STR4
+,'NA' AS MED_STR5
+,'NA' AS MED_STR6
+,'NA' AS MED_STR7
+,'NA' AS MED_STR8
+,'NA' AS MED_STR9
+,'NA' AS MED_STR10
+,'NA' AS LARGE_STR1
+,'NA' AS LARGE_STR2
+,'NA' AS LARGE_STR3
+,'NA' AS LARGE_STR4
+,'NA' AS LARGE_STR5
+,'NA' AS DATE1
+,'NA' AS DATE2
+,'NA' AS DATE3
+,'NA' AS DATE4
+,'NA' AS DATE5
+,'NA' AS DATE6
+,'NA' AS DATE7
+,'NA' AS DATE8
+,'NA' AS DATE9
+,'NA' AS DATE10
+,'NA' AS NUMBER1
+,'NA' AS NUMBER2
+,'NA' AS NUMBER3
+,'NA' AS NUMBER4
+,'NA' AS NUMBER6
+,'NA' AS NUMBER5
+,'NA' AS NUMBER7
+,'NA' AS NUMBER8
+,'NA' AS NUMBER9
+,'NA' AS NUMBER10
+,'NA' AS DECIMAL1
+,'NA' AS DECIMAL2
+,'NA' AS DECIMAL3
+,'NA' AS DECIMAL4
+,'NA' AS DECIMAL5
+,'NA' AS DECIMAL6
+,'NA' AS DECIMAL7
+,'NA' AS DECIMAL8
+,'NA' AS DECIMAL9
+,'NA' AS DECIMAL10
+,'' AS CORE_CUST_ID  -- Need to be confirmed
+,'NA' AS PERSONTYPE
+,'Nepali' AS CUST_LANGUAGE
+,'NA' AS CUST_STAFF_STATUS
+,'NA' AS PHONE
+,'NA' AS EXTENSION
+,'NA' AS FAX
+,'NA' AS FAX_HOME
+,'NA' AS PHONE_HOME
+,'NA' AS PHONE_HOME2
+,'NA' AS PHONE_CELL
+,'NA' AS EMAIL_HOME
+,'NA' AS EMAIL_PALM
+,'NA' AS EMAIL
+,'NA' AS CITY
+,'NA' AS PREFERREDCHANNELID
+,'NA' AS CUSTOMERRELATIONSHIPNO
+,'NA' AS RELATIONSHIPVALUE
+,'NA' AS CATEGORY
+,'' AS NUMBEROFPRODUCTS
+,'' AS RELATIONSHIPMGRID
+,'' AS RELATIONSHIPCREATEDBYID
+,t2.WebAddress AS URL
+,t2.ClientStatus AS STATUS
+,'' AS INDUSTRY
+,'' AS PARENTORG
+,'' AS COMPETITOR
+,'' AS SICCODE
+,'NA' AS CIN
+,'' AS DESIGNATION
+,'NA' AS ASSISTANT
+,'' AS INTERNALSCORE
+,'' AS CREDITBUREAUSCOREVALIDITY
+,'' AS CREDITBUREAUSCORE
+,'' AS CREDITBUREAUREQUESTDATE
+,'' AS CREDITBUREAUDESCRIPTION
+,'' AS MAIDENNAMEOFMOTHER
+,'' AS ANNUALREVENUE
+,'NA' AS REVENUEUNITS
+,'NA' AS TICKERSYMBOL
+,'N' AS AUTOAPPROVAL
+,'N' AS FREEZEPRODUCTSALE
+,'NA' AS RELATIONSHIPFIELD1
+,'NA' AS RELATIONSHIPFIELD2
+,'NA' AS RELATIONSHIPFIELD3
+,'' AS DELINQUENCYFLG
+,'NA' AS CUSTOMERNREFLG
+,'NA' AS COMBINEDSTATEMENTFLG
+,'NA' AS CUSTOMERTRADE
+,'' AS PLACEOFBIRTH
+,'' AS COUNTRYOFBIRTH
+,'' AS PROOFOFAGEFLAG
+,'' AS PROOFOFAGEDOCUMENT
+,'' AS NAMESUFFIX
+,'' AS MAIDENNAME
+,'' AS CUSTOMERPROFITABILITY
+,'' AS CURRENTCREXPOSURE
+,'' AS TOTALCREXPOSURE
+,'' AS POTENTIALCRLINE
+,'' AS AVAILABLECRLIMIT
+,'' AS CREDITSCOREREQUESTEDFLAG
+,'' AS CREDITHISTORYREQUESTEDFLAG
+,t1.Obligor AS GROUPID
+,'NA' AS FLG1
+,'NA' AS FLG2
+,'NA' AS FLG3
+,'NA' AS ALERT1
+,'NA' AS ALERT2
+,'NA' AS ALERT3
+,'NA' AS RELATIONSHIPOFFER1
+,'NA' AS RELATIONSHIPOFFER2
+,'NA' AS DTDATE1
+,'NA' AS DTDATE2
+,'NA' AS DTDATE3
+,'NA' AS DTDATE4
+,'NA' AS DTDATE5
+,'NA' AS DTDATE6
+,'NA' AS DTDATE7
+,'NA' AS DTDATE8
+,'NA' AS DTDATE9
+,'000' AS AMOUNT1
+,'NA' AS AMOUNT2
+,'NA' AS AMOUNT3
+,'NA' AS AMOUNT4
+,'NA' AS AMOUNT5
+,'NA' AS STRFIELD1
+,'NA' AS STRFIELD2
+,'NA' AS STRFIELD3
+,'NA' AS STRFIELD4
+,'NA' AS STRFIELD5
+,'NA' AS STRFIELD6
+,'NA' AS STRFIELD7
+,'NA' AS STRFIELD8
+,'NA' AS STRFIELD9
+,'' AS STRFIELD10
+,'' AS STRFIELD11
+,'NA' AS STRFIELD12
+,'' AS STRFIELD13  -- Need to be confirmed
+,'' AS STRFIELD14  -- dependent on STRFIELD13
+,'NA' AS STRFIELD15
+,'NA' AS USERFLAG1
+,'NA' AS USERFLAG2
+,'NA' AS USERFLAG3
+,'NA' AS USERFLAG4
+,'NA' AS MLUSERFIELD1
+,'NA' AS MLUSERFIELD2
+,'NA' AS MLUSERFIELD3
+,'NA' AS MLUSERFIELD4
+,'NA' AS MLUSERFIELD5
+,'NA' AS MLUSERFIELD6
+,'NA' AS MLUSERFIELD7
+,'NA' AS MLUSERFIELD8
+,'NA' AS MLUSERFIELD9
+,'NA' AS MLUSERFIELD10
+,'NA' AS MLUSERFIELD11
+,'NA' AS NOTES
+,'NA' AS PRIORITYCODE
+,'NA' AS CREATED_FROM
+,'NA' AS CONSTITUTION_CODE
+,'' AS STRFIELD16  -- Need to be confirmed
+,'' AS STRFIELD17
+,'' AS STRFIELD18
+,'NA' AS STRFIELD19
+,'NA' AS STRFIELD20
+,'NA' AS STRFIELD21
+,'NA' AS STRFIELD22
+,'NA' AS AMOUNT6
+,'NA' AS AMOUNT7
+,'NA' AS AMOUNT8
+,'NA' AS AMOUNT9
+,'NA' AS AMOUNT10
+,'NA' AS AMOUNT11
+,'NA' AS AMOUNT12
+,'NA' AS INTFIELD1
+,'NA' AS INTFIELD2
+,'NA' AS INTFIELD3
+,'NA' AS INTFIELD4
+,'NA' AS INTFIELD5
+,'NA' AS NICK_NAME
+,'NA' AS MOTHER_NAME
+,'NA' AS FATHER_HUSBAND_NAME
+,'NA' AS PREVIOUS_NAME
+,'NA' AS LEAD_SOURCE
+,'NA' AS RELATIONSHIP_TYPE
+,'NA' AS RM_GROUP_ID
+,'' AS RELATIONSHIP_LEVEL
+,'' AS DSA_ID
+,'' AS PHOTOGRAPH_ID
+,'' AS SECURE_ID
+,'' AS DELIQUENCYPERIOD
+,'NA' AS ADDNAME1
+,'NA' AS ADDNAME2
+,'NA' AS ADDNAME3
+,'NA' AS ADDNAME4
+,'NA' AS ADDNAME5
+,'' AS OLDENTITYCREATEDON
+,'' AS OLDENTITYTYPE
+,'' AS OLDENTITYID
+,'' AS DOCUMENT_RECEIVED
+,'' AS SUSPEND_NOTES
+,'' AS SUSPEND_REASON
+,'' AS BLACKLIST_NOTES
+,'' AS BLACKLIST_REASON
+,'' AS NEGATED_NOTES
+,'' AS NEGATED_REASON
+,t4.CustType AS SEGMENTATION_CLASS
+,'' AS NAME
+,'' AS MANAGEROPINION
+,'' AS INTROD_STATUS
+,'Nepali' AS NATIVELANGCODE
+,'' AS MINORATTAINMAJORDATE
+,'' AS NREBECOMINGORDDATE
+,'' AS STARTDATE
+,'' AS ADD1_FIRST_NAME
+,'' AS ADD1_MIDDLE_NAME
+,'' AS ADD1_LAST_NAME
+,'' AS ADD2_FIRST_NAME
+,'' AS ADD2_MIDDLE_NAME
+,'' AS ADD2_LAST_NAME
+,'' AS ADD3_FIRST_NAME
+,'' AS ADD3_MIDDLE_NAME
+,'' AS ADD3_LAST_NAME
+,'' AS ADD4_FIRST_NAME
+,'' AS ADD4_MIDDLE_NAME
+,'' AS ADD4_LAST_NAME
+,'' AS ADD5_FIRST_NAME
+,'' AS ADD5_MIDDLE_NAME
+,'' AS ADD5_LAST_NAME
+,'' AS DUAL_FIRST_NAME
+,'' AS DUAL_MIDDLE_NAME
+,'' AS DUAL_LAST_NAME
+,'' AS CUST_COMMUNITY
+,'' AS CORE_INTROD_CUST_ID
+,'' AS INTROD_SALUTATION_CODE
+,'' AS TDS_CUST_ID
+,t2.CitizenshipNo AS NAT_ID_CARD_NUM
+,'' AS PSPRT_ISSUE_DATE
+,t2.PassportCountry AS PSPRT_DET
+,t2.PassportExpiryDate AS PSPRT_EXP_DATE
+,'NPR' AS CRNCY_CODE
+,'' AS PREF_CODE
+,'' AS INTROD_STATUS_CODE
+,'' AS NATIVELANGTITLE_CODE
+,'' AS GROUPID_CODE
+,'DEF_SECTOR' AS SECTOR
+,'' AS SUBSECTOR
+,'' AS CUSTCREATIONMODE
+,'' AS FIRST_PRODUCT_PROCESSOR
+,'' AS INTERFACE_REFERENCE_ID
+,'' AS CUST_HEALTH_REF_CODE
+,'' AS TDS_CIFID
+,'' AS PREF_CODE_RCODE
+,'' AS CUST_SWIFT_CODE_DESC
+,'' AS IS_SWIFT_CODE_OF_BANK
+,'' AS NATIVELANGCODE_CODE
+,'' AS CREATEDBYSYSTEMID
+,'Email_Type' AS PREFERREDEMAILTYPE
+,'Phone_Type' AS PREFERREDPHONE
+,'' AS FIRST_NAME_NATIVE
+,'' AS MIDDLE_NAME_NATIVE
+,'' AS LAST_NAME_NATIVE
+,'' AS SHORT_NAME_NATIVE
+,'' AS FIRST_NAME_NATIVE1
+,'' AS MIDDLE_NAME_NATIVE1
+,'' AS LAST_NAME_NATIVE1
+,'' AS SHORT_NAME_NATIVE1
+,'' AS SECONDARYRM_ID
+,'' AS TERTIARYRM_ID
+,t4.CustType AS SUBSEGMENT
+,'' AS ACCESSOWNERGROUP
+,'' AS ACCESSOWNERSEGMENT
+,'' AS ACCESSOWNERBC
+,'' AS ACCESSOWNERAGENT
+,'' AS ACCESSASSIGNEEAGENT
+,'' AS CHARGELEVELCODE
+,'NA' AS INTUSERFIELD1
+,'NA' AS INTUSERFIELD2
+,'NA' AS INTUSERFIELD3
+,'NA' AS INTUSERFIELD4
+,'NA' AS INTUSERFIELD5
+,'' AS STRUSERFIELD1
+,'' AS STRUSERFIELD2
+,'Y' AS STRUSERFIELD3
+,'NA' AS STRUSERFIELD4
+,'NA' AS STRUSERFIELD5
+,'' AS STRUSERFIELD6
+,'NA' AS STRUSERFIELD7
+,'NA' AS STRUSERFIELD8
+,'NA' AS STRUSERFIELD9
+,'' AS STRUSERFIELD10
+,'NA' AS STRUSERFIELD11
+,'NA' AS STRUSERFIELD12
+,'' AS STRUSERFIELD13
+,'NA' AS STRUSERFIELD14
+,'NA' AS STRUSERFIELD15
+,'NA' AS STRUSERFIELD16
+,'NA' AS STRUSERFIELD17
+,'NA' AS STRUSERFIELD18
+,'NA' AS STRUSERFIELD19
+,'' AS STRUSERFIELD20
+,'NA' AS STRUSERFIELD21
+,'' AS STRUSERFIELD22
+,'NA' AS STRUSERFIELD23
+,'NA' AS STRUSERFIELD24
+,t2.Remarks AS STRUSERFIELD25
+,'NA' AS STRUSERFIELD26
+,'' AS STRUSERFIELD27
+,'NA' AS STRUSERFIELD28
+,'' AS STRUSERFIELD29
+,'NA' AS STRUSERFIELD30
+,'' AS DATEUSERFIELD1
+,'' AS DATEUSERFIELD2
+,'' AS DATEUSERFIELD3
+,'NA' AS DATEUSERFIELD4
+,'NA' AS DATEUSERFIELD5
+,'NA' AS BACKENDID
+,'' AS RISK_PROFILE_SCORE
+,'' AS RISK_PROFILE_EXPIRY_DATE
+,'PHONE_TYPE' AS PREFERREDPHONETYPE
+,t2.eMail AS PREFERREDEMAIL
+,'' AS NOOFCREDITCARDS
+,'NA' AS REASONFORMOVINGOUT
+,'NA' AS COMPETITORPRODUCTID
+,'' AS OCCUPATIONTYPE
+,'SNMANPKA' AS BANK_ID
+,'' AS ZAKAT_DEDUCTION
+,'' AS ASSET_CLASSIFICATION
+,'' AS CUSTOMER_LEVEL_PROVISIONING
+,'' AS ISLAMIC_BANKING_CUSTOMER
+,'GEORGIAN' AS PREFERREDCALENDAR
+,'NA' AS IDTYPER1
+,'NA' AS IDTYPER2
+,'NA' AS IDTYPER3
+,'NA' AS IDTYPER4
+,'NA' AS IDTYPER5
+,'' AS CUST_LAST_NAME_ALT1
+,'' AS CUST_FIRST_NAME_ALT1
+,'' AS CUST_MIDDLE_NAME_ALT1
+,'NA' AS STRFIELD6_ALT1
+,'' AS NAME_ALT1
+,'' AS SHORT_NAME_ALT1
+,CASE WHEN t1.ClientCode = tempcust.ClientCode THEN 'Y'
+ELSE 'N' 
+END AS ISEBANKINGENABLED
+,'N' AS PURGEFLAG
+,CASE WHEN t2.ClientStatus = 'Z' THEN 'Y'
+ELSE 'N'
+END AS SUSPENDED
+,CASE WHEN t2.ClientStatus = 'b' THEN 'Y'
+ELSE 'N'
+END AS BLACKLISTED
+,'' AS NEGATED
+,'NA' AS ACCOUNTID
+,t2.Address1 AS ADDRESS_LINE1
+,t2.Address2 AS ADDRESS_LINE2
+,t2.Address3 AS ADDRESS_LINE3
+,'' AS STATE
+,CASE WHEN CountryCode='11' THEN 'INDIA' 
+WHEN t2.CountryCode='21' THEN 'USA' 
+WHEN t2.CountryCode='23' THEN 'AUSTRALIA' 
+WHEN t2.CountryCode='32' THEN 'AUSTRIA' 
+ELSE ' NEPAL' END AS COUNTRY
+,'' AS ZIP
+,'' AS BOCREATEDBYLOGINID
+,'' AS SUBMITFORKYC
+,t2.Review_Date AS KYC_REVIEWDATE
+,'' AS KYC_DATE
+,t2.Key_Risk_Grade AS RISKRATING
+,CASE WHEN t1.AcType = 'OB' THEN 'Y'
+ELSE 'N'
+END AS SENIORCITIZEN
+,'' AS SENCITIZENAPPLICABLEDATE
+,'' AS SENCITIZENCONVERSIONFLAG
+,'' AS FOREIGNACCTAXREPORTINGREQ
+,'' AS FOREIGNTAXREPORTINGCOUNTRY
+,'' AS FOREIGNTAXREPORTINGSTATUS
+,'' AS LASTFOREIGNTAXREVIEWDATE
+,'' AS NEXTFOREIGNTAXREVIEWDATE
+,'' AS FATCAREMARKS
+,'' AS DATEOFDEATH
+,'' AS DATEOFNOTIFICATION
+,'' AS PHYSICAL_STATE
+,'' AS UNIQUEIDNUMBER
+FROM Master t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+LEFT JOIN AcCustType t4 ON t1.BranchCode = t4.BranchCode and t1.MainCode = t4.MainCode AND t4.CustType = 'B' -- need to be checked with bank data putting inner join
+JOIN 
+(							-- Filters the clientcode with minimum account open date
+	SELECT t.ClientCode,MIN(t.AcOpenDate) AS mindate FROM Master t GROUP BY t.ClientCode
+) AS tmaster ON t1.ClientCode = tmaster.ClientCode AND tmaster.mindate = t1.AcOpenDate
+LEFT JOIN 
+(
+	SELECT ClientCode FROM Master t1 JOIN CustomerTable t2 ON t1.MainCode = t2.MainCode0
+) AS tempcust ON t1.ClientCode = tempcust.ClientCode  -- Logic for connection between CustomerTable and Master as defined in logic to reduce complexity
+LEFT JOIN
+(
+	SELECT t1.ClientCode,
+	CASE WHEN ((UPPER(t1.Name) LIKE UPPER('%MINOR%')) OR (t2.Gender='m') OR (t1.ClientCode IN (SELECT ClientCode FROM Master WHERE AcType IN('OM','OH','OI'))) OR t2.MaritalStatus='N') THEN 'Y' 
+	ELSE 'N'
+	END AS CUSTOMERMINOR
+	FROM Master t1 LEFT JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+) AS tminor ON t1.ClientCode = tminor.ClientCode   -- logic added for minor account in join to pass to multiple column conditions
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1
+
+select * from Master where ClientCode = '00100874';
+
+SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+
+SELECT t.ClientCode,MIN(t.AcOpenDate) AS mindate, count(*) FROM Master t GROUP BY t.ClientCode ORDER BY 1;
+
+select ClientCode,AcOpenDate from Master where ClientCode = '00100874';
+
+select ClientCode,count(AcType) from Master group by ClientCode having count(AcType) > 1;
+
+select * from Master where ClientCode = '00150203';
+select top 1 * from AcCustType;
+select MainCode,count(*) from AcCustType group by MainCode order by 1;
+select * from Master where MainCode = '0010000000101';
+select MainCode,count(*) from AcCustType where CustTypeCode = 'Z' and CustType NOT IN ('10','11') group by MainCode having count(*) > 1;
+select top 1 * from ClientTable;
+select distinct Salutation from ClientTable;
+select ClientCode,count(Salutation) as SalutationCount from ClientTable where Salutation IS NULL group by ClientCode;
+
+select ClientCode,Salutation from ClientTable where Salutation is null;
+select distinct Gender from ClientTable;
+select distinct count(*) from ClientTable where Gender = '';
+SELECT DISTINCT t2.ClientCode,
+CASE WHEN t2.DateOfBirth IS NULL THEN '01-01-1900'
+
+ELSE REPLACE(REPLACE(CONVERT(VARCHAR,t2.DateOfBirth,106), ' ','-'), ',','') 
+END AS CUST_DOB
+-- t2.Gender,
+--case when t2.Salutation = '' or t2.Salutation is null then 
+--	Case when t2.Gender = 'M' THEN 'MR'
+--	when t2.Gender = 'F' THEN 'MS'
+--    END
+--ELSE t2.Salutation
+--END AS Salutation
+-- t2.Salutation
+FROM ClientTable t2 JOIN Master t1  ON t1.ClientCode = t2.ClientCode 
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+-- AND t2.Gender IS NULL and t2.Salutation IS NULL
+--AND t2.DateOfBirth IS NULL
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1;
+
+select top 10 ClientCode,DateOfBirth,datediff(D,'31-10-2044',GetDate()) from ClientTable;
+select DateOfBirth from ClientTable where ClientCode = '00000002';
+
+select count(*) from ClientTable Where DateOfBirth is null;
+
+select * from ClientTable where ClientCode = '00001893';
+select * from Master Where ClientCode = '00000125'
+
+
+select t2.ClientCode,t2.DateOfBirth,DATEDIFF(D,t2.DateOfBirth,GetDate()) as DifferenceDay
+FROM ClientTable t2 JOIN Master t1  ON t1.ClientCode = t2.ClientCode 
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+-- AND t2.Gender IS NULL and t2.Salutation IS NULL
+--AND t2.DateOfBirth IS NULL
+AND DATEDIFF(D,t2.DateOfBirth,GetDate()) < 0
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1;
+
+
+
+select t2.ClientCode,
+case when Phone is not null or Phone <> '' THEN 'P'
+when MobileNo is not null or MobileNo <> '' THEN 'P'
+when eMail is not null or eMail <> '' THEN 'E'
+END as PhoneorEmailType
+FROM ClientTable t2 JOIN Master t1  ON t1.ClientCode = t2.ClientCode 
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+-- AND t2.Gender IS NULL and t2.Salutation IS NULL
+--AND t2.DateOfBirth IS NULL
+--AND DATEDIFF(D,t2.DateOfBirth,GetDate()) < 0
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1;
+
+select ClientCode,Phone,MobileNo,eMail from ClientTable where ClientCode = '00132655'
+
+Declare @clientphone table (ClientCode varchar(255),PhoneOrEmailType varchar(20),Phone varchar(255), MobileNo varchar(255),eMail varchar(255));
+Declare @clientemail table (ClientCode varchar(255),PhoneOrEmailType varchar(20),Phone varchar(255), MobileNo varchar(255),eMail varchar(255));
+
+
+Insert into @clientphone
+Select distinct t2.ClientCode,'P',t2.Phone,t2.MobileNo,'' as eMail
+FROM ClientTable t2 JOIN Master t1  ON t1.ClientCode = t2.ClientCode 
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+AND t2.Phone is not null or t2.Phone <> '' or t2.MobileNo is not null or t2.MobileNo <> ''
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1;
+
+Insert into @clientemail
+Select distinct t2.ClientCode,'E','','',t2.eMail as eMail
+FROM ClientTable t2 JOIN Master t1  ON t1.ClientCode = t2.ClientCode 
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+AND t2.eMail is not null or ltrim(rtrim(t2.eMail)) != '' or t2.eMail != ' '
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1;
+
+--select count(*) from @clientphone;
+--select count(*) from @clientemail;
+
+--select * from @clientemail;
+select * from @clientphone where Phone != '' or MobileNo != ''
+union
+select * from @clientemail where eMail != ''

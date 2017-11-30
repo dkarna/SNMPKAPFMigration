@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>COO7</name>
+    <name>CC007</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,18 +427,18 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/09/02 20:02:10.876</created_date>
+    <created_date>2017/11/30 18:06:59.897</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/09/02 20:02:10.876</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2017/11/30 18:06:59.897</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>pumariconn</name>
+    <name>SanimaConn</name>
     <server>192.168.1.7</server>
-    <type>MSSQLNATIVE</type>
+    <type>MSSQL</type>
     <access>Native</access>
     <database>SanimaTest</database>
     <port>1433</port>
@@ -448,6 +448,10 @@
     <data_tablespace />
     <index_tablespace />
     <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MSSQL.instance</code>
+        <attribute>sqlexpress</attribute>
+      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -459,10 +463,6 @@
       <attribute>
         <code>IS_CLUSTERED</code>
         <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQLUseIntegratedSecurity</code>
-        <attribute>false</attribute>
       </attribute>
       <attribute>
         <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
@@ -496,13 +496,105 @@
   </connection>
   <order>
     <hop>
-      <from>Multiple_Table_Input</from>
-      <to>CC007</to>
+      <from>Source</from>
+      <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CC007</name>
+    <name>Source</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>SanimaConn</connection>
+    <sql>IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
+  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
+SELECT * INTO #FinalMaster FROM
+(
+	SELECT DISTINCT
+	 Name
+	,ClientCode
+	,AcType
+	,BranchCode
+	,Obligor
+	,AcOpenDate
+	,MainCode
+	,CyCode
+	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
+	--INTO #FinalMaster
+	FROM Master WITH (NOLOCK)
+	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+	--ORDER BY ClientCode
+) AS t 
+WHERE t.SerialNumber = 1 ORDER BY 1;
+
+
+select distinct top 1000
+'C0' + t1.ClientCode AS CORP_KEY
+,'C0' + t1.ClientCode AS CORP_REP_KEY
+,'' AS BEN_OWN_KEY
+,'' AS DOCDUEDATE
+,t1.AcOpenDate AS DOCRECEIVEDDATE
+,'30-12-2099' AS DOCEXPIRYDATE
+,'' AS DOCDELFLG
+,'' AS DOCREMARKS
+,'' AS SCANNED
+,'DOCCODE'= 
+CASE WHEN  IdType LIKE 'CREG%' THEN 'COMREG'
+WHEN  IdType LIKE 'GOVT%' THEN 'GOVT'
+ELSE 'DEF_DOC_TYPE' END 
+,'' AS DOCDESCR
+,'Id: '+CONVERT(VARCHAR,(ISNULL(ClientId,'')))+' PanNo: '+CONVERT(VARCHAR,(ISNULL(PANNumber,''))) AS REFERENCENUMBER
+,'' AS ISMANDATORY
+,'' AS SCANREQUIRED
+,'' AS ROLE
+,'DOCTYPECODE'= 
+CASE WHEN  IdType LIKE 'CREG%' THEN 'COMPANY_REG_ID'
+WHEN  IdType LIKE 'GOVT%' THEN 'GOVT'
+ELSE 'DEF_DOC_TYPE' END
+,'' AS DOCTYPEDESCR
+,'' AS MINDOCSREQD
+,'' AS WAIVEDORDEFEREDDATE
+,'NEPAL' AS COUNTRYOFISSUE
+,'DEF_PLACE' AS PLACEOFISSUE
+,'01-JAN-1900' AS DOCISSUEDATE
+,'' AS IDENTIFICATIONTYPE
+,'' AS CORE_CUST_ID
+,'' AS IS_DOCUMENT_VERIFIED
+,'01' AS BANK_ID
+FROM #FinalMaster t1
+JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+AND t1.MainCode in
+(
+	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' and CustType NOT IN ('11','12')
+)
+ORDER BY CORP_KEY</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>196</xloc>
+      <yloc>126</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Text file output</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -520,13 +612,13 @@
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding>windows-1252</encoding>
+    <encoding />
     <endedLine />
     <fileNameInField>N</fileNameInField>
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>F:\ELT_SANIMA\Output\CC007</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC007</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -865,75 +957,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Multiple_Table_Input</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>pumariconn</connection>
-    <sql>select
-'CO' + t1.ClientCode AS CORP_KEY
-,'CO' + t1.ClientCode AS CORP_REP_KEY
-,'' AS BEN_OWN_KEY
-,'' AS DOCDUEDATE
-,MIN(AcOpenDate) AS DOCRECEIVEDDATE
-,'30-12-2099' AS DOCEXPIRYDATE
-,'' AS DOCDELFLG
-,'' AS DOCREMARKS
-,'' AS SCANNED
-,'' AS DOCCODE -- to be asked
-,'' AS DOCDESCR
-,'Id: '+CONVERT(VARCHAR,(ISNULL(ClientId,'')))+' PanNo: '+CONVERT(VARCHAR,(ISNULL(PANNumber,''))) AS REFERENCENUMBER
-,'' AS ISMANDATORY
-,'' AS SCANREQUIRED
-,'' AS ROLE
-,'DOCTYPECODE'= 
-case when  IdType like 'CREG%' then 'COMPANY_REG_ID'
-when  IdType like 'GOVT%' then 'GOVT'
-ELSE 'DEF_DOC_TYPE' END
-,'' AS DOCTYPEDESCR
-,'' AS MINDOCSREQD
-,'' AS WAIVEDORDEFEREDDATE
-,'NEPAL' AS COUNTRYOFISSUE
-,'DEF_PLACE' AS PLACEOFISSUE
-,'01-JAN-1900' AS DOCISSUEDATE
-,'' AS IDENTIFICATIONTYPE
-,'' AS CORE_CUST_ID
-,'' AS IS_DOCUMENT_VERIFIED
-,'SNMANPKA' AS BANK_ID
-FROM Master t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-WHERE t1.MainCode in
-(
-	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' and CustType NOT IN ('11','12')
-)
-GROUP BY t1.ClientCode,t2.ClientCode,t2.PANNumber,t2.ClientId,t2.IdType
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>Y</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>200</xloc>
-      <yloc>100</yloc>
+      <xloc>356</xloc>
+      <yloc>126</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

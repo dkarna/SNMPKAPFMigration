@@ -513,7 +513,21 @@
       <schema_name />
     </partitioning>
     <connection>SanimaConn</connection>
-    <sql>
+    <sql>IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
+  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
+SELECT * INTO #FinalMaster FROM
+(
+	SELECT DISTINCT
+	 ClientCode
+	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
+	--INTO #FinalMaster
+	FROM Master WITH (NOLOCK)
+	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+	--ORDER BY ClientCode
+) AS t 
+WHERE t.SerialNumber = 1 ORDER BY 1;
+
+
 SELECT DISTINCT TOP 1000
 'C0' + t1.ClientCode AS CORP_KEY
 ,'C0' + t1.ClientCode AS CIFID
@@ -640,8 +654,8 @@ SELECT DISTINCT TOP 1000
 ,'' AS BANK_ID
 ,'' AS LAST_NAME_ALT1
 ,'' AS FIRST_NAME_ALT1
-FROM Master t1
-WHERE IsBlocked NOT IN ('C','o') 
+FROM #FinalMaster t1
+
 </sql>
     <limit>0</limit>
     <lookup />
@@ -686,7 +700,7 @@ WHERE IsBlocked NOT IN ('C','o')
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC002</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC003</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>

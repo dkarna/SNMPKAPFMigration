@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CC002</name>
+    <name>Sanima_RC009</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/11/29 18:44:33.230</created_date>
+    <created_date>2017/11/29 18:10:10.174</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/11/29 18:44:33.230</modified_date>
+    <modified_date>2017/11/29 18:10:10.174</modified_date>
     <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
@@ -497,7 +497,7 @@
   <order>
     <hop>
       <from>Source</from>
-      <to>Text file output</to>
+      <to>Output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -513,14 +513,14 @@
       <schema_name />
     </partitioning>
     <connection>SanimaConn</connection>
-    <sql>
+    <sql>-- Query for RC009
+
+
 IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
-  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
+  DROP TABLE #FinalMaster;									-- Drop temporary table if it exists
 SELECT * INTO #FinalMaster FROM
 (
-	SELECT DISTINCT
-	 Name
-	,ClientCode
+	SELECT DISTINCT ClientCode
 	,AcType
 	,BranchCode
 	,Obligor
@@ -534,130 +534,143 @@ SELECT * INTO #FinalMaster FROM
 	--ORDER BY ClientCode
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
-SELECT DISTINCT TOP 1000
-'C0' + t1.ClientCode AS CORP_KEY
-,'C0' + t1.ClientCode AS CIFID
-,'' AS CORP_REP_KEY
-,'Mailing' AS ADDRESSCATEGORY
-,'01-01-1900' AS START_DATE
-,'' AS PHONENO1LOCALCODE
-,'' AS PHONENO1CITYCODE
-,'' AS PHONENO1COUNTRYCODE
-,'' AS PHONENO2LOCALCODE
-,'' AS PHONENO2CITYCODE
-,'' AS PHONENO2COUNTRYCODE
-,'' AS FAXNOLOCALCODE
-,'' AS FAXNOCITYCODE
-,'' AS FAXNOCOUNTRYCODE
-,t2.eMail AS EMAIL
-,'' AS PAGERNOLOCALCODE
-,'' AS PAGERNOCITYCODE
-,'' AS PAGERNOCOUNTRYCODE
-,'' AS TELEXLOCALCODE
-,'' AS TELEXCITYCODE
-,'' AS TELEXCOUNTRYCODE
-,'' AS HOUSE_NO
-,'' AS PREMISE_NAME
-,'' AS BUILDING_LEVEL
-,'' AS STREET_NO
-,'' AS STREET_NAME
-,'' AS SUBURB
-,'' AS LOCALITY_NAME
-,'' AS TOWN
-,'' AS DOMICILE
-,'DEF_CITY_CODE' AS CITY_CODE
-,'DEF_STATE_CODE' AS STATE_CODE
-,'DEF_ZIP_CODE' AS ZIP
-,'NEPAL' AS COUNTRY_CODE
-,'' AS SMALL_STR1
-,'' AS SMALL_STR2
-,'' AS SMALL_STR3
-,'' AS SMALL_STR4
-,'' AS SMALL_STR5
-,'' AS SMALL_STR6
-,'' AS SMALL_STR7
-,'' AS SMALL_STR8
-,'' AS SMALL_STR9
-,'' AS SMALL_STR10
-,'' AS MED_STR1
-,'' AS MED_STR2
-,'' AS MED_STR3
-,'' AS MED_STR4
-,'' AS MED_STR5
-,'' AS MED_STR6
-,'' AS MED_STR7
-,'' AS MED_STR8
-,'' AS MED_STR9
-,'' AS MED_STR10
-,'' AS LARGE_STR1
-,'' AS LARGE_STR2
-,'' AS LARGE_STR3
-,'' AS LARGE_STR4
-,'' AS LARGE_STR5
-,'' AS DATE1
-,'' AS DATE2
-,'' AS DATE3
-,'' AS DATE4
-,'' AS DATE5
-,'' AS DATE6
-,'' AS DATE7
-,'' AS DATE8
-,'' AS DATE9
-,'' AS DATE10
-,'' AS NUMBER1
-,'' AS NUMBER2
-,'' AS NUMBER3
-,'' AS NUMBER4
-,'' AS NUMBER5
-,'' AS NUMBER6
-,'' AS NUMBER7
-,'' AS NUMBER8
-,'' AS NUMBER9
-,'' AS NUMBER10
-,'' AS DECIMAL1
-,'' AS DECIMAL2
-,'' AS DECIMAL3
-,'' AS DECIMAL4
-,'' AS DECIMAL5
-,'' AS DECIMAL6
-,'' AS DECIMAL7
-,'' AS DECIMAL8
-,'' AS DECIMAL9
-,'' AS DECIMAL10
-,'Y' AS PREFERREDADDRESS
-,'' AS HOLDMAILINITIATEDBY
-,'' AS HOLDMAILFLAG
-,'DEF_BUS_CENTER' AS BUSINESSCENTER
-,'' AS HOLDMAILREASON
-,'FREE_TEXT_FORMAT' AS PREFERREDFORMAT
-,'Address1: '+isnull(t2.Address1,'')
-	+'/'+'Address2: '+isnull(t2.Address2,'')
-	+'/'+'Address3: '+isnull(t2.Address3,'')
-	+'/'+'ContactAdd1: '+isnull(t2.ContactAdd1,'')
-	+'/'+'ContactAdd2: '+isnull(t2.ContactAdd2,'')
-	+'/'+'ContactAdd3: '+isnull(t2.ContactAdd3,'')
-	+'/'+'City: '+isnull(t2.City,'')
-	+'/'+'PhoneNo: '+isnull(t2.Phone,'')
-	+'/'+'MobileNo: '+isnull(t2.MobileNo,'')
-	+'/'+'Fax2: '+isnull(Fax2,'')
-	+'/'+'FaxNo: '+isnull(t2.FaxNo,'')   
-	+'/'+'PagerNo: '+isnull(t2.PagerNo,'')
-  AS FREETEXTADDRESS
-,'FULL_ADDRESS_PUMORI' AS FREETEXTLABEL
-,'' AS IS_ADDRESS_PROOF_RCVD
-,'' AS LASTUPDATE_DATE
-,t2.Address1 AS ADDRESS_LINE1
-,t2.Address2 AS ADDRESS_LINE2
-,t2.Address3 AS ADDRESS_LINE3
-,'01' AS BANK_ID
-,'' AS ISADDRESSVERIFIED
-FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-AND t1.MainCode in
-(
-	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
-)
 
-</sql>
+SELECT DISTINCT TOP 1000
+'R0' + t1.ClientCode AS ORGKEY
+,'' AS COMMUNICATION_LANGUAGE
+,'' AS PREFERRED_ADDRESS_MODE
+,'' AS BEHAVIOURAL_SCORE
+,'' AS RISK_BEHAVIOUR
+,'' AS OTHER_BEHAVIOURAL_PROFILE
+,'' AS LIFE_CYCLE_STAGE
+,'' AS SERVICE_PERSONALISE
+,'' AS PSYCHOGRAPHICTYPE
+,'NA' AS PRIORITY_IDENTIFIER
+,'' AS HOUSEHOLD_NUMBER
+,'' AS PREFERRED_REP
+,'' AS SEGMENTATION_CLASS
+,(LEFT(t2.Name, CHARINDEX(' ', t2.Name))) AS PREFERREDNAME
+,'' AS NUMBEROFDEPENDANTS
+,'' AS NUMBEROFDEPENDANTCHILDREN
+,'' AS STMTDATEFORCOMBSTMT
+,'' AS SUBSEGMENT
+,'NA' AS HOBBYFIELD1
+,'NA' AS HOBBYFIELD2
+,'NA' AS HOBBYFIELD3
+,'NA' AS HOBBYFIELD4
+,'NA' AS HOBBYFIELD5
+,'NA' AS HOBBYFIELD6
+,'NA' AS PROFILE_FIELD1
+,'NA' AS PROFILE_FIELD2
+,'NA' AS PROFILE_FIELD3
+,'NA' AS PROFILE_FIELD4
+,'NA' AS ALERT1
+,'NA' AS ALERT2
+,'NA' AS ALERT3
+,'NA' AS ALERT4
+,'NA' AS ALERT5
+,'NA' AS FLAG1
+,'NA' AS FLAG2
+,'NA' AS FLAG3
+,'NA' AS FLAG4
+,'NA' AS FLAG5
+,'NA' AS BANK_DEFINED_PREFER_VAR1
+,'NA' AS BANK_DEFINED_PREFER_VAR2
+,'NA' AS BANK_DEFINED_PREFER_VAR3
+,'NA' AS BANK_DEFINED_PREFER_DATE1
+,'NA' AS BANK_DEFINED_PREFER_DATE2
+,'NA' AS BANK_DEFINED_PREFER_DATE3
+,'NA' AS USERFIELD1
+,'NA' AS USERFIELD2
+,'NA' AS USERFIELD3
+,'NA' AS USERFIELD4
+,'NA' AS USERFIELD5
+,'NA' AS USERFIELD6
+,'NA' AS SPSERVICEREQUIRED1
+,'NA' AS SPSERVICEREQUIRED2
+,'NA' AS SPSERVICEREQUIRED3
+,'NA' AS SPSERVICEREQUIRED4
+,'NA' AS SPSERVICEREQUIRED5
+,'NA' AS USERFLAG1
+,'NA' AS USERFLAG2
+,'NA' AS PREFRELSHIPDISCOUNT1
+,'NA' AS PREFRELSHIPDISCOUNT2
+,'NA' AS PREFRELSHIPDISCOUNTPERCENT1
+,'NA' AS PREFRELSHIPDISCOUNTPERCENT2
+,'NA' AS USERFIELD7
+,'NA' AS USERFIELD8
+,'NA' AS USERFIELD9
+,'NA' AS USERFIELD10
+,'NA' AS USERFIELD11
+,'NA' AS USERFIELD12
+,'NA' AS USERFIELD13
+,'NA' AS AMOUNT1
+,'NA' AS AMOUNT2
+,'NA' AS AMOUNT3
+,'NA' AS AMOUNT4
+,'NA' AS AMOUNT5
+,'NA' AS AMOUNT6
+,'NA' AS AMOUNT7
+,'NA' AS INTFIELD1
+,'NA' AS INTFIELD2
+,'NA' AS INTFIELD3
+,'NA' AS INTFIELD4
+,'NA' AS INTFIELD5
+,'' AS STATEMENTTYPE
+,'' AS STATEMENTFREQUENCY
+,'' AS STMTDATEWEEKDAY
+,'' AS STMTMONTHLYSTARTDATE
+,'' AS ACTIONDURINGHOLIDAY
+,'' AS DESPATCHMODE
+,'' AS CALENDERTYPE
+,'' AS DISCOUNTAVAILED
+,'' AS DISCOUNTTYPE
+,'NA' AS PREFEFFECTIVEDATE
+,'NA' AS PREFEXPIRYDATE
+,'NA' AS LASTCONTACTEDDATE
+,'NA' AS LASTCONTACTEDCHANNEL
+,'' AS FAMILYTYPE
+,'' AS NOOFEARNERS
+,'' AS REMARKS
+,'' AS COMMUNITY
+,'' AS LTVINDICATOR
+,'' AS ASSETCLASSIFICATION
+,'' AS ASSETCLASSIFICATIONDESC
+,'NA' AS ASSETCLASSIFIEDON
+,'' AS CUSTHEALTHCODE
+,'' AS CREDITDISCOUNTPERCENT
+,'' AS DEBITDISCOUNTPERCENT
+,'NA' AS PREFERRENTIALEXPIRYDATE
+,'' AS INTERESTDESCRIPTION
+,'' AS STMTWEEKOFMONTH
+,'' AS CUSTCHARGECODE
+,'' AS CUSTCHARGE
+,'' AS CHARGEDEBITFORACID
+,'' AS CHARGEDEBITSOLID
+,'Y' AS CHARGEHISTORYFLAG
+,'' AS CUSTOMERCURRENCY
+,'' AS LOANSSTATEMENTTYPE
+,'' AS TDSSTATEMENTTYPE
+,'' AS COMBSTMTCHARGECODE
+,'' AS TDSCUSTFLOORLIMIT
+,'' AS COMMUNITY_CODE
+,'' AS CUST_HEALTH_REF_CODE
+,'NA' AS CUST_PREF_TILL_DATE
+,'' AS CU_TDSCUSTFLOORLIMIT
+,'' AS CHECKSUM
+,'en_US' AS PREFERRED_LOCALE
+,'01' AS BANK_ID
+,'' AS EXT_SYS_PRICING
+,'' AS PRICING_EFFECTIVE_DATE
+,'' AS PRICING_REVIEW_DATE
+,'' AS RELATIONSHIP_PRICING_ID
+FROM #FinalMaster t1
+JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY ORGKEY;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -671,13 +684,13 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>160</yloc>
+      <xloc>160</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Text file output</name>
+    <name>Output</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -701,7 +714,7 @@ AND t1.MainCode in
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC002</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Retail\RC009</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -713,14 +726,14 @@ AND t1.MainCode in
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
       <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
+      <add_to_result_filenames>N</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
       <splitevery>0</splitevery>
     </file>
     <fields>
       <field>
-        <name>CORP_KEY</name>
+        <name>ORGKEY</name>
         <type>String</type>
         <format />
         <currency />
@@ -732,7 +745,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>CIFID</name>
+        <name>COMMUNICATION_LANGUAGE</name>
         <type>String</type>
         <format />
         <currency />
@@ -744,7 +757,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>CORP_REP_KEY</name>
+        <name>PREFERRED_ADDRESS_MODE</name>
         <type>String</type>
         <format />
         <currency />
@@ -756,7 +769,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESSCATEGORY</name>
+        <name>BEHAVIOURAL_SCORE</name>
         <type>String</type>
         <format />
         <currency />
@@ -768,7 +781,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>START_DATE</name>
+        <name>RISK_BEHAVIOUR</name>
         <type>String</type>
         <format />
         <currency />
@@ -780,7 +793,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PHONENO1LOCALCODE</name>
+        <name>OTHER_BEHAVIOURAL_PROFILE</name>
         <type>String</type>
         <format />
         <currency />
@@ -792,7 +805,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PHONENO1CITYCODE</name>
+        <name>LIFE_CYCLE_STAGE</name>
         <type>String</type>
         <format />
         <currency />
@@ -804,7 +817,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PHONENO1COUNTRYCODE</name>
+        <name>SERVICE_PERSONALISE</name>
         <type>String</type>
         <format />
         <currency />
@@ -816,7 +829,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PHONENO2LOCALCODE</name>
+        <name>PSYCHOGRAPHICTYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -828,7 +841,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PHONENO2CITYCODE</name>
+        <name>PRIORITY_IDENTIFIER</name>
         <type>String</type>
         <format />
         <currency />
@@ -840,7 +853,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PHONENO2COUNTRYCODE</name>
+        <name>HOUSEHOLD_NUMBER</name>
         <type>String</type>
         <format />
         <currency />
@@ -852,7 +865,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FAXNOLOCALCODE</name>
+        <name>PREFERRED_REP</name>
         <type>String</type>
         <format />
         <currency />
@@ -864,7 +877,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FAXNOCITYCODE</name>
+        <name>SEGMENTATION_CLASS</name>
         <type>String</type>
         <format />
         <currency />
@@ -876,7 +889,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FAXNOCOUNTRYCODE</name>
+        <name>PREFERREDNAME</name>
         <type>String</type>
         <format />
         <currency />
@@ -888,7 +901,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>EMAIL</name>
+        <name>NUMBEROFDEPENDANTS</name>
         <type>String</type>
         <format />
         <currency />
@@ -900,7 +913,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PAGERNOLOCALCODE</name>
+        <name>NUMBEROFDEPENDANTCHILDREN</name>
         <type>String</type>
         <format />
         <currency />
@@ -912,7 +925,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PAGERNOCITYCODE</name>
+        <name>STMTDATEFORCOMBSTMT</name>
         <type>String</type>
         <format />
         <currency />
@@ -924,7 +937,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PAGERNOCOUNTRYCODE</name>
+        <name>SUBSEGMENT</name>
         <type>String</type>
         <format />
         <currency />
@@ -936,7 +949,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>TELEXLOCALCODE</name>
+        <name>HOBBYFIELD1</name>
         <type>String</type>
         <format />
         <currency />
@@ -948,7 +961,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>TELEXCITYCODE</name>
+        <name>HOBBYFIELD2</name>
         <type>String</type>
         <format />
         <currency />
@@ -960,7 +973,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>TELEXCOUNTRYCODE</name>
+        <name>HOBBYFIELD3</name>
         <type>String</type>
         <format />
         <currency />
@@ -972,7 +985,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOUSE_NO</name>
+        <name>HOBBYFIELD4</name>
         <type>String</type>
         <format />
         <currency />
@@ -984,7 +997,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PREMISE_NAME</name>
+        <name>HOBBYFIELD5</name>
         <type>String</type>
         <format />
         <currency />
@@ -996,7 +1009,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>BUILDING_LEVEL</name>
+        <name>HOBBYFIELD6</name>
         <type>String</type>
         <format />
         <currency />
@@ -1008,7 +1021,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>STREET_NO</name>
+        <name>PROFILE_FIELD1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1020,7 +1033,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>STREET_NAME</name>
+        <name>PROFILE_FIELD2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1032,7 +1045,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SUBURB</name>
+        <name>PROFILE_FIELD3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1044,7 +1057,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LOCALITY_NAME</name>
+        <name>PROFILE_FIELD4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1056,7 +1069,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>TOWN</name>
+        <name>ALERT1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1068,7 +1081,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DOMICILE</name>
+        <name>ALERT2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1080,7 +1093,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>CITY_CODE</name>
+        <name>ALERT3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1092,7 +1105,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>STATE_CODE</name>
+        <name>ALERT4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1104,7 +1117,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ZIP</name>
+        <name>ALERT5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1116,7 +1129,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>COUNTRY_CODE</name>
+        <name>FLAG1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1128,7 +1141,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR1</name>
+        <name>FLAG2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1140,7 +1153,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR2</name>
+        <name>FLAG3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1152,7 +1165,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR3</name>
+        <name>FLAG4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1164,7 +1177,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR4</name>
+        <name>FLAG5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1176,7 +1189,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR5</name>
+        <name>BANK_DEFINED_PREFER_VAR1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1188,7 +1201,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR6</name>
+        <name>BANK_DEFINED_PREFER_VAR2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1200,7 +1213,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR7</name>
+        <name>BANK_DEFINED_PREFER_VAR3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1212,7 +1225,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR8</name>
+        <name>BANK_DEFINED_PREFER_DATE1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1224,7 +1237,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR9</name>
+        <name>BANK_DEFINED_PREFER_DATE2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1236,7 +1249,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>SMALL_STR10</name>
+        <name>BANK_DEFINED_PREFER_DATE3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1248,7 +1261,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR1</name>
+        <name>USERFIELD1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1260,7 +1273,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR2</name>
+        <name>USERFIELD2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1272,7 +1285,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR3</name>
+        <name>USERFIELD3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1284,7 +1297,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR4</name>
+        <name>USERFIELD4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1296,7 +1309,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR5</name>
+        <name>USERFIELD5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1308,7 +1321,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR6</name>
+        <name>USERFIELD6</name>
         <type>String</type>
         <format />
         <currency />
@@ -1320,7 +1333,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR7</name>
+        <name>SPSERVICEREQUIRED1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1332,7 +1345,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR8</name>
+        <name>SPSERVICEREQUIRED2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1344,7 +1357,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR9</name>
+        <name>SPSERVICEREQUIRED3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1356,7 +1369,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>MED_STR10</name>
+        <name>SPSERVICEREQUIRED4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1368,7 +1381,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LARGE_STR1</name>
+        <name>SPSERVICEREQUIRED5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1380,7 +1393,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LARGE_STR2</name>
+        <name>USERFLAG1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1392,7 +1405,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LARGE_STR3</name>
+        <name>USERFLAG2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1404,7 +1417,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LARGE_STR4</name>
+        <name>PREFRELSHIPDISCOUNT1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1416,7 +1429,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LARGE_STR5</name>
+        <name>PREFRELSHIPDISCOUNT2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1428,7 +1441,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE1</name>
+        <name>PREFRELSHIPDISCOUNTPERCENT1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1440,7 +1453,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE2</name>
+        <name>PREFRELSHIPDISCOUNTPERCENT2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1452,7 +1465,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE3</name>
+        <name>USERFIELD7</name>
         <type>String</type>
         <format />
         <currency />
@@ -1464,7 +1477,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE4</name>
+        <name>USERFIELD8</name>
         <type>String</type>
         <format />
         <currency />
@@ -1476,7 +1489,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE5</name>
+        <name>USERFIELD9</name>
         <type>String</type>
         <format />
         <currency />
@@ -1488,7 +1501,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE6</name>
+        <name>USERFIELD10</name>
         <type>String</type>
         <format />
         <currency />
@@ -1500,7 +1513,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE7</name>
+        <name>USERFIELD11</name>
         <type>String</type>
         <format />
         <currency />
@@ -1512,7 +1525,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE8</name>
+        <name>USERFIELD12</name>
         <type>String</type>
         <format />
         <currency />
@@ -1524,7 +1537,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE9</name>
+        <name>USERFIELD13</name>
         <type>String</type>
         <format />
         <currency />
@@ -1536,7 +1549,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATE10</name>
+        <name>AMOUNT1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1548,7 +1561,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER1</name>
+        <name>AMOUNT2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1560,7 +1573,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER2</name>
+        <name>AMOUNT3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1572,7 +1585,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER3</name>
+        <name>AMOUNT4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1584,7 +1597,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER4</name>
+        <name>AMOUNT5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1596,7 +1609,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER5</name>
+        <name>AMOUNT6</name>
         <type>String</type>
         <format />
         <currency />
@@ -1608,7 +1621,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER6</name>
+        <name>AMOUNT7</name>
         <type>String</type>
         <format />
         <currency />
@@ -1620,7 +1633,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER7</name>
+        <name>INTFIELD1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1632,7 +1645,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER8</name>
+        <name>INTFIELD2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1644,7 +1657,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER9</name>
+        <name>INTFIELD3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1656,7 +1669,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMBER10</name>
+        <name>INTFIELD4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1668,7 +1681,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL1</name>
+        <name>INTFIELD5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1680,7 +1693,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL2</name>
+        <name>STATEMENTTYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1692,7 +1705,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL3</name>
+        <name>STATEMENTFREQUENCY</name>
         <type>String</type>
         <format />
         <currency />
@@ -1704,7 +1717,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL4</name>
+        <name>STMTDATEWEEKDAY</name>
         <type>String</type>
         <format />
         <currency />
@@ -1716,7 +1729,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL5</name>
+        <name>STMTMONTHLYSTARTDATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1728,7 +1741,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL6</name>
+        <name>ACTIONDURINGHOLIDAY</name>
         <type>String</type>
         <format />
         <currency />
@@ -1740,7 +1753,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL7</name>
+        <name>DESPATCHMODE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1752,7 +1765,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL8</name>
+        <name>CALENDERTYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1764,7 +1777,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL9</name>
+        <name>DISCOUNTAVAILED</name>
         <type>String</type>
         <format />
         <currency />
@@ -1776,7 +1789,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>DECIMAL10</name>
+        <name>DISCOUNTTYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1788,7 +1801,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PREFERREDADDRESS</name>
+        <name>PREFEFFECTIVEDATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1800,7 +1813,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOLDMAILINITIATEDBY</name>
+        <name>PREFEXPIRYDATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1812,7 +1825,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOLDMAILFLAG</name>
+        <name>LASTCONTACTEDDATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1824,7 +1837,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>BUSINESSCENTER</name>
+        <name>LASTCONTACTEDCHANNEL</name>
         <type>String</type>
         <format />
         <currency />
@@ -1836,7 +1849,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOLDMAILREASON</name>
+        <name>FAMILYTYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1848,7 +1861,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PREFERREDFORMAT</name>
+        <name>NOOFEARNERS</name>
         <type>String</type>
         <format />
         <currency />
@@ -1860,7 +1873,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FREETEXTADDRESS</name>
+        <name>REMARKS</name>
         <type>String</type>
         <format />
         <currency />
@@ -1872,7 +1885,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FREETEXTLABEL</name>
+        <name>COMMUNITY</name>
         <type>String</type>
         <format />
         <currency />
@@ -1884,7 +1897,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>IS_ADDRESS_PROOF_RCVD</name>
+        <name>LTVINDICATOR</name>
         <type>String</type>
         <format />
         <currency />
@@ -1896,7 +1909,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LASTUPDATE_DATE</name>
+        <name>ASSETCLASSIFICATION</name>
         <type>String</type>
         <format />
         <currency />
@@ -1908,7 +1921,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE1</name>
+        <name>ASSETCLASSIFICATIONDESC</name>
         <type>String</type>
         <format />
         <currency />
@@ -1920,7 +1933,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE2</name>
+        <name>ASSETCLASSIFIEDON</name>
         <type>String</type>
         <format />
         <currency />
@@ -1932,7 +1945,259 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE3</name>
+        <name>CUSTHEALTHCODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CREDITDISCOUNTPERCENT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DEBITDISCOUNTPERCENT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PREFERRENTIALEXPIRYDATE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>INTERESTDESCRIPTION</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STMTWEEKOFMONTH</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CUSTCHARGECODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CUSTCHARGE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CHARGEDEBITFORACID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CHARGEDEBITSOLID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CHARGEHISTORYFLAG</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CUSTOMERCURRENCY</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>LOANSSTATEMENTTYPE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>TDSSTATEMENTTYPE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>COMBSTMTCHARGECODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>TDSCUSTFLOORLIMIT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>COMMUNITY_CODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CUST_HEALTH_REF_CODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CUST_PREF_TILL_DATE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CU_TDSCUSTFLOORLIMIT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CHECKSUM</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PREFERRED_LOCALE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1956,7 +2221,43 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ISADDRESSVERIFIED</name>
+        <name>EXT_SYS_PRICING</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PRICING_EFFECTIVE_DATE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PRICING_REVIEW_DATE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>RELATIONSHIP_PRICING_ID</name>
         <type>String</type>
         <format />
         <currency />
@@ -1976,8 +2277,8 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>160</yloc>
+      <xloc>256</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

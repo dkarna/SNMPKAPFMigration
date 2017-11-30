@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CC002</name>
+    <name>Sanima_RC002</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/11/29 18:44:33.230</created_date>
+    <created_date>2017/11/29 17:09:21.554</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/11/29 18:44:33.230</modified_date>
+    <modified_date>2017/11/29 17:09:21.554</modified_date>
     <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
@@ -497,7 +497,7 @@
   <order>
     <hop>
       <from>Source</from>
-      <to>Text file output</to>
+      <to>Output Files</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -513,20 +513,19 @@
       <schema_name />
     </partitioning>
     <connection>SanimaConn</connection>
-    <sql>
+    <sql>-- Query for RC002
 IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
-  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
+  DROP TABLE #FinalMaster;									-- Drop temporary table if it exists
 SELECT * INTO #FinalMaster FROM
 (
-	SELECT DISTINCT
-	 Name
-	,ClientCode
+	SELECT DISTINCT ClientCode
 	,AcType
 	,BranchCode
 	,Obligor
 	,AcOpenDate
 	,MainCode
 	,CyCode
+	,IsBlocked
 	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
 	--INTO #FinalMaster
 	FROM Master WITH (NOLOCK)
@@ -534,28 +533,30 @@ SELECT * INTO #FinalMaster FROM
 	--ORDER BY ClientCode
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
+
+
+
 SELECT DISTINCT TOP 1000
-'C0' + t1.ClientCode AS CORP_KEY
-,'C0' + t1.ClientCode AS CIFID
-,'' AS CORP_REP_KEY
-,'Mailing' AS ADDRESSCATEGORY
-,'01-01-1900' AS START_DATE
-,'' AS PHONENO1LOCALCODE
-,'' AS PHONENO1CITYCODE
-,'' AS PHONENO1COUNTRYCODE
-,'' AS PHONENO2LOCALCODE
-,'' AS PHONENO2CITYCODE
-,'' AS PHONENO2COUNTRYCODE
-,'' AS FAXNOLOCALCODE
-,'' AS FAXNOCITYCODE
-,'' AS FAXNOCOUNTRYCODE
-,t2.eMail AS EMAIL
-,'' AS PAGERNOLOCALCODE
-,'' AS PAGERNOCITYCODE
-,'' AS PAGERNOCOUNTRYCODE
-,'' AS TELEXLOCALCODE
-,'' AS TELEXCITYCODE
-,'' AS TELEXCOUNTRYCODE
+'R0' + t1.ClientCode AS ORGKEY
+,'Home' AS ADDRESSCATEGORY
+,t1.AcOpenDate AS START_DATE
+,'NA' AS PHONENO1LOCALCODE
+,'NA' AS PHONENO1CITYCODE
+,'NA' AS PHONENO1COUNTRYCODE
+,'NA' AS PHONENO2LOCALCODE
+,'NA' AS PHONENO2CITYCODE
+,'NA' AS PHONENO2COUNTRYCODE
+,'NA' AS WORKEXTENSION
+,'NA' AS FAXNOLOCALCODE
+,'NA' AS FAXNOCITYCODE
+,'NA' AS FAXNOCOUNTRYCODE
+,'NA' AS EMAIL
+,'NA' AS PAGERNOLOCALCODE
+,'NA' AS PAGERNOCITYCODE
+,'NA' AS PAGERNOCOUNTRYCODE
+,'NA' AS TELEXLOCALCODE
+,'NA' AS TELEXCITYCODE
+,'NA' AS TELEXCOUNTRYCODE
 ,'' AS HOUSE_NO
 ,'' AS PREMISE_NAME
 ,'' AS BUILDING_LEVEL
@@ -565,70 +566,81 @@ SELECT DISTINCT TOP 1000
 ,'' AS LOCALITY_NAME
 ,'' AS TOWN
 ,'' AS DOMICILE
-,'DEF_CITY_CODE' AS CITY_CODE
-,'DEF_STATE_CODE' AS STATE_CODE
-,'DEF_ZIP_CODE' AS ZIP
-,'NEPAL' AS COUNTRY_CODE
-,'' AS SMALL_STR1
-,'' AS SMALL_STR2
-,'' AS SMALL_STR3
-,'' AS SMALL_STR4
-,'' AS SMALL_STR5
-,'' AS SMALL_STR6
-,'' AS SMALL_STR7
-,'' AS SMALL_STR8
-,'' AS SMALL_STR9
-,'' AS SMALL_STR10
-,'' AS MED_STR1
-,'' AS MED_STR2
-,'' AS MED_STR3
-,'' AS MED_STR4
-,'' AS MED_STR5
-,'' AS MED_STR6
-,'' AS MED_STR7
-,'' AS MED_STR8
-,'' AS MED_STR9
-,'' AS MED_STR10
-,'' AS LARGE_STR1
-,'' AS LARGE_STR2
-,'' AS LARGE_STR3
-,'' AS LARGE_STR4
-,'' AS LARGE_STR5
-,'' AS DATE1
-,'' AS DATE2
-,'' AS DATE3
-,'' AS DATE4
-,'' AS DATE5
-,'' AS DATE6
-,'' AS DATE7
-,'' AS DATE8
-,'' AS DATE9
-,'' AS DATE10
-,'' AS NUMBER1
-,'' AS NUMBER2
-,'' AS NUMBER3
-,'' AS NUMBER4
-,'' AS NUMBER5
-,'' AS NUMBER6
-,'' AS NUMBER7
-,'' AS NUMBER8
-,'' AS NUMBER9
-,'' AS NUMBER10
-,'' AS DECIMAL1
-,'' AS DECIMAL2
-,'' AS DECIMAL3
-,'' AS DECIMAL4
-,'' AS DECIMAL5
-,'' AS DECIMAL6
-,'' AS DECIMAL7
-,'' AS DECIMAL8
-,'' AS DECIMAL9
-,'' AS DECIMAL10
-,'Y' AS PREFERREDADDRESS
+,'DEF_CITY' AS CITY_CODE
+,'DEF_STATE' AS STATE_CODE
+,t2.City AS ZIP      -- as per the given condition
+,CASE WHEN t2.CountryCode = '11' THEN 'INDIA'
+WHEN t2.CountryCode = '21' THEN 'USA'
+WHEN t2.CountryCode = '23' THEN 'AUSTRALIA'
+WHEN t2.CountryCode = '32' THEN 'AUSTRIA'
+ELSE 'NEPAL'
+ END AS COUNTRY_CODE
+,t2.Address1 AS ADDRESS_LINE1
+,t2.Address2 AS ADDRESS_LINE2
+,t2.Address3 AS ADDRESS_LINE3
+,'30-12-2099' AS END_DATE
+,'NA' AS SMALL_STR1
+,'NA' AS SMALL_STR2
+,'NA' AS SMALL_STR3
+,'NA' AS SMALL_STR4
+,'NA' AS SMALL_STR5
+,'NA' AS SMALL_STR6
+,'NA' AS SMALL_STR7
+,'NA' AS SMALL_STR8
+,'NA' AS SMALL_STR9
+,'NA' AS SMALL_STR10
+,'NA' AS MED_STR1
+,'NA' AS MED_STR2
+,'NA' AS MED_STR3
+,'NA' AS MED_STR4
+,'NA' AS MED_STR5
+,'NA' AS MED_STR6
+,'NA' AS MED_STR7
+,'NA' AS MED_STR8
+,'NA' AS MED_STR9
+,'NA' AS MED_STR10
+,'NA' AS LARGE_STR1
+,'NA' AS LARGE_STR2
+,'NA' AS LARGE_STR3
+,'NA' AS LARGE_STR4
+,'NA' AS LARGE_STR5
+,'NA' AS DATE1
+,'NA' AS DATE2
+,'NA' AS DATE3
+,'NA' AS DATE4
+,'NA' AS DATE5
+,'NA' AS DATE6
+,'NA' AS DATE7
+,'NA' AS DATE8
+,'NA' AS DATE9
+,'NA' AS DATE10
+,'NA' AS NUMBER1
+,'NA' AS NUMBER2
+,'NA' AS NUMBER3
+,'NA' AS NUMBER4
+,'NA' AS NUMBER5
+,'NA' AS NUMBER6
+,'NA' AS NUMBER7
+,'NA' AS NUMBER8
+,'NA' AS NUMBER9
+,'NA' AS NUMBER10
+,'NA' AS DECIMAL1
+,'NA' AS DECIMAL2
+,'NA' AS DECIMAL3
+,'NA' AS DECIMAL4
+,'NA' AS DECIMAL5
+,'NA' AS DECIMAL6
+,'NA' AS DECIMAL7
+,'NA' AS DECIMAL8
+,'NA' AS DECIMAL9
+,'NA' AS DECIMAL10
+,t2.ClientCode AS CIFID
+,'Mailing' AS PREFERREDADDRESS -- To be confirmed
 ,'' AS HOLDMAILINITIATEDBY
 ,'' AS HOLDMAILFLAG
-,'DEF_BUS_CENTER' AS BUSINESSCENTER
+,'' AS BUSINESSCENTER
 ,'' AS HOLDMAILREASON
+,'Free Text' AS PREFERREDFORMAT
 ,'FREE_TEXT_FORMAT' AS PREFERREDFORMAT
 ,'Address1: '+isnull(t2.Address1,'')
 	+'/'+'Address2: '+isnull(t2.Address2,'')
@@ -641,23 +653,23 @@ SELECT DISTINCT TOP 1000
 	+'/'+'MobileNo: '+isnull(t2.MobileNo,'')
 	+'/'+'Fax2: '+isnull(Fax2,'')
 	+'/'+'FaxNo: '+isnull(t2.FaxNo,'')   
-	+'/'+'PagerNo: '+isnull(t2.PagerNo,'')
-  AS FREETEXTADDRESS
+	+'/'+'PagerNo: '+isnull(t2.PagerNo,'') 
+	+'/'+'AlternateAdd1: '+isnull(AlternateAdd1,'')
+	+'/'+'AlternateAdd2 '+isnull(AlternateAdd2,'') 
+	+'/'+'AlternateAdd3: '+isnull(AlternateAdd3,'')
+	AS FREETEXTADDRESS
 ,'FULL_ADDRESS_PUMORI' AS FREETEXTLABEL
 ,'' AS IS_ADDRESS_PROOF_RCVD
 ,'' AS LASTUPDATE_DATE
-,t2.Address1 AS ADDRESS_LINE1
-,t2.Address2 AS ADDRESS_LINE2
-,t2.Address3 AS ADDRESS_LINE3
-,'01' AS BANK_ID
+,'01' AS BANK_ID       -- Given by Deepak
 ,'' AS ISADDRESSVERIFIED
-FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-AND t1.MainCode in
+FROM #FinalMaster t1 
+JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+AND EXISTS
 (
-	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
-)
-
-</sql>
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -671,13 +683,13 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>160</yloc>
+      <xloc>224</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Text file output</name>
+    <name>Output Files</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -688,7 +700,7 @@ AND t1.MainCode in
       <schema_name />
     </partitioning>
     <separator>|</separator>
-    <enclosure>"</enclosure>
+    <enclosure />
     <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -701,7 +713,7 @@ AND t1.MainCode in
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC002</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Retail\RC002</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -720,31 +732,7 @@ AND t1.MainCode in
     </file>
     <fields>
       <field>
-        <name>CORP_KEY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CIFID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CORP_REP_KEY</name>
+        <name>ORGKEY</name>
         <type>String</type>
         <format />
         <currency />
@@ -841,6 +829,18 @@ AND t1.MainCode in
       </field>
       <field>
         <name>PHONENO2COUNTRYCODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>WORKEXTENSION</name>
         <type>String</type>
         <format />
         <currency />
@@ -1117,6 +1117,54 @@ AND t1.MainCode in
       </field>
       <field>
         <name>COUNTRY_CODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ADDRESS_LINE1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ADDRESS_LINE2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ADDRESS_LINE3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>END_DATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1788,6 +1836,18 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
+        <name>CIFID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>PREFERREDADDRESS</name>
         <type>String</type>
         <format />
@@ -1860,6 +1920,18 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
+        <name>PREFERREDFORMAT_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>FREETEXTADDRESS</name>
         <type>String</type>
         <format />
@@ -1908,42 +1980,6 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ADDRESS_LINE2</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ADDRESS_LINE3</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>BANK_ID</name>
         <type>String</type>
         <format />
@@ -1976,8 +2012,8 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>160</yloc>
+      <xloc>400</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

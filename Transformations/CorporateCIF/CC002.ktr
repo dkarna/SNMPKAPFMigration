@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CC002</name>
+    <name>COO2</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,18 +427,18 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/11/29 18:44:33.230</created_date>
+    <created_date>2017/09/02 19:02:41.951</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/11/29 18:44:33.230</modified_date>
-    <key_for_session_key />
+    <modified_date>2017/09/02 19:02:41.951</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>SanimaConn</name>
+    <name>pumariconn</name>
     <server>192.168.1.7</server>
-    <type>MSSQL</type>
+    <type>MSSQLNATIVE</type>
     <access>Native</access>
     <database>SanimaTest</database>
     <port>1433</port>
@@ -448,10 +448,6 @@
     <data_tablespace />
     <index_tablespace />
     <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQL.instance</code>
-        <attribute>sqlexpress</attribute>
-      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -463,6 +459,10 @@
       <attribute>
         <code>IS_CLUSTERED</code>
         <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>false</attribute>
       </attribute>
       <attribute>
         <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
@@ -496,188 +496,13 @@
   </connection>
   <order>
     <hop>
-      <from>Source</from>
-      <to>Text file output</to>
+      <from>Multiple_Table_Input</from>
+      <to>CC002</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Source</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>SanimaConn</connection>
-    <sql>
-IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
-  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
-SELECT * INTO #FinalMaster FROM
-(
-	SELECT DISTINCT
-	 Name
-	,ClientCode
-	,AcType
-	,BranchCode
-	,Obligor
-	,AcOpenDate
-	,MainCode
-	,CyCode
-	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
-	--INTO #FinalMaster
-	FROM Master WITH (NOLOCK)
-	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
-	--ORDER BY ClientCode
-) AS t 
-WHERE t.SerialNumber = 1 ORDER BY 1;	
-SELECT DISTINCT TOP 1000
-'C0' + t1.ClientCode AS CORP_KEY
-,'C0' + t1.ClientCode AS CIFID
-,'' AS CORP_REP_KEY
-,'Mailing' AS ADDRESSCATEGORY
-,'01-01-1900' AS START_DATE
-,'' AS PHONENO1LOCALCODE
-,'' AS PHONENO1CITYCODE
-,'' AS PHONENO1COUNTRYCODE
-,'' AS PHONENO2LOCALCODE
-,'' AS PHONENO2CITYCODE
-,'' AS PHONENO2COUNTRYCODE
-,'' AS FAXNOLOCALCODE
-,'' AS FAXNOCITYCODE
-,'' AS FAXNOCOUNTRYCODE
-,t2.eMail AS EMAIL
-,'' AS PAGERNOLOCALCODE
-,'' AS PAGERNOCITYCODE
-,'' AS PAGERNOCOUNTRYCODE
-,'' AS TELEXLOCALCODE
-,'' AS TELEXCITYCODE
-,'' AS TELEXCOUNTRYCODE
-,'' AS HOUSE_NO
-,'' AS PREMISE_NAME
-,'' AS BUILDING_LEVEL
-,'' AS STREET_NO
-,'' AS STREET_NAME
-,'' AS SUBURB
-,'' AS LOCALITY_NAME
-,'' AS TOWN
-,'' AS DOMICILE
-,'DEF_CITY_CODE' AS CITY_CODE
-,'DEF_STATE_CODE' AS STATE_CODE
-,'DEF_ZIP_CODE' AS ZIP
-,'NEPAL' AS COUNTRY_CODE
-,'' AS SMALL_STR1
-,'' AS SMALL_STR2
-,'' AS SMALL_STR3
-,'' AS SMALL_STR4
-,'' AS SMALL_STR5
-,'' AS SMALL_STR6
-,'' AS SMALL_STR7
-,'' AS SMALL_STR8
-,'' AS SMALL_STR9
-,'' AS SMALL_STR10
-,'' AS MED_STR1
-,'' AS MED_STR2
-,'' AS MED_STR3
-,'' AS MED_STR4
-,'' AS MED_STR5
-,'' AS MED_STR6
-,'' AS MED_STR7
-,'' AS MED_STR8
-,'' AS MED_STR9
-,'' AS MED_STR10
-,'' AS LARGE_STR1
-,'' AS LARGE_STR2
-,'' AS LARGE_STR3
-,'' AS LARGE_STR4
-,'' AS LARGE_STR5
-,'' AS DATE1
-,'' AS DATE2
-,'' AS DATE3
-,'' AS DATE4
-,'' AS DATE5
-,'' AS DATE6
-,'' AS DATE7
-,'' AS DATE8
-,'' AS DATE9
-,'' AS DATE10
-,'' AS NUMBER1
-,'' AS NUMBER2
-,'' AS NUMBER3
-,'' AS NUMBER4
-,'' AS NUMBER5
-,'' AS NUMBER6
-,'' AS NUMBER7
-,'' AS NUMBER8
-,'' AS NUMBER9
-,'' AS NUMBER10
-,'' AS DECIMAL1
-,'' AS DECIMAL2
-,'' AS DECIMAL3
-,'' AS DECIMAL4
-,'' AS DECIMAL5
-,'' AS DECIMAL6
-,'' AS DECIMAL7
-,'' AS DECIMAL8
-,'' AS DECIMAL9
-,'' AS DECIMAL10
-,'Y' AS PREFERREDADDRESS
-,'' AS HOLDMAILINITIATEDBY
-,'' AS HOLDMAILFLAG
-,'DEF_BUS_CENTER' AS BUSINESSCENTER
-,'' AS HOLDMAILREASON
-,'FREE_TEXT_FORMAT' AS PREFERREDFORMAT
-,'Address1: '+isnull(t2.Address1,'')
-	+'/'+'Address2: '+isnull(t2.Address2,'')
-	+'/'+'Address3: '+isnull(t2.Address3,'')
-	+'/'+'ContactAdd1: '+isnull(t2.ContactAdd1,'')
-	+'/'+'ContactAdd2: '+isnull(t2.ContactAdd2,'')
-	+'/'+'ContactAdd3: '+isnull(t2.ContactAdd3,'')
-	+'/'+'City: '+isnull(t2.City,'')
-	+'/'+'PhoneNo: '+isnull(t2.Phone,'')
-	+'/'+'MobileNo: '+isnull(t2.MobileNo,'')
-	+'/'+'Fax2: '+isnull(Fax2,'')
-	+'/'+'FaxNo: '+isnull(t2.FaxNo,'')   
-	+'/'+'PagerNo: '+isnull(t2.PagerNo,'')
-  AS FREETEXTADDRESS
-,'FULL_ADDRESS_PUMORI' AS FREETEXTLABEL
-,'' AS IS_ADDRESS_PROOF_RCVD
-,'' AS LASTUPDATE_DATE
-,t2.Address1 AS ADDRESS_LINE1
-,t2.Address2 AS ADDRESS_LINE2
-,t2.Address3 AS ADDRESS_LINE3
-,'01' AS BANK_ID
-,'' AS ISADDRESSVERIFIED
-FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-AND t1.MainCode in
-(
-	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
-)
-
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Text file output</name>
+    <name>CC002</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -688,7 +513,7 @@ AND t1.MainCode in
       <schema_name />
     </partitioning>
     <separator>|</separator>
-    <enclosure>"</enclosure>
+    <enclosure />
     <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -701,7 +526,7 @@ AND t1.MainCode in
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC002</name>
+      <name>F:\ELT_SANIMA\Output\CC002</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1976,8 +1801,159 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>160</yloc>
+      <xloc>368</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiple_Table_Input</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>pumariconn</connection>
+    <sql>SELECT DISTINCT 
+'CO' + t1.ClientCode AS CORP_KEY
+,'CO' + t1.ClientCode AS CIFID
+,'' AS CORP_REP_KEY
+,'Mailing' AS ADDRESSCATEGORY
+,'01-01-1900' AS START_DATE
+,'' AS PHONENO1LOCALCODE
+,'' AS PHONENO1CITYCODE
+,'' AS PHONENO1COUNTRYCODE
+,'' AS PHONENO2LOCALCODE
+,'' AS PHONENO2CITYCODE
+,'' AS PHONENO2COUNTRYCODE
+,'' AS FAXNOLOCALCODE
+,'' AS FAXNOCITYCODE
+,'' AS FAXNOCOUNTRYCODE
+,t2.eMail AS EMAIL
+,'' AS PAGERNOLOCALCODE
+,'' AS PAGERNOCITYCODE
+,'' AS PAGERNOCOUNTRYCODE
+,'' AS TELEXLOCALCODE
+,'' AS TELEXCITYCODE
+,'' AS TELEXCOUNTRYCODE
+,'' AS HOUSE_NO
+,'' AS PREMISE_NAME
+,'' AS BUILDING_LEVEL
+,'' AS STREET_NO
+,'' AS STREET_NAME
+,'' AS SUBURB
+,'' AS LOCALITY_NAME
+,'' AS TOWN
+,'' AS DOMICILE
+,'DEF_CITY_CODE' AS CITY_CODE
+,'DEF_STATE_CODE' AS STATE_CODE
+,'DEF_ZIP_CODE' AS ZIP
+,'NEPAL' AS COUNTRY_CODE
+,'' AS SMALL_STR1
+,'' AS SMALL_STR2
+,'' AS SMALL_STR3
+,'' AS SMALL_STR4
+,'' AS SMALL_STR5
+,'' AS SMALL_STR6
+,'' AS SMALL_STR7
+,'' AS SMALL_STR8
+,'' AS SMALL_STR9
+,'' AS SMALL_STR10
+,'' AS MED_STR1
+,'' AS MED_STR2
+,'' AS MED_STR3
+,'' AS MED_STR4
+,'' AS MED_STR5
+,'' AS MED_STR6
+,'' AS MED_STR7
+,'' AS MED_STR8
+,'' AS MED_STR9
+,'' AS MED_STR10
+,'' AS LARGE_STR1
+,'' AS LARGE_STR2
+,'' AS LARGE_STR3
+,'' AS LARGE_STR4
+,'' AS LARGE_STR5
+,'' AS DATE1
+,'' AS DATE2
+,'' AS DATE3
+,'' AS DATE4
+,'' AS DATE5
+,'' AS DATE6
+,'' AS DATE7
+,'' AS DATE8
+,'' AS DATE9
+,'' AS DATE10
+,'' AS NUMBER1
+,'' AS NUMBER2
+,'' AS NUMBER3
+,'' AS NUMBER4
+,'' AS NUMBER5
+,'' AS NUMBER6
+,'' AS NUMBER7
+,'' AS NUMBER8
+,'' AS NUMBER9
+,'' AS NUMBER10
+,'' AS DECIMAL1
+,'' AS DECIMAL2
+,'' AS DECIMAL3
+,'' AS DECIMAL4
+,'' AS DECIMAL5
+,'' AS DECIMAL6
+,'' AS DECIMAL7
+,'' AS DECIMAL8
+,'' AS DECIMAL9
+,'' AS DECIMAL10
+,'Y' AS PREFERREDADDRESS
+,'' AS HOLDMAILINITIATEDBY
+,'' AS HOLDMAILFLAG
+,'DEF_BUS_CENTER' AS BUSINESSCENTER
+,'' AS HOLDMAILREASON
+,'FREE_TEXT_FORMAT' AS PREFERREDFORMAT
+,'Address1: '+isnull(t2.Address1,'')
++'/'+'Address2: '+isnull(t2.Address2,'')
++'/'+'Address3: '+isnull(t2.Address3,'')+'/'
++'ContactAdd1: '+isnull(t2.ContactAdd1,'')+
+'/'+'ContactAdd2: '+isnull(t2.ContactAdd2,'')+'/'
++'ContactAdd3: '+isnull(t2.ContactAdd3,'')+'/'
++'City: '+isnull(t2.City,'')+'/'+
+'PhoneNo: '+isnull(t2.Phone,'')+'/'
++'MobileNo: '+isnull(t2.MobileNo,'')
+-- +'/'+'Fax2: '+isnull(Fax2,'')  -- field not available
++'/'+'FaxNo: '+isnull(t2.FaxNo,'')   
++'/'+'PagerNo: '+isnull(t2.PagerNo,'') AS FREETEXTADDRESS   -- need to be asked
+,'FULL_ADDRESS_PUMORI' AS FREETEXTLABEL
+,'' AS IS_ADDRESS_PROOF_RCVD
+,'' AS LASTUPDATE_DATE
+,t2.Address1 AS ADDRESS_LINE1
+,t2.Address2 AS ADDRESS_LINE2
+,t2.Address3 AS ADDRESS_LINE3
+,'SNMANPKA' AS BANK_ID
+,'' AS ISADDRESSVERIFIED
+FROM Master t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+WHERE t1.MainCode in
+(
+	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
+)</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

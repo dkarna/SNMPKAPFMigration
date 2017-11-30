@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CC002</name>
+    <name>CC004</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/11/29 18:44:33.230</created_date>
+    <created_date>2017/11/29 18:51:43.824</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/11/29 18:44:33.230</modified_date>
+    <modified_date>2017/11/29 18:51:43.824</modified_date>
     <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
@@ -533,42 +533,14 @@ SELECT * INTO #FinalMaster FROM
 	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
 	--ORDER BY ClientCode
 ) AS t 
-WHERE t.SerialNumber = 1 ORDER BY 1;	
+WHERE t.SerialNumber = 1 ORDER BY 1;
+
 SELECT DISTINCT TOP 1000
-'C0' + t1.ClientCode AS CORP_KEY
-,'C0' + t1.ClientCode AS CIFID
-,'' AS CORP_REP_KEY
-,'Mailing' AS ADDRESSCATEGORY
-,'01-01-1900' AS START_DATE
-,'' AS PHONENO1LOCALCODE
-,'' AS PHONENO1CITYCODE
-,'' AS PHONENO1COUNTRYCODE
-,'' AS PHONENO2LOCALCODE
-,'' AS PHONENO2CITYCODE
-,'' AS PHONENO2COUNTRYCODE
-,'' AS FAXNOLOCALCODE
-,'' AS FAXNOCITYCODE
-,'' AS FAXNOCOUNTRYCODE
-,t2.eMail AS EMAIL
-,'' AS PAGERNOLOCALCODE
-,'' AS PAGERNOCITYCODE
-,'' AS PAGERNOCOUNTRYCODE
-,'' AS TELEXLOCALCODE
-,'' AS TELEXCITYCODE
-,'' AS TELEXCOUNTRYCODE
-,'' AS HOUSE_NO
-,'' AS PREMISE_NAME
-,'' AS BUILDING_LEVEL
-,'' AS STREET_NO
-,'' AS STREET_NAME
-,'' AS SUBURB
-,'' AS LOCALITY_NAME
-,'' AS TOWN
-,'' AS DOMICILE
-,'DEF_CITY_CODE' AS CITY_CODE
-,'DEF_STATE_CODE' AS STATE_CODE
-,'DEF_ZIP_CODE' AS ZIP
-,'NEPAL' AS COUNTRY_CODE
+ 'C0' + t3.ClientCode AS CORP_KEY  
+,'DEF_SAL' AS SALUTATION
+,CASE WHEN t2.DateOfBirth IS NULL OR t2.DateOfBirth > GETDATE() THEN REPLACE(REPLACE(CONVERT(VARCHAR,'01-01-1900',106), ' ','-'), ',','')
+	ELSE REPLACE(REPLACE(CONVERT(VARCHAR,t2.DateOfBirth,106), ' ','-'), ',','') 
+END AS DOB
 ,'' AS SMALL_STR1
 ,'' AS SMALL_STR2
 ,'' AS SMALL_STR3
@@ -624,39 +596,61 @@ SELECT DISTINCT TOP 1000
 ,'' AS DECIMAL8
 ,'' AS DECIMAL9
 ,'' AS DECIMAL10
-,'Y' AS PREFERREDADDRESS
-,'' AS HOLDMAILINITIATEDBY
-,'' AS HOLDMAILFLAG
-,'DEF_BUS_CENTER' AS BUSINESSCENTER
-,'' AS HOLDMAILREASON
-,'FREE_TEXT_FORMAT' AS PREFERREDFORMAT
-,'Address1: '+isnull(t2.Address1,'')
-	+'/'+'Address2: '+isnull(t2.Address2,'')
-	+'/'+'Address3: '+isnull(t2.Address3,'')
-	+'/'+'ContactAdd1: '+isnull(t2.ContactAdd1,'')
-	+'/'+'ContactAdd2: '+isnull(t2.ContactAdd2,'')
-	+'/'+'ContactAdd3: '+isnull(t2.ContactAdd3,'')
-	+'/'+'City: '+isnull(t2.City,'')
-	+'/'+'PhoneNo: '+isnull(t2.Phone,'')
-	+'/'+'MobileNo: '+isnull(t2.MobileNo,'')
-	+'/'+'Fax2: '+isnull(Fax2,'')
-	+'/'+'FaxNo: '+isnull(t2.FaxNo,'')   
-	+'/'+'PagerNo: '+isnull(t2.PagerNo,'')
-  AS FREETEXTADDRESS
-,'FULL_ADDRESS_PUMORI' AS FREETEXTLABEL
-,'' AS IS_ADDRESS_PROOF_RCVD
-,'' AS LASTUPDATE_DATE
-,t2.Address1 AS ADDRESS_LINE1
-,t2.Address2 AS ADDRESS_LINE2
-,t2.Address3 AS ADDRESS_LINE3
+,t3.ClientCode AS CIFID
+,'' AS ENTITYKEY
+,'' AS CIFTYPE
+,'0.00' AS PERCENTAGEBENEFITED
+,t2.Name AS CORPORATE_NAME
+,'FirstName'=(left( t2.Name, CHARINDEX(' ', t2.Name)) )
+,'LastName'=(RIGHT( t2.Name, CHARINDEX(' ', REVERSE(t2.Name))) )
+,'MiddleName'=(CASE WHEN CHARINDEX(' ', t2.Name) &lt;&gt; LEN(t2.Name) - CHARINDEX(' ', REVERSE(t2.Name)) + 1 THEN SUBSTRING(t2.Name, CHARINDEX(' ', t2.Name)+ 1, (LEN(t2.Name) - CHARINDEX(' ', REVERSE(t2.Name))-CHARINDEX(' ', t2.Name))) end )
+,t2.Alias AS BENEFICIALOWNERKEY
+,'' AS ENTITY_TYPE
+,'' AS STR1
+,'' AS STR2
+,'' AS STR3
+,'' AS STR4
+,'' AS STR5
+,'' AS STR6
+,'' AS STR7
+,'' AS STR8
+,'' AS STR9
+,'' AS STR10
+,'' AS STR11
+,'' AS STR12
+,'' AS STR13
+,'' AS STR14
+,'' AS STR15
+,'' AS AMOUNT1
+,'' AS AMOUNT2
+,'' AS AMOUNT3
+,'' AS AMOUNT4
+,'' AS AMOUNT5
+,'' AS FLAG1
+,'' AS FLAG2
+,'' AS FLAG3
+,'' AS FLAG4
+,'' AS FLAG5
+,'' AS INT1
+,'' AS INT2
+,'' AS INT3
+,'' AS INT4
+,'' AS INT5
+,'' AS MLUSERFIELD1
+,'' AS MLUSERFIELD2
+,'' AS MLUSERFIELD3
+,'' AS MLUSERFIELD4
+,'' AS MLUSERFIELD5
 ,'01' AS BANK_ID
-,'' AS ISADDRESSVERIFIED
-FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-AND t1.MainCode in
+,'' AS LAST_NAME_ALT1
+,'' AS MIDDLE_NAME_ALT1
+,'' AS FIRST_NAME_ALT1
+FROM #FinalMaster t1 JOIN ClientTable t3 ON t1.ClientCode = t3.ClientCode
+LEFT JOIN (SELECT ClientCode,isnull(Name,'A B C') as Name,DateOfBirth,Alias from ClientExtraDetail) t2 ON t1.ClientCode = t2.ClientCode
+AND EXISTS
 (
-	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
 )
-
 </sql>
     <limit>0</limit>
     <lookup />
@@ -671,8 +665,8 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>160</yloc>
+      <xloc>251</xloc>
+      <yloc>167</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -701,7 +695,7 @@ AND t1.MainCode in
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC002</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC004</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -732,7 +726,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>CIFID</name>
+        <name>SALUTATION</name>
         <type>String</type>
         <format />
         <currency />
@@ -744,379 +738,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>CORP_REP_KEY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ADDRESSCATEGORY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>START_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO1LOCALCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO1CITYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO1COUNTRYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO2LOCALCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO2CITYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO2COUNTRYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FAXNOLOCALCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FAXNOCITYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FAXNOCOUNTRYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>EMAIL</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PAGERNOLOCALCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PAGERNOCITYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PAGERNOCOUNTRYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TELEXLOCALCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TELEXCITYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TELEXCOUNTRYCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>HOUSE_NO</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PREMISE_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>BUILDING_LEVEL</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>STREET_NO</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>STREET_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>SUBURB</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>LOCALITY_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TOWN</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DOMICILE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CITY_CODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>STATE_CODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ZIP</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>COUNTRY_CODE</name>
+        <name>DOB</name>
         <type>String</type>
         <format />
         <currency />
@@ -1788,7 +1410,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PREFERREDADDRESS</name>
+        <name>CIFID</name>
         <type>String</type>
         <format />
         <currency />
@@ -1800,7 +1422,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOLDMAILINITIATEDBY</name>
+        <name>ENTITYKEY</name>
         <type>String</type>
         <format />
         <currency />
@@ -1812,7 +1434,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOLDMAILFLAG</name>
+        <name>CIFTYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1824,7 +1446,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>BUSINESSCENTER</name>
+        <name>PERCENTAGEBENEFITED</name>
         <type>String</type>
         <format />
         <currency />
@@ -1836,7 +1458,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>HOLDMAILREASON</name>
+        <name>CORPORATE_NAME</name>
         <type>String</type>
         <format />
         <currency />
@@ -1848,7 +1470,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>PREFERREDFORMAT</name>
+        <name>FirstName</name>
         <type>String</type>
         <format />
         <currency />
@@ -1860,7 +1482,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FREETEXTADDRESS</name>
+        <name>LastName</name>
         <type>String</type>
         <format />
         <currency />
@@ -1872,7 +1494,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>FREETEXTLABEL</name>
+        <name>MiddleName</name>
         <type>String</type>
         <format />
         <currency />
@@ -1884,7 +1506,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>IS_ADDRESS_PROOF_RCVD</name>
+        <name>BENEFICIALOWNERKEY</name>
         <type>String</type>
         <format />
         <currency />
@@ -1896,7 +1518,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>LASTUPDATE_DATE</name>
+        <name>ENTITY_TYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1908,7 +1530,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE1</name>
+        <name>STR1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1920,7 +1542,7 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE2</name>
+        <name>STR2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1932,7 +1554,391 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ADDRESS_LINE3</name>
+        <name>STR3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR6</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR7</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR8</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR9</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR10</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR11</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR12</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR13</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR14</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STR15</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>AMOUNT1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>AMOUNT2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>AMOUNT3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>AMOUNT4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>AMOUNT5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>FLAG1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>FLAG2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>FLAG3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>FLAG4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>FLAG5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>INT1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>INT2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>INT3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>INT4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>INT5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>MLUSERFIELD1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>MLUSERFIELD2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>MLUSERFIELD3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>MLUSERFIELD4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>MLUSERFIELD5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1956,7 +1962,31 @@ AND t1.MainCode in
         <precision>-1</precision>
       </field>
       <field>
-        <name>ISADDRESSVERIFIED</name>
+        <name>LAST_NAME_ALT1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>MIDDLE_NAME_ALT1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>FIRST_NAME_ALT1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1976,8 +2006,8 @@ AND t1.MainCode in
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>160</yloc>
+      <xloc>411</xloc>
+      <yloc>167</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

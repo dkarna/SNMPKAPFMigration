@@ -18,6 +18,24 @@ SELECT * INTO #FinalMaster FROM
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SELECT DISTINCT 
 'RO' + t1.ClientCode AS ORGKEY
 ,'RO' + t1.ClientCode AS CIFID

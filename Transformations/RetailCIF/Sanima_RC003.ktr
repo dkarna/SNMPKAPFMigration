@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>COO4</name>
+    <name>Sanima_RC003</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,18 +427,18 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/09/02 19:35:47.828</created_date>
+    <created_date>2017/11/29 17:15:35.585</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/09/02 19:35:47.828</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2017/11/29 17:15:35.585</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>pumariconn</name>
+    <name>SanimaConn</name>
     <server>192.168.1.7</server>
-    <type>MSSQLNATIVE</type>
+    <type>MSSQL</type>
     <access>Native</access>
     <database>SanimaTest</database>
     <port>1433</port>
@@ -448,6 +448,10 @@
     <data_tablespace />
     <index_tablespace />
     <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MSSQL.instance</code>
+        <attribute>sqlexpress</attribute>
+      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -459,10 +463,6 @@
       <attribute>
         <code>IS_CLUSTERED</code>
         <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQLUseIntegratedSecurity</code>
-        <attribute>false</attribute>
       </attribute>
       <attribute>
         <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
@@ -496,13 +496,195 @@
   </connection>
   <order>
     <hop>
-      <from>Multiple_Table_Input</from>
-      <to>CC004</to>
+      <from>Source</from>
+      <to>Output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CC004</name>
+    <name>Source</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>SanimaConn</connection>
+    <sql>-- Query for RC003
+
+
+IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
+  DROP TABLE #FinalMaster;									-- Drop temporary table if it exists
+SELECT * INTO #FinalMaster FROM
+(
+	SELECT DISTINCT ClientCode
+	,AcType
+	,BranchCode
+	,Obligor
+	,AcOpenDate
+	,MainCode
+	,CyCode
+	,IsBlocked
+	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
+	--INTO #FinalMaster
+	FROM Master WITH (NOLOCK)
+	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+	--ORDER BY ClientCode
+) AS t 
+WHERE t.SerialNumber = 1 ORDER BY 1;	
+
+SELECT DISTINCT TOP 1000
+'R0' + t1.ClientCode AS ORGKEY
+,'R0' + t1.ClientCode AS CIFID
+,'' AS STRTEXT2
+,'' AS STRTEXT1
+,'CURRENCY' AS TYPE
+,'NPR' AS CUSTOMERCURRENCY
+,'' AS CREDITDISCOUNTPERCENT
+,'' AS DEBITDISCOUNTPERCENT
+,'NA' AS WITHHOLDTAXPCNT
+,'NA' AS WITHHOLDTAXFLOORLMT
+,'30-12-2099' AS DTDATE1
+,'' AS DTDATE2
+,'NEPAL' AS COUNTRYOFISSUE_CODE
+,'NA' AS SMALL_STR1
+,'NA' AS SMALL_STR2
+,'NA' AS SMALL_STR3
+,'NA' AS SMALL_STR4
+,'NA' AS SMALL_STR5
+,'NA' AS SMALL_STR6
+,'NA' AS SMALL_STR7
+,'NA' AS SMALL_STR8
+,'NA' AS SMALL_STR9
+,'NA' AS SMALL_STR10
+,'NA' AS MED_STR1
+,'NA' AS MED_STR2
+,'NA' AS MED_STR3
+,'NA' AS MED_STR4
+,'NA' AS MED_STR5
+,'NA' AS MED_STR6
+,'NA' AS MED_STR7
+,'NA' AS MED_STR8
+,'NA' AS MED_STR9
+,'NA' AS MED_STR10
+,'NA' AS LARGE_STR1
+,'NA' AS LARGE_STR2
+,'NA' AS LARGE_STR3
+,'NA' AS LARGE_STR4
+,'NA' AS LARGE_STR5
+,'NA' AS DATE1
+,'NA' AS DATE2
+,'NA' AS DATE3
+,'NA' AS DATE4
+,'NA' AS DATE5
+,'NA' AS DATE6
+,'NA' AS DATE7
+,'NA' AS DATE8
+,'NA' AS DATE9
+,'NA' AS DATE10
+,'NA' AS NUMBER1
+,'NA' AS NUMBER2
+,'NA' AS NUMBER3
+,'NA' AS NUMBER4
+,'NA' AS NUMBER5
+,'NA' AS NUMBER6
+,'NA' AS NUMBER7
+,'NA' AS NUMBER8
+,'NA' AS NUMBER9
+,'NA' AS NUMBER10
+,'NA' AS DECIMAL1
+,'NA' AS DECIMAL2
+,'NA' AS DECIMAL3
+,'NA' AS DECIMAL4
+,'NA' AS DECIMAL5
+,'NA' AS DECIMAL6
+,'NA' AS DECIMAL7
+,'NA' AS DECIMAL8
+,'NA' AS DECIMAL9
+,'NA' AS DECIMAL10
+,'' AS STRTEXT3
+,'' AS STRTEXT4
+,'' AS STRTEXT5
+,'' AS STRTEXT6
+,'' AS STRTEXT7
+,'' AS STRTEXT8
+,'' AS STRTEXT9
+,'NPR' AS STRTEXT10
+,'NA' AS INTINTEGER1
+,'NA' AS INTINTEGER2
+,'NA' AS INTINTEGER3
+,'NA' AS INTINTEGER4
+,'NA' AS INTINTEGER5
+,'NA' AS INTINTEGER6
+,'NA' AS INTINTEGER7
+,'NA' AS INTINTEGER8
+,'NA' AS INTINTEGER9
+,'NA' AS INTINTEGER10
+,'NA' AS INTINTEGER11
+,'NA' AS INTINTEGER12
+,'NA' AS INTINTEGER13
+,'NA' AS INTINTEGER14
+,'NA' AS INTINTEGER15
+,'NA' AS DTDATE3
+,'' AS DTDATE4
+,'NA' AS DTDATE5
+,'' AS DBFLOAT1
+,'' AS DBFLOAT2
+,'' AS DBFLOAT3
+,'' AS DBFLOAT4
+,'NA' AS DBFLOAT5
+,'NA' AS STRTEXT11
+,'NA' AS STRTEXT12
+,'NA' AS STRTEXT13
+,'NA' AS STRTEXT14
+,'' AS STRTEXT15
+,'' AS STRTEXT16
+,'' AS STRTEXT17
+,'' AS STRTEXT18
+,'' AS STRTEXT19
+,'' AS STRTEXT20
+,'' AS STRTEXT21
+,'DEF_VALUE' AS STRTEXT22
+,'' AS STRTEXT23
+,'' AS STRTEXT24
+,'' AS STRTEXT25
+,'' AS STRTEXT26
+,'NA' AS STRTEXT27
+,'' AS EMPLOYERID
+,t2.ClientTag2 AS EMPLOYEEID
+,'NA' AS STRTEXT1_CODE
+,'' AS STRTEXT2_CODE
+,'NA' AS STRTEXT28
+,'01' AS BANK_ID   -- Added by Deepak
+FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Output</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -526,7 +708,7 @@
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>F:\ELT_SANIMA\Output\CC004</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Retail\RC003</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -545,7 +727,7 @@
     </file>
     <fields>
       <field>
-        <name>CORP_KEY</name>
+        <name>ORGKEY</name>
         <type>String</type>
         <format />
         <currency />
@@ -557,7 +739,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>SALUTATION</name>
+        <name>CIFID</name>
         <type>String</type>
         <format />
         <currency />
@@ -569,7 +751,127 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>DOB</name>
+        <name>STRTEXT2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>TYPE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CUSTOMERCURRENCY</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CREDITDISCOUNTPERCENT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DEBITDISCOUNTPERCENT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>WITHHOLDTAXPCNT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>WITHHOLDTAXFLOORLMT</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DTDATE1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DTDATE2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>COUNTRYOFISSUE_CODE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1241,7 +1543,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>CIFID</name>
+        <name>STRTEXT3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1253,7 +1555,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>ENTITYKEY</name>
+        <name>STRTEXT4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1265,7 +1567,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>CIFTYPE</name>
+        <name>STRTEXT5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1277,7 +1579,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>PERCENTAGEBENEFITED</name>
+        <name>STRTEXT6</name>
         <type>String</type>
         <format />
         <currency />
@@ -1289,7 +1591,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>CORPORATE_NAME</name>
+        <name>STRTEXT7</name>
         <type>String</type>
         <format />
         <currency />
@@ -1301,7 +1603,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FirstName</name>
+        <name>STRTEXT8</name>
         <type>String</type>
         <format />
         <currency />
@@ -1313,7 +1615,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>LastName</name>
+        <name>STRTEXT9</name>
         <type>String</type>
         <format />
         <currency />
@@ -1325,7 +1627,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>MiddleName</name>
+        <name>STRTEXT10</name>
         <type>String</type>
         <format />
         <currency />
@@ -1337,7 +1639,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>BENEFICIALOWNERKEY</name>
+        <name>INTINTEGER1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1349,7 +1651,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>ENTITY_TYPE</name>
+        <name>INTINTEGER2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1361,7 +1663,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR1</name>
+        <name>INTINTEGER3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1373,7 +1675,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR2</name>
+        <name>INTINTEGER4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1385,7 +1687,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR3</name>
+        <name>INTINTEGER5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1397,7 +1699,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR4</name>
+        <name>INTINTEGER6</name>
         <type>String</type>
         <format />
         <currency />
@@ -1409,7 +1711,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR5</name>
+        <name>INTINTEGER7</name>
         <type>String</type>
         <format />
         <currency />
@@ -1421,7 +1723,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR6</name>
+        <name>INTINTEGER8</name>
         <type>String</type>
         <format />
         <currency />
@@ -1433,7 +1735,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR7</name>
+        <name>INTINTEGER9</name>
         <type>String</type>
         <format />
         <currency />
@@ -1445,7 +1747,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR8</name>
+        <name>INTINTEGER10</name>
         <type>String</type>
         <format />
         <currency />
@@ -1457,7 +1759,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR9</name>
+        <name>INTINTEGER11</name>
         <type>String</type>
         <format />
         <currency />
@@ -1469,7 +1771,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR10</name>
+        <name>INTINTEGER12</name>
         <type>String</type>
         <format />
         <currency />
@@ -1481,7 +1783,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR11</name>
+        <name>INTINTEGER13</name>
         <type>String</type>
         <format />
         <currency />
@@ -1493,7 +1795,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR12</name>
+        <name>INTINTEGER14</name>
         <type>String</type>
         <format />
         <currency />
@@ -1505,7 +1807,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR13</name>
+        <name>INTINTEGER15</name>
         <type>String</type>
         <format />
         <currency />
@@ -1517,7 +1819,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR14</name>
+        <name>DTDATE3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1529,7 +1831,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>STR15</name>
+        <name>DTDATE4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1541,7 +1843,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>AMOUNT1</name>
+        <name>DTDATE5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1553,7 +1855,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>AMOUNT2</name>
+        <name>DBFLOAT1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1565,7 +1867,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>AMOUNT3</name>
+        <name>DBFLOAT2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1577,7 +1879,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>AMOUNT4</name>
+        <name>DBFLOAT3</name>
         <type>String</type>
         <format />
         <currency />
@@ -1589,7 +1891,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>AMOUNT5</name>
+        <name>DBFLOAT4</name>
         <type>String</type>
         <format />
         <currency />
@@ -1601,7 +1903,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FLAG1</name>
+        <name>DBFLOAT5</name>
         <type>String</type>
         <format />
         <currency />
@@ -1613,7 +1915,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FLAG2</name>
+        <name>STRTEXT11</name>
         <type>String</type>
         <format />
         <currency />
@@ -1625,7 +1927,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FLAG3</name>
+        <name>STRTEXT12</name>
         <type>String</type>
         <format />
         <currency />
@@ -1637,7 +1939,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FLAG4</name>
+        <name>STRTEXT13</name>
         <type>String</type>
         <format />
         <currency />
@@ -1649,7 +1951,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FLAG5</name>
+        <name>STRTEXT14</name>
         <type>String</type>
         <format />
         <currency />
@@ -1661,7 +1963,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>INT1</name>
+        <name>STRTEXT15</name>
         <type>String</type>
         <format />
         <currency />
@@ -1673,7 +1975,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>INT2</name>
+        <name>STRTEXT16</name>
         <type>String</type>
         <format />
         <currency />
@@ -1685,7 +1987,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>INT3</name>
+        <name>STRTEXT17</name>
         <type>String</type>
         <format />
         <currency />
@@ -1697,7 +1999,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>INT4</name>
+        <name>STRTEXT18</name>
         <type>String</type>
         <format />
         <currency />
@@ -1709,7 +2011,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>INT5</name>
+        <name>STRTEXT19</name>
         <type>String</type>
         <format />
         <currency />
@@ -1721,7 +2023,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>MLUSERFIELD1</name>
+        <name>STRTEXT20</name>
         <type>String</type>
         <format />
         <currency />
@@ -1733,7 +2035,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>MLUSERFIELD2</name>
+        <name>STRTEXT21</name>
         <type>String</type>
         <format />
         <currency />
@@ -1745,7 +2047,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>MLUSERFIELD3</name>
+        <name>STRTEXT22</name>
         <type>String</type>
         <format />
         <currency />
@@ -1757,7 +2059,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>MLUSERFIELD4</name>
+        <name>STRTEXT23</name>
         <type>String</type>
         <format />
         <currency />
@@ -1769,7 +2071,103 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>MLUSERFIELD5</name>
+        <name>STRTEXT24</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT25</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT26</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT27</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>EMPLOYERID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>EMPLOYEEID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT1_CODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT2_CODE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>STRTEXT28</name>
         <type>String</type>
         <format />
         <currency />
@@ -1792,42 +2190,6 @@
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>LAST_NAME_ALT1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>MIDDLE_NAME_ALT1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FIRST_NAME_ALT1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1837,149 +2199,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Multiple_Table_Input</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>pumariconn</connection>
-    <sql>
-SELECT DISTINCT
- 'CO' + t3.ClientCode AS CORP_KEY  -- to be confirmed
-,'DEF_SAL' AS SALUTATION
-,REPLACE(CONVERT(NVARCHAR, t2.DateOfBirth, 106), ' ', '-') AS DOB
-,'' AS SMALL_STR1
-,'' AS SMALL_STR2
-,'' AS SMALL_STR3
-,'' AS SMALL_STR4
-,'' AS SMALL_STR5
-,'' AS SMALL_STR6
-,'' AS SMALL_STR7
-,'' AS SMALL_STR8
-,'' AS SMALL_STR9
-,'' AS SMALL_STR10
-,'' AS MED_STR1
-,'' AS MED_STR2
-,'' AS MED_STR3
-,'' AS MED_STR4
-,'' AS MED_STR5
-,'' AS MED_STR6
-,'' AS MED_STR7
-,'' AS MED_STR8
-,'' AS MED_STR9
-,'' AS MED_STR10
-,'' AS LARGE_STR1
-,'' AS LARGE_STR2
-,'' AS LARGE_STR3
-,'' AS LARGE_STR4
-,'' AS LARGE_STR5
-,'' AS DATE1
-,'' AS DATE2
-,'' AS DATE3
-,'' AS DATE4
-,'' AS DATE5
-,'' AS DATE6
-,'' AS DATE7
-,'' AS DATE8
-,'' AS DATE9
-,'' AS DATE10
-,'' AS NUMBER1
-,'' AS NUMBER2
-,'' AS NUMBER3
-,'' AS NUMBER4
-,'' AS NUMBER5
-,'' AS NUMBER6
-,'' AS NUMBER7
-,'' AS NUMBER8
-,'' AS NUMBER9
-,'' AS NUMBER10
-,'' AS DECIMAL1
-,'' AS DECIMAL2
-,'' AS DECIMAL3
-,'' AS DECIMAL4
-,'' AS DECIMAL5
-,'' AS DECIMAL6
-,'' AS DECIMAL7
-,'' AS DECIMAL8
-,'' AS DECIMAL9
-,'' AS DECIMAL10
-,t3.ClientCode AS CIFID
-,'' AS ENTITYKEY
-,'' AS CIFTYPE
-,'0.00' AS PERCENTAGEBENEFITED
-,t2.Name AS CORPORATE_NAME
-,'FirstName'=(RIGHT( t2.Name, CHARINDEX('', REVERSE(t2.Name))) )
-,'LastName'=(RIGHT( t2.Name, CHARINDEX('', REVERSE(t2.Name))) )
-,'MiddleName'=(CASE WHEN CHARINDEX('', t2.Name) &lt;&gt; LEN(t2.Name) - CHARINDEX(' ', REVERSE(t2.Name)) + 1 THEN SUBSTRING(t2.Name, CHARINDEX(' ', t2.Name)+ 1, (LEN(t2.Name) - CHARINDEX(' ', REVERSE(t2.Name))-CHARINDEX(' ', t2.Name))) end )
-,t2.Alias AS BENEFICIALOWNERKEY
-,'' AS ENTITY_TYPE
-,'' AS STR1
-,'' AS STR2
-,'' AS STR3
-,'' AS STR4
-,'' AS STR5
-,'' AS STR6
-,'' AS STR7
-,'' AS STR8
-,'' AS STR9
-,'' AS STR10
-,'' AS STR11
-,'' AS STR12
-,'' AS STR13
-,'' AS STR14
-,'' AS STR15
-,'' AS AMOUNT1
-,'' AS AMOUNT2
-,'' AS AMOUNT3
-,'' AS AMOUNT4
-,'' AS AMOUNT5
-,'' AS FLAG1
-,'' AS FLAG2
-,'' AS FLAG3
-,'' AS FLAG4
-,'' AS FLAG5
-,'' AS INT1
-,'' AS INT2
-,'' AS INT3
-,'' AS INT4
-,'' AS INT5
-,'' AS MLUSERFIELD1
-,'' AS MLUSERFIELD2
-,'' AS MLUSERFIELD3
-,'' AS MLUSERFIELD4
-,'' AS MLUSERFIELD5
-,'SNMANPKA' AS BANK_ID
-,'' AS LAST_NAME_ALT1
-,'' AS MIDDLE_NAME_ALT1
-,'' AS FIRST_NAME_ALT1
-FROM Master t1 JOIN ClientTable t3 ON t1.ClientCode = t3.ClientCode
-LEFT JOIN ClientExtraDetail t2 ON t1.ClientCode = t2.ClientCode</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>112</yloc>
+      <xloc>368</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

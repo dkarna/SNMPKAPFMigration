@@ -430,7 +430,7 @@
     <created_date>2017/11/30 17:57:48.496</created_date>
     <modified_user>-</modified_user>
     <modified_date>2017/11/30 17:57:48.496</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -554,7 +554,7 @@ select distinct top 1000
 ,'31-12-2099' as DATE1
 ,'' as STR12
 ,'' as DATE2
-,0 as AMOUNT1
+,RIGHT(SPACE(20)+CAST('0' AS VARCHAR(20)),20) as AMOUNT1
 ,'' as AMOUNT2
 ,'' as AMOUNT3
 ,'' as AMOUNT4
@@ -676,9 +676,9 @@ select distinct top 1000
 ,'' as STR5_CODE
 ,NULL as CORE_CUST_ID
 ,'' as CORE_CHILD_CUST_ID
-,0 as PERCENTAGE1
-,0 as PERCENTAGE2
-,0 as PERCENTAGE3
+,RIGHT(SPACE(9)+CAST('0' AS VARCHAR(9)),9) as PERCENTAGE1
+,RIGHT(SPACE(9)+CAST('0' AS VARCHAR(9)),9) as PERCENTAGE2
+,RIGHT(SPACE(9)+CAST('0' AS VARCHAR(9)),9) as PERCENTAGE3
 ,'' as PERCENTAGE4
 ,'' as PERCENTAGE5
 ,'01' as BANK_ID
@@ -757,8 +757,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -769,8 +769,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>32</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -781,8 +781,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -793,8 +793,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -805,8 +805,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -817,8 +817,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -829,8 +829,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -841,8 +841,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -853,8 +853,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -865,8 +865,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -877,8 +877,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -889,8 +889,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -901,8 +901,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -913,8 +913,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -925,8 +925,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -937,8 +937,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -949,8 +949,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -961,20 +961,20 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>AMOUNT1</name>
-        <type>Integer</type>
-        <format>0</format>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -985,8 +985,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -997,8 +997,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1009,8 +1009,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1021,8 +1021,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1033,8 +1033,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1045,8 +1045,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1057,8 +1057,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1069,8 +1069,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1081,8 +1081,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1093,8 +1093,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1105,8 +1105,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1117,8 +1117,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1129,8 +1129,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1141,8 +1141,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1153,8 +1153,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1165,8 +1165,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1177,8 +1177,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1189,8 +1189,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1201,8 +1201,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1213,8 +1213,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1225,8 +1225,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1237,8 +1237,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1249,8 +1249,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1261,8 +1261,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1273,8 +1273,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1285,8 +1285,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1297,8 +1297,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1309,8 +1309,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1321,8 +1321,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1333,8 +1333,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1345,8 +1345,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1357,8 +1357,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1369,8 +1369,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1381,8 +1381,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1393,8 +1393,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1405,8 +1405,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1417,8 +1417,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1429,8 +1429,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1441,8 +1441,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1453,8 +1453,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1465,8 +1465,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1477,8 +1477,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1489,8 +1489,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1501,8 +1501,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1513,8 +1513,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1525,8 +1525,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1537,8 +1537,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1549,8 +1549,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1561,8 +1561,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1573,8 +1573,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1585,8 +1585,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1597,8 +1597,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1609,8 +1609,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1621,8 +1621,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1633,8 +1633,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1645,8 +1645,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1657,8 +1657,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1669,8 +1669,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1681,8 +1681,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1693,8 +1693,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1705,8 +1705,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1717,8 +1717,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1729,8 +1729,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1741,8 +1741,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1753,8 +1753,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1765,8 +1765,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1777,8 +1777,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1789,8 +1789,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1801,8 +1801,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1813,8 +1813,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1825,8 +1825,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1837,8 +1837,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1849,8 +1849,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1861,8 +1861,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1873,8 +1873,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1885,8 +1885,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1897,8 +1897,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1909,8 +1909,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1921,8 +1921,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1933,8 +1933,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1945,8 +1945,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1957,8 +1957,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1969,8 +1969,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1981,8 +1981,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1993,8 +1993,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2005,8 +2005,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2017,8 +2017,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2029,8 +2029,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2041,8 +2041,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2053,8 +2053,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2065,8 +2065,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2077,8 +2077,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2089,8 +2089,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2101,8 +2101,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2113,8 +2113,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2125,8 +2125,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2137,8 +2137,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2149,8 +2149,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2161,8 +2161,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2173,8 +2173,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2185,8 +2185,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2197,8 +2197,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2209,8 +2209,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2221,8 +2221,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2233,8 +2233,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2245,8 +2245,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2257,8 +2257,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2269,8 +2269,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2281,8 +2281,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2293,8 +2293,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2305,8 +2305,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2317,8 +2317,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2329,8 +2329,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2341,8 +2341,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2353,8 +2353,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2365,8 +2365,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2377,8 +2377,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2389,8 +2389,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2401,20 +2401,20 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>CORE_CUST_ID</name>
-        <type>Integer</type>
-        <format>0</format>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2425,44 +2425,44 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>PERCENTAGE1</name>
-        <type>Integer</type>
-        <format>0</format>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>PERCENTAGE2</name>
-        <type>Integer</type>
-        <format>0</format>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>PERCENTAGE3</name>
-        <type>Integer</type>
-        <format>0</format>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2473,8 +2473,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2485,8 +2485,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2497,8 +2497,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>8</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2509,8 +2509,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2521,8 +2521,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2533,8 +2533,8 @@ where MainCode in
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
     </fields>

@@ -526,7 +526,7 @@
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>F:\ELT_SANIMA\Output\CC008</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC008</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -545,15 +545,15 @@
     </file>
     <fields>
       <field>
-        <name>ORGKEY</name>
+        <name>CORPKEY</name>
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -564,8 +564,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -576,20 +576,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PHONENO</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -600,8 +588,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -612,8 +600,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -624,8 +612,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -636,8 +624,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>30</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -648,8 +636,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -660,8 +648,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -672,8 +660,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>150</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -684,8 +672,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -696,8 +684,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -708,8 +696,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -720,8 +708,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -732,8 +720,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -744,8 +732,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -756,8 +744,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -768,8 +756,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -780,8 +768,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -792,8 +780,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>8</length>
         <precision>-1</precision>
       </field>
     </fields>
@@ -845,18 +833,18 @@ SELECT * INTO #FinalMaster FROM
 WHERE t.SerialNumber = 1 ORDER BY 1;
 
 
-DECLARE @RetailPhone TABLE (ORGKEY VARCHAR(32),PHONEEMAILTYPE VARCHAR(200), PHONEOREMAIL VARCHAR(50), PHONENO VARCHAR(25), PHONENOLOCALCODE VARCHAR(20), PHONENOCITYCODE VARCHAR(20), PHONENOCOUNTRYCODE VARCHAR(20),  WORKEXTENSION VARCHAR(30), EMAIL VARCHAR(50), EMAILPALM VARCHAR(50), URL VARCHAR(150), PREFERREDFLAG VARCHAR(50), START_DATE DATE, END_DATE DATE, USERFIELD1 VARCHAR(200), USERFIELD2 VARCHAR(200), USERFIELD3 VARCHAR(200), DATE1 DATE, DATE2 DATE, DATE3 DATE, BANK_ID VARCHAR(8));
-DECLARE @RetailEmail TABLE (ORGKEY VARCHAR(32),PHONEEMAILTYPE VARCHAR(200), PHONEOREMAIL VARCHAR(50), PHONENO VARCHAR(25), PHONENOLOCALCODE VARCHAR(20), PHONENOCITYCODE VARCHAR(20), PHONENOCOUNTRYCODE VARCHAR(20),  WORKEXTENSION VARCHAR(30), EMAIL VARCHAR(50), EMAILPALM VARCHAR(50), URL VARCHAR(150), PREFERREDFLAG VARCHAR(50), START_DATE DATE, END_DATE DATE, USERFIELD1 VARCHAR(200), USERFIELD2 VARCHAR(200), USERFIELD3 VARCHAR(200), DATE1 DATE, DATE2 DATE, DATE3 DATE, BANK_ID VARCHAR(8));
+DECLARE @RetailPhone TABLE (CORPKEY VARCHAR(32),PHONEEMAILTYPE VARCHAR(200), PHONEOREMAIL VARCHAR(50), USERFIELD3 VARCHAR(200) , PHONENOLOCALCODE VARCHAR(20), PHONENOCITYCODE VARCHAR(20), PHONENOCOUNTRYCODE VARCHAR(20),  WORKEXTENSION VARCHAR(30), EMAIL VARCHAR(50), EMAILPALM VARCHAR(50), URL VARCHAR(150), PREFERREDFLAG VARCHAR(50), START_DATE DATE, END_DATE DATE, USERFIELD1 VARCHAR(200), USERFIELD2 VARCHAR(200), DATE1 DATE, DATE2 DATE, DATE3 DATE, BANK_ID VARCHAR(8));
+DECLARE @RetailEmail TABLE (CORPKEY VARCHAR(32),PHONEEMAILTYPE VARCHAR(200), PHONEOREMAIL VARCHAR(50), USERFIELD3 VARCHAR(200) , PHONENOLOCALCODE VARCHAR(20), PHONENOCITYCODE VARCHAR(20), PHONENOCOUNTRYCODE VARCHAR(20),  WORKEXTENSION VARCHAR(30), EMAIL VARCHAR(50), EMAILPALM VARCHAR(50), URL VARCHAR(150), PREFERREDFLAG VARCHAR(50), START_DATE DATE, END_DATE DATE, USERFIELD1 VARCHAR(200), USERFIELD2 VARCHAR(200), DATE1 DATE, DATE2 DATE, DATE3 DATE, BANK_ID VARCHAR(8));
 
 
 INSERT INTO @RetailPhone         -- Populate ClientPhone table for clients having Phone or Mobile records only
-SELECT DISTINCT 'R0'+ t2.ClientCode AS ORGKEY,'P' AS PHONEEMAILTYPE,'PHONE' AS PHONEOREMAIL,
+SELECT DISTINCT 'R0'+ t2.ClientCode AS CORPKEY,'P' AS PHONEEMAILTYPE,'PHONE' AS PHONEOREMAIL,
 CASE WHEN t2.Phone IS NOT NULL OR t2.Phone &lt;&gt; '' THEN t2.Phone 
 WHEN t2.MobileNo IS NOT NULL OR t2.MobileNo &lt;&gt; '' THEN t2.MobileNo 
 ELSE '' 
-END AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'977' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,'' AS EMAIL,'' AS EMAILPALM,'' AS URL,'PHONE' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
+END AS USERFIELD3,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'977' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,'' AS EMAIL,'' AS EMAILPALM,'' AS URL,'PHONE' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
-'NA' AS USERFIELD2,'NA' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
+'NA' AS USERFIELD2,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
 -- AND t2.Phone is not null or t2.Phone &lt;&gt; '' or t2.MobileNo is not null or t2.MobileNo &lt;&gt; ''    -- to filter null mobile and landline
 AND EXISTS
@@ -866,11 +854,11 @@ AND EXISTS
 ORDER BY 1;
 
 INSERT INTO @RetailEmail       -- Populate ClientEmail table for clients having email records only
-SELECT DISTINCT 'R0'+ t2.ClientCode AS ORGKEY,'E' AS PHONEEMAILTYPE,'EMAIL' AS PHONEOREMAIL,
- '' AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,
+SELECT DISTINCT 'R0'+ t2.ClientCode AS CORPKEY,'E' AS PHONEEMAILTYPE,'EMAIL' AS PHONEOREMAIL,
+ '' AS USERFIELD3,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,
  t2.eMail AS EMAIL,'' AS EMAILPALM,'' AS URL,'EMAIL' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
-'NA' AS USERFIELD2,'NA' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
+'NA' AS USERFIELD2,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
 
 AND EXISTS
@@ -879,7 +867,7 @@ AND EXISTS
 )
 ORDER BY 1;
 
-SELECT * FROM @RetailPhone WHERE PHONENO != ''					-- Union the records from both the tables to get records separately
+SELECT * FROM @RetailPhone WHERE USERFIELD3 != ''					-- Union the records from both the tables to get records separately
 UNION ALL	
 SELECT * FROM @RetailEmail WHERE EMAIL != ''</sql>
     <limit>0</limit>

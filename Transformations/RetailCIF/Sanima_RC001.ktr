@@ -553,8 +553,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>32</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -565,8 +565,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>32</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -577,8 +577,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -589,8 +589,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -601,8 +601,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -613,8 +613,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -625,8 +625,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -637,8 +637,20 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PREFERREDNAME</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -649,8 +661,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -661,8 +673,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -673,8 +685,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -685,8 +697,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -697,8 +709,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -709,8 +721,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -721,8 +733,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -733,8 +745,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -745,8 +757,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -757,8 +769,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -769,8 +781,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -781,20 +793,20 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>DATEOFBECOMINGNRE</name>
-        <type>Timestamp</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -805,8 +817,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -817,8 +829,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -829,8 +841,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -841,8 +853,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>40</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -853,8 +865,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -865,20 +877,20 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>RELATIONSHIPOPENINGDATE</name>
-        <type>Timestamp</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -889,8 +901,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -901,8 +913,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -913,8 +925,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -925,8 +937,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -937,8 +949,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>3</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -949,8 +961,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -961,8 +973,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -973,8 +985,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -985,8 +997,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -997,8 +1009,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1009,8 +1021,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1021,8 +1033,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>40</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1033,8 +1045,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1045,8 +1057,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1057,8 +1069,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1069,8 +1081,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1081,8 +1093,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1093,8 +1105,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1105,8 +1117,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1117,8 +1129,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1129,8 +1141,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>8</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1141,8 +1153,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1153,8 +1165,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>6</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1165,8 +1177,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1177,8 +1189,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1189,8 +1201,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>16</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1201,8 +1213,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>8</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1213,8 +1225,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1225,8 +1237,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1237,8 +1249,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1249,8 +1261,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1261,8 +1273,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1273,8 +1285,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1285,8 +1297,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1297,8 +1309,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1309,8 +1321,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1321,8 +1333,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1333,8 +1345,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1345,8 +1357,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1357,8 +1369,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1369,8 +1381,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1381,8 +1393,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>30</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1393,8 +1405,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>32</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1405,8 +1417,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1417,8 +1429,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1429,8 +1441,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1441,8 +1453,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1453,8 +1465,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1465,8 +1477,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1477,8 +1489,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1489,8 +1501,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1501,8 +1513,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1513,8 +1525,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1525,8 +1537,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1537,8 +1549,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1549,8 +1561,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1561,8 +1573,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1573,8 +1585,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1585,8 +1597,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1597,8 +1609,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1609,8 +1621,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1621,8 +1633,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1633,8 +1645,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1645,8 +1657,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1657,8 +1669,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1669,8 +1681,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1681,8 +1693,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1693,8 +1705,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1705,8 +1717,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1717,8 +1729,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1729,8 +1741,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1741,8 +1753,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1753,8 +1765,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1765,8 +1777,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1777,8 +1789,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1789,8 +1801,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1801,8 +1813,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1813,8 +1825,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1825,8 +1837,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1837,8 +1849,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1849,8 +1861,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1861,8 +1873,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1873,8 +1885,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1885,8 +1897,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1897,8 +1909,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1909,8 +1921,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1921,8 +1933,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1933,8 +1945,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1945,8 +1957,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1957,8 +1969,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1969,8 +1981,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1981,8 +1993,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1993,8 +2005,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2005,8 +2017,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2017,8 +2029,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2029,8 +2041,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2041,8 +2053,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2053,8 +2065,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2065,8 +2077,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2077,8 +2089,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2089,8 +2101,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2101,8 +2113,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2113,8 +2125,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2125,8 +2137,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2137,8 +2149,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2149,8 +2161,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2161,8 +2173,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2173,8 +2185,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2185,8 +2197,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2197,8 +2209,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2209,8 +2221,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2221,8 +2233,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2233,8 +2245,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2245,8 +2257,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2257,8 +2269,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2269,8 +2281,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2281,8 +2293,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2293,8 +2305,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2305,8 +2317,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2317,8 +2329,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2329,8 +2341,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2341,8 +2353,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2353,8 +2365,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2365,8 +2377,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2377,8 +2389,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2389,8 +2401,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2401,8 +2413,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2413,8 +2425,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2425,8 +2437,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2437,8 +2449,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2449,8 +2461,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2461,8 +2473,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2473,8 +2485,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2485,8 +2497,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2497,8 +2509,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2509,8 +2521,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2521,8 +2533,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2533,8 +2545,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2545,8 +2557,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2557,8 +2569,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2569,8 +2581,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2581,8 +2593,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2593,8 +2605,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2605,8 +2617,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2617,8 +2629,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2629,8 +2641,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2641,8 +2653,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2653,8 +2665,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2665,8 +2677,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2677,8 +2689,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2689,8 +2701,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2701,8 +2713,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2713,8 +2725,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2725,8 +2737,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2737,8 +2749,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2749,8 +2761,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2761,8 +2773,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2773,8 +2785,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2785,8 +2797,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2797,8 +2809,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2809,8 +2821,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2821,8 +2833,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2833,8 +2845,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2845,8 +2857,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2857,8 +2869,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2869,8 +2881,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2881,8 +2893,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2893,8 +2905,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2905,8 +2917,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2917,8 +2929,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2929,8 +2941,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2941,8 +2953,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2953,8 +2965,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2965,8 +2977,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2977,8 +2989,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2989,8 +3001,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3001,8 +3013,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3013,8 +3025,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3025,8 +3037,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3037,8 +3049,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3049,8 +3061,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3061,8 +3073,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3073,8 +3085,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3085,8 +3097,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3097,8 +3109,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3109,8 +3121,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3121,8 +3133,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3133,8 +3145,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3145,8 +3157,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3157,8 +3169,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3169,8 +3181,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3181,8 +3193,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3193,8 +3205,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3205,8 +3217,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3217,8 +3229,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3229,8 +3241,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3241,8 +3253,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3253,8 +3265,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3265,8 +3277,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3277,8 +3289,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3289,8 +3301,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3301,8 +3313,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3313,8 +3325,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3325,8 +3337,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3337,8 +3349,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3349,8 +3361,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3361,8 +3373,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3373,8 +3385,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3385,8 +3397,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3397,8 +3409,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3409,8 +3421,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3421,8 +3433,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3433,8 +3445,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3445,8 +3457,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3457,8 +3469,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1000</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3469,8 +3481,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3481,8 +3493,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3493,8 +3505,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3505,8 +3517,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3517,8 +3529,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3529,8 +3541,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3541,8 +3553,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3553,8 +3565,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3565,8 +3577,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3577,8 +3589,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3589,8 +3601,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3601,8 +3613,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3613,8 +3625,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3625,8 +3637,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3637,8 +3649,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3649,8 +3661,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3661,8 +3673,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3673,8 +3685,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3685,8 +3697,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3697,8 +3709,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3709,8 +3721,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3721,8 +3733,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3733,8 +3745,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3745,8 +3757,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3757,8 +3769,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3769,8 +3781,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3781,8 +3793,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3793,8 +3805,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3805,8 +3817,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3817,8 +3829,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3829,8 +3841,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>12</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3841,8 +3853,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3853,8 +3865,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3865,8 +3877,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3877,8 +3889,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3889,8 +3901,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3901,8 +3913,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3913,8 +3925,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3925,8 +3937,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3937,8 +3949,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3949,8 +3961,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3961,8 +3973,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3973,8 +3985,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3985,8 +3997,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>500</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3997,8 +4009,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4009,8 +4021,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>500</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4021,8 +4033,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4033,8 +4045,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>500</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4045,8 +4057,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4057,8 +4069,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4069,8 +4081,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4081,8 +4093,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>240</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4093,8 +4105,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4105,8 +4117,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4117,8 +4129,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4129,8 +4141,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4141,8 +4153,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4153,8 +4165,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4165,8 +4177,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4177,8 +4189,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4189,8 +4201,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4201,8 +4213,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4213,8 +4225,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4225,8 +4237,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4237,8 +4249,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4249,8 +4261,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4261,8 +4273,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4273,8 +4285,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4285,8 +4297,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4297,8 +4309,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4309,8 +4321,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4321,8 +4333,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4333,8 +4345,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4345,8 +4357,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4357,8 +4369,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4369,8 +4381,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4381,8 +4393,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4393,8 +4405,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4405,8 +4417,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4417,8 +4429,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>16</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4429,8 +4441,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4441,20 +4453,20 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>PSPRT_EXP_DATE</name>
-        <type>Timestamp</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4465,8 +4477,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>3</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4477,8 +4489,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>15</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4489,8 +4501,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4501,8 +4513,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4513,8 +4525,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4525,8 +4537,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4537,8 +4549,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4549,8 +4561,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4561,8 +4573,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4573,8 +4585,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4585,8 +4597,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4597,8 +4609,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4609,8 +4621,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4621,8 +4633,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4633,8 +4645,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4645,8 +4657,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4657,8 +4669,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4669,8 +4681,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4681,8 +4693,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4693,8 +4705,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4705,8 +4717,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4717,8 +4729,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4729,8 +4741,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4741,8 +4753,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4753,8 +4765,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4765,8 +4777,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4777,8 +4789,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4789,8 +4801,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4801,8 +4813,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4813,8 +4825,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4825,8 +4837,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4837,8 +4849,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4849,8 +4861,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4861,8 +4873,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4873,8 +4885,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4885,8 +4897,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4897,8 +4909,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4909,8 +4921,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4921,8 +4933,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4933,8 +4945,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4945,8 +4957,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4957,8 +4969,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4969,8 +4981,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4981,8 +4993,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4993,8 +5005,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5005,8 +5017,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5017,8 +5029,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5029,8 +5041,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5041,8 +5053,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5053,8 +5065,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5065,8 +5077,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5077,8 +5089,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5089,8 +5101,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5101,8 +5113,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5113,8 +5125,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5125,8 +5137,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5137,8 +5149,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5149,8 +5161,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5161,8 +5173,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5173,8 +5185,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5185,8 +5197,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5197,8 +5209,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5209,8 +5221,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5221,8 +5233,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5233,8 +5245,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5245,8 +5257,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5257,8 +5269,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5269,8 +5281,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5281,8 +5293,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5293,8 +5305,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5305,8 +5317,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5317,8 +5329,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5329,8 +5341,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5341,8 +5353,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5353,8 +5365,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5365,8 +5377,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5377,8 +5389,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5389,8 +5401,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5401,8 +5413,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>17</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5413,8 +5425,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5425,8 +5437,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>150</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5437,8 +5449,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5449,8 +5461,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5461,8 +5473,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5473,8 +5485,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5485,8 +5497,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>8</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5497,8 +5509,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5509,8 +5521,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5521,8 +5533,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5533,8 +5545,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5545,8 +5557,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5557,8 +5569,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5569,8 +5581,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5581,8 +5593,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5593,8 +5605,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5605,8 +5617,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5617,8 +5629,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5629,8 +5641,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5641,8 +5653,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5653,8 +5665,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5665,8 +5677,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5677,8 +5689,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5689,8 +5701,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5701,8 +5713,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5713,8 +5725,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5725,8 +5737,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5737,8 +5749,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5749,8 +5761,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5761,8 +5773,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5773,8 +5785,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5785,8 +5797,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5797,8 +5809,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5809,8 +5821,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5821,8 +5833,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5833,8 +5845,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5845,20 +5857,20 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>KYC_REVIEWDATE</name>
-        <type>Timestamp</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5869,8 +5881,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5881,8 +5893,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>30</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5893,8 +5905,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5905,8 +5917,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5917,8 +5929,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5929,8 +5941,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5941,8 +5953,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5953,8 +5965,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5965,8 +5977,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5977,8 +5989,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -5989,8 +6001,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -6001,8 +6013,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -6013,8 +6025,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -6025,8 +6037,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>30</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -6037,8 +6049,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>25</length>
         <precision>-1</precision>
       </field>
     </fields>
@@ -6101,6 +6113,7 @@ SELECT DISTINCT TOP 1000
 ,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as CUST_FIRST_NAME
 ,'' AS CUST_MIDDLE_NAME
 ,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(t2.Name)))) as CUST_LAST_NAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as PREFERREDNAME
 ,t2.Name AS SHORT_NAME
 ,CASE WHEN t2.DateOfBirth IS NULL THEN REPLACE(REPLACE(CONVERT(VARCHAR,'01-01-1900',106), ' ','-'), ',','')
 ELSE
@@ -6132,7 +6145,7 @@ END AS STAFFEMPLOYEEID
 ,CASE WHEN t4.CustType IN('CB','NB','XB','UB','AF','DB','MB','OB','RB','VB','WC') THEN 'Y'
 ELSE 'N'
 END AS CUSTOMERNREFLAG
-,tmaster.mindate AS DATEOFBECOMINGNRE
+,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DATEOFBECOMINGNRE
 ,tminor.CUSTOMERMINOR  -- changed
 ,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'CIFMINOR' 
 ELSE '' 
@@ -6140,8 +6153,8 @@ END AS MINORGAURDIANID --changed
 ,'F' AS MINOR_GUARD_CODE  --changed to default father code 'F'
 ,'Default Value' AS MINOR_GUARD_NAME
 ,'NEPAL' AS REGION
-,t1.BranchCode AS PRIMARY_SERVICE_CENTRE
-,tmaster.mindate AS RELATIONSHIPOPENINGDATE
+,RIGHT(SPACE(5)+CAST(t1.BranchCode AS VARCHAR(5)),5) AS PRIMARY_SERVICE_CENTRE
+,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS RELATIONSHIPOPENINGDATE
 ,CASE WHEN t2.ClientStatus = 'D' THEN 'DECEASED'
 WHEN t2.ClientStatus ='L' THEN 'LUNATIC' 
 WHEN t2.ClientStatus ='Z' THEN 'STOPPED' 
@@ -6328,7 +6341,7 @@ END AS STATUS_CODE
 ,'NA' AS DTDATE7
 ,'NA' AS DTDATE8
 ,'NA' AS DTDATE9
-,'000' AS AMOUNT1  -- Default value will be given by the bank
+,RIGHT(SPACE(20)+CAST('000' AS VARCHAR(20)),20) AS AMOUNT1  -- Default value will be given by the bank
 ,'NA' AS AMOUNT2
 ,'NA' AS AMOUNT3
 ,'NA' AS AMOUNT4
@@ -6594,10 +6607,6 @@ END AS SENIORCITIZEN
 FROM #FinalMaster t1
 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
 LEFT JOIN AcCustType t4 ON t1.BranchCode = t4.BranchCode and t1.MainCode = t4.MainCode AND t4.CustType = 'B' -- need to be checked with bank data putting inner join
-JOIN 
-(							-- Filters the clientcode with minimum account open date
-	SELECT t.ClientCode,MIN(t.AcOpenDate) AS mindate FROM #FinalMaster t GROUP BY t.ClientCode
-) AS tmaster ON t1.ClientCode = tmaster.ClientCode AND tmaster.mindate = t1.AcOpenDate
 LEFT JOIN 
 (
 	SELECT ClientCode FROM Master t1 JOIN CustomerTable t2 ON t1.MainCode = t2.MainCode0

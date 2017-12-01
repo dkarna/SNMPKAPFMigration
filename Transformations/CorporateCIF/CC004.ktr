@@ -430,7 +430,7 @@
     <created_date>2017/11/29 18:51:43.824</created_date>
     <modified_user>-</modified_user>
     <modified_date>2017/11/29 18:51:43.824</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -599,19 +599,19 @@ END AS DOB
 ,t3.ClientCode AS CIFID
 ,'' AS ENTITYKEY
 ,'' AS CIFTYPE
-,'0.00' AS PERCENTAGEBENEFITED
+,RIGHT(SPACE(6)+CAST('0' AS VARCHAR(6)),6) AS PERCENTAGEBENEFITED
 ,t2.Name AS CORPORATE_NAME
 ,'FirstName'=(left( t2.Name, CHARINDEX(' ', t2.Name)) )
 ,'LastName'=(RIGHT( t2.Name, CHARINDEX(' ', REVERSE(t2.Name))) )
 ,'MiddleName'=(CASE WHEN CHARINDEX(' ', t2.Name) &lt;&gt; LEN(t2.Name) - CHARINDEX(' ', REVERSE(t2.Name)) + 1 THEN SUBSTRING(t2.Name, CHARINDEX(' ', t2.Name)+ 1, (LEN(t2.Name) - CHARINDEX(' ', REVERSE(t2.Name))-CHARINDEX(' ', t2.Name))) end )
-,t2.Alias AS BENEFICIALOWNERKEY
+,RIGHT(SPACE(50)+CAST('0' AS VARCHAR(50)),50) AS BENEFICIALOWNERKEY
 ,'' AS ENTITY_TYPE
 ,'' AS STR1
 ,'' AS STR2
 ,'' AS STR3
 ,'' AS STR4
 ,'' AS STR5
-,'' AS STR6
+,t2.Alias AS STR6
 ,'' AS STR7
 ,'' AS STR8
 ,'' AS STR9
@@ -646,7 +646,7 @@ END AS DOB
 ,'' AS MIDDLE_NAME_ALT1
 ,'' AS FIRST_NAME_ALT1
 FROM #FinalMaster t1 JOIN ClientTable t3 ON t1.ClientCode = t3.ClientCode
-LEFT JOIN (SELECT ClientCode,isnull(Name,'A B C') as Name,DateOfBirth,Alias from ClientExtraDetail) t2 ON t1.ClientCode = t2.ClientCode
+LEFT JOIN (SELECT ClientCode,isnull(Name,'') as Name,DateOfBirth,Alias from ClientExtraDetail) t2 ON t1.ClientCode = t2.ClientCode
 AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
@@ -722,7 +722,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -734,7 +734,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -746,7 +746,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -758,7 +758,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -770,7 +770,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -782,7 +782,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -794,7 +794,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -806,7 +806,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -818,7 +818,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -830,7 +830,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -842,7 +842,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -854,7 +854,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -866,7 +866,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -878,7 +878,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -890,7 +890,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -902,7 +902,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -914,7 +914,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -926,7 +926,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -938,7 +938,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -950,7 +950,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -962,7 +962,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -974,7 +974,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -986,7 +986,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -998,7 +998,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1010,7 +1010,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1022,7 +1022,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1034,7 +1034,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1046,7 +1046,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>250</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1058,7 +1058,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1070,7 +1070,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1082,7 +1082,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1094,7 +1094,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1106,7 +1106,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1118,7 +1118,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1130,7 +1130,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1142,7 +1142,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1154,7 +1154,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1166,7 +1166,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1178,7 +1178,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1190,7 +1190,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1202,7 +1202,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1214,7 +1214,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1226,7 +1226,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1238,7 +1238,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1250,7 +1250,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1262,7 +1262,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1274,7 +1274,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1286,7 +1286,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1298,7 +1298,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1310,7 +1310,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1322,7 +1322,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1334,7 +1334,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1346,7 +1346,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1358,7 +1358,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1370,7 +1370,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1382,7 +1382,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1394,7 +1394,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1406,7 +1406,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>25</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1418,7 +1418,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>32</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1430,7 +1430,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1442,7 +1442,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1454,8 +1454,8 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <length>6</length>
+        <precision>2</precision>
       </field>
       <field>
         <name>CORPORATE_NAME</name>
@@ -1466,7 +1466,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1478,7 +1478,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1490,7 +1490,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1502,7 +1502,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1514,7 +1514,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1526,7 +1526,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>30</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1538,7 +1538,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1550,7 +1550,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1562,7 +1562,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1574,7 +1574,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1586,7 +1586,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1598,7 +1598,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1610,7 +1610,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1622,7 +1622,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1634,7 +1634,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1646,7 +1646,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1658,7 +1658,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1670,7 +1670,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1682,7 +1682,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1694,7 +1694,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1706,7 +1706,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1718,7 +1718,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1730,7 +1730,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1742,7 +1742,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1754,7 +1754,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1766,7 +1766,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1778,7 +1778,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1790,7 +1790,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1802,7 +1802,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1814,7 +1814,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1826,7 +1826,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1838,7 +1838,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1850,7 +1850,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1862,7 +1862,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1874,7 +1874,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1886,7 +1886,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1898,7 +1898,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1910,7 +1910,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1922,7 +1922,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>80</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1934,7 +1934,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1946,7 +1946,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1958,7 +1958,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1970,7 +1970,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1982,7 +1982,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>99</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1994,7 +1994,7 @@ AND EXISTS
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>-1</length>
+        <length>99</length>
         <precision>-1</precision>
       </field>
     </fields>

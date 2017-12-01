@@ -430,7 +430,7 @@
     <created_date>2017/11/30 18:06:59.897</created_date>
     <modified_user>-</modified_user>
     <modified_date>2017/11/30 18:06:59.897</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -538,9 +538,9 @@ WHERE t.SerialNumber = 1 ORDER BY 1;
 select distinct top 1000
 'C0' + t1.ClientCode AS CORP_KEY
 ,'C0' + t1.ClientCode AS CORP_REP_KEY
-,'' AS BEN_OWN_KEY
+,RIGHT(SPACE(50)+CAST('' AS VARCHAR(50)),50) AS BEN_OWN_KEY
 ,'' AS DOCDUEDATE
-,t1.AcOpenDate AS DOCRECEIVEDDATE
+,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DOCRECEIVEDDATE
 ,'30-12-2099' AS DOCEXPIRYDATE
 ,'' AS DOCDELFLG
 ,'' AS DOCREMARKS
@@ -644,8 +644,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -656,8 +656,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -668,8 +668,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -680,20 +680,20 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>DOCRECEIVEDDATE</name>
-        <type>Timestamp</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -704,8 +704,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -716,8 +716,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -728,8 +728,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -740,8 +740,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -752,8 +752,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>20</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -764,8 +764,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -776,8 +776,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -788,8 +788,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -800,8 +800,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>10</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -812,8 +812,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -824,8 +824,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -836,8 +836,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>2000</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -848,8 +848,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>38</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -860,8 +860,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -872,8 +872,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -884,8 +884,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>200</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -896,8 +896,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -908,8 +908,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>50</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -920,8 +920,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>9</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -932,8 +932,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -944,8 +944,8 @@ ORDER BY CORP_KEY</sql>
         <decimal />
         <group />
         <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <trim_type>none</trim_type>
+        <length>8</length>
         <precision>-1</precision>
       </field>
     </fields>

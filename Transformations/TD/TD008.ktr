@@ -660,8 +660,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>3</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -672,8 +672,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>16</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -684,8 +684,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>3</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -696,8 +696,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>8</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -708,9 +708,9 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal>.</decimal>
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
-        <precision>2</precision>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
         <name>interest_calc_upto_date_cr</name>
@@ -720,8 +720,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -732,8 +732,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -744,8 +744,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -756,9 +756,9 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
-        <precision>2</precision>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
         <name>interest_calc_upto_date_dr</name>
@@ -768,8 +768,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -780,8 +780,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -792,8 +792,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -804,8 +804,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>100</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -816,8 +816,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -828,8 +828,8 @@ JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>

@@ -552,8 +552,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>32</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -564,8 +564,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>200</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -576,8 +576,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -588,8 +588,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>25</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -600,8 +600,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>20</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -612,8 +612,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>20</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -624,8 +624,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>20</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -636,8 +636,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>30</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -648,8 +648,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -660,8 +660,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -672,8 +672,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>150</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -684,8 +684,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -696,8 +696,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -708,8 +708,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -720,8 +720,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>200</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -732,8 +732,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>200</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -744,8 +744,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>200</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -756,8 +756,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -768,8 +768,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -780,8 +780,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -792,8 +792,8 @@
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>8</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
@@ -853,7 +853,7 @@ WHEN t2.MobileNo IS NOT NULL OR t2.MobileNo &lt;&gt; '' THEN t2.MobileNo
 ELSE '' 
 END AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'977' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,'' AS EMAIL,'' AS EMAILPALM,'' AS URL,'PHONE' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
-'NA' AS USERFIELD2,'NA' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
+'' AS USERFIELD2,'' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
 -- AND t2.Phone is not null or t2.Phone &lt;&gt; '' or t2.MobileNo is not null or t2.MobileNo &lt;&gt; ''    -- to filter null mobile and landline
 AND EXISTS
@@ -867,7 +867,7 @@ SELECT DISTINCT  TOP 500 'R0'+ t2.ClientCode AS ORGKEY,'E' AS PHONEEMAILTYPE,'EM
  '' AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,
  t2.eMail AS EMAIL,'' AS EMAILPALM,'' AS URL,'EMAIL' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
-'NA' AS USERFIELD2,'NA' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
+'' AS USERFIELD2,'' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
 AND EXISTS
 (

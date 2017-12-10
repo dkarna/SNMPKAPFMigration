@@ -581,7 +581,7 @@ WHEN ((t2.IdType LIKE 'CREG%') AND t2.ClientCode NOT IN (SELECT ClientCode FROM 
 ELSE 'DEF_TYPE' END  AS TYPE
 ,'' AS ISMANDATORY
 ,'N' AS SCANREQUIRED
-,'NA' AS ROLE
+,'' AS ROLE
 ,CASE WHEN  (t2.IdType LIKE 'C%' AND t2.IdType NOT IN ('COMME','CREG','CREG#','CIT') ) THEN 'D001'
  WHEN ( (t2.IdType IN ('PASS','PASSP') OR (t2.IdType LIKE ('%PP%')))) THEN 'D002'
 WHEN  t2.IdType LIKE 'PAN%' THEN 'D003'
@@ -604,8 +604,8 @@ ELSE 'DEF_CODE' END AS DOCTYPECODE
 ,'' AS IS_DOCUMENT_VERIFIED
 ,'' AS BEN_OWN_KEY
 ,'01' AS BANK_ID
-,'NA' AS DOCTYPEDESCR_ALT1
-,'NA' AS DOCDESCR_ALT1
+,'' AS DOCTYPEDESCR_ALT1
+,'' AS DOCDESCR_ALT1
 ,'' AS STATUS
 FROM #FinalMaster t1
 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
@@ -683,8 +683,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>32</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -695,8 +695,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -707,8 +707,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -719,8 +719,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>11</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -731,8 +731,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>1</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -743,8 +743,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>255</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -755,8 +755,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>1</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -767,8 +767,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>20</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -779,8 +779,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>255</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -791,8 +791,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>100</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -803,8 +803,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -815,8 +815,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>1</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -827,8 +827,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>10</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -839,8 +839,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -851,8 +851,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -863,8 +863,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>2000</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -875,8 +875,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>38</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -887,8 +887,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -899,8 +899,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -911,8 +911,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>200</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -923,8 +923,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>17</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -935,8 +935,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -947,8 +947,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>9</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -959,8 +959,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>1</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -971,8 +971,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -983,8 +983,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>8</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -995,8 +995,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>2000</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1007,8 +1007,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>255</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1019,8 +1019,8 @@ AND EXISTS
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
-        <length>50</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>

@@ -497,7 +497,7 @@
   <order>
     <hop>
       <from>Source</from>
-      <to>Text file output</to>
+      <to>CC002</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -677,7 +677,7 @@ AND t1.MainCode in
     </GUI>
   </step>
   <step>
-    <name>Text file output</name>
+    <name>CC002</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -701,7 +701,7 @@ AND t1.MainCode in
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC002</name>
+      <name>E:\Deepak\Personal\Projects\Personal Projects\Finacle Migration\GIT_Projects\SanimaMigration\SNMPKAPFMigration\Transformations\CorporateCIF\Extracts\CC002</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -728,7 +728,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -740,7 +740,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>32</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -752,7 +752,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -764,7 +764,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -776,7 +776,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -788,7 +788,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -800,7 +800,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -812,7 +812,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -824,7 +824,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -836,7 +836,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -848,7 +848,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -860,7 +860,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -872,7 +872,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -884,7 +884,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -896,7 +896,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -908,7 +908,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -920,7 +920,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -932,7 +932,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -944,7 +944,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -956,7 +956,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -968,7 +968,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -980,7 +980,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>10</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -992,7 +992,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1004,7 +1004,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>10</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1016,7 +1016,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1028,7 +1028,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1040,7 +1040,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1052,7 +1052,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1064,7 +1064,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1076,7 +1076,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1088,7 +1088,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1100,7 +1100,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1112,7 +1112,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1124,7 +1124,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1136,7 +1136,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1148,7 +1148,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1160,7 +1160,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1172,7 +1172,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1184,7 +1184,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1196,7 +1196,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1208,7 +1208,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1220,7 +1220,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1232,7 +1232,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1244,7 +1244,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1256,7 +1256,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1268,7 +1268,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1280,7 +1280,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1292,7 +1292,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1304,7 +1304,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1316,7 +1316,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1328,7 +1328,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1340,7 +1340,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1352,7 +1352,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1364,7 +1364,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>100</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1376,7 +1376,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>250</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1388,7 +1388,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>250</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1400,7 +1400,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>250</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1412,7 +1412,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>250</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1424,7 +1424,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>250</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1436,7 +1436,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1448,7 +1448,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1460,7 +1460,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1472,7 +1472,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1484,7 +1484,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1496,7 +1496,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1508,7 +1508,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1520,7 +1520,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1532,7 +1532,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1544,7 +1544,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1556,7 +1556,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1568,7 +1568,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1580,7 +1580,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1592,7 +1592,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1604,7 +1604,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1616,7 +1616,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1628,7 +1628,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1640,7 +1640,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1652,7 +1652,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1664,7 +1664,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>38</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1676,7 +1676,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1688,7 +1688,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1700,7 +1700,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1712,7 +1712,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1724,7 +1724,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1736,7 +1736,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1748,7 +1748,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1760,7 +1760,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1772,7 +1772,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1784,7 +1784,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>25</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1796,7 +1796,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1808,7 +1808,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>20</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1820,7 +1820,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1832,7 +1832,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1844,7 +1844,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>200</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1856,7 +1856,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1868,7 +1868,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>2000</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1880,7 +1880,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>200</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1892,7 +1892,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>1</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1904,7 +1904,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1916,7 +1916,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>45</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1928,7 +1928,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>45</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1940,7 +1940,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>45</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1952,7 +1952,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>8</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1964,7 +1964,7 @@ AND t1.MainCode in
         <group />
         <nullif />
         <trim_type>both</trim_type>
-        <length>1</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>

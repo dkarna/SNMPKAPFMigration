@@ -1,0 +1,2 @@
+0,score_phrase,title,url,platform,score,genre,editors_choice,release_year,release_month,release_day
+3,Great,NHL 13,/games/nhl-13/xbox-360-128182,Xbox 360,8.5,Sports,N,2013,9,11

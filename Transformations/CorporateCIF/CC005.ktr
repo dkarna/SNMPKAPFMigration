@@ -535,7 +535,7 @@ SELECT * INTO #FinalMaster FROM
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;
 
-select distinct top 1000
+select distinct top 100
  'C0'+ClientCode as CORP_KEY
 ,'C0'+ClientCode as CIFID
 ,'' as CORP_REP_KEY
@@ -731,7 +731,7 @@ where MainCode in
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>E:\Deepak\Personal\Projects\Personal Projects\Finacle Migration\GIT_Projects\SanimaMigration\SNMPKAPFMigration\Transformations\CorporateCIF\Extracts\CC005</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC005</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CC007</name>
+    <name>Transformation</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,83 +427,24 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/11/30 18:06:59.897</created_date>
+    <created_date>2017/12/11 19:44:24.552</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/11/30 18:06:59.897</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2017/12/11 19:44:24.552</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
-  <connection>
-    <name>SanimaConn</name>
-    <server>192.168.1.7</server>
-    <type>MSSQL</type>
-    <access>Native</access>
-    <database>SanimaTest</database>
-    <port>1433</port>
-    <username>dm</username>
-    <password>Encrypted 2be98afc86aa78185a510a371fec3fd89</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQL.instance</code>
-        <attribute>sqlexpress</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>1433</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
-      <from>Source</from>
-      <to>CC007</to>
+      <from>CSV file input</from>
+      <to>CPython Script Executor</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CC007</name>
-    <type>TextFileOutput</type>
+    <name>CPython Script Executor</name>
+    <type>CPythonScriptExecutor</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -512,349 +453,234 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <separator>|</separator>
+    <rows_to_process>ALL</rows_to_process>
+    <rows_to_process_size />
+    <reservoir_sampling>N</reservoir_sampling>
+    <reservoir_sampling_size />
+    <reservoir_sampling_seed>1</reservoir_sampling_seed>
+    <include_input_as_output>Y</include_input_as_output>
+    <py_script># python script
+
+import pandas as pd
+
+df1=df
+
+df1.to_csv("TestFile.csv",sep = ',',index=False, header=True)
+
+
+
+</py_script>
+    <load_script_at_runtime>N</load_script_at_runtime>
+    <script_to_load />
+    <continue_on_unset_vars>N</continue_on_unset_vars>
+    <py_vars_to_get />
+    <include_frame_row_index>N</include_frame_row_index>
+    <frame_names>
+      <frame_name0>df</frame_name0>
+    </frame_names>
+    <incoming_step_names>
+      <step_name0>CSV file input</step_name0>
+    </incoming_step_names>
+    <output_fields>
+      <output_field>
+        <field_name>score_phrase</field_name>
+        <type>String</type>
+      </output_field>
+      <output_field>
+        <field_name>title</field_name>
+        <type>String</type>
+      </output_field>
+      <output_field>
+        <field_name>url</field_name>
+        <type>String</type>
+      </output_field>
+      <output_field>
+        <field_name>platform</field_name>
+        <type>String</type>
+      </output_field>
+      <output_field>
+        <field_name>score</field_name>
+        <type>Number</type>
+      </output_field>
+      <output_field>
+        <field_name>genre</field_name>
+        <type>String</type>
+      </output_field>
+      <output_field>
+        <field_name>editors_choice</field_name>
+        <type>Boolean</type>
+      </output_field>
+      <output_field>
+        <field_name>release_year</field_name>
+        <type>Integer</type>
+      </output_field>
+      <output_field>
+        <field_name>release_month</field_name>
+        <type>Integer</type>
+      </output_field>
+      <output_field>
+        <field_name>release_day</field_name>
+        <type>Integer</type>
+      </output_field>
+    </output_fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CSV file input</name>
+    <type>CsvInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filename>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\pythonfiles\ign.csv</filename>
+    <filename_field />
+    <rownum_field />
+    <include_filename>N</include_filename>
+    <separator>,</separator>
     <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>Y</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
     <encoding />
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC007</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
     <fields>
       <field>
-        <name>CORP_KEY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name />
+        <type>Integer</type>
+        <format>#</format>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>CORP_REP_KEY</name>
+        <name>score_phrase</name>
         <type>String</type>
         <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>7</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>BEN_OWN_KEY</name>
+        <name>title</name>
         <type>String</type>
         <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>52</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCDUEDATE</name>
+        <name>url</name>
         <type>String</type>
         <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>70</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCRECEIVEDDATE</name>
+        <name>platform</name>
         <type>String</type>
         <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>16</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCEXPIRYDATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>score</name>
+        <type>Number</type>
+        <format>#.#</format>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>3</length>
+        <precision>1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCDELFLG</name>
+        <name>genre</name>
         <type>String</type>
         <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>10</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCREMARKS</name>
-        <type>String</type>
+        <name>editors_choice</name>
+        <type>Boolean</type>
         <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>SCANNED</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>release_year</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCCODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>release_month</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>DOCDESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>REFERENCENUMBER</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ISMANDATORY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>SCANREQUIRED</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ROLE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DOCTYPECODE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DOCTYPEDESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>MINDOCSREQD</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>WAIVEDORDEFEREDDATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>COUNTRYOFISSUE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PLACEOFISSUE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DOCISSUEDATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>IDENTIFICATIONTYPE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CORE_CUST_ID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>IS_DOCUMENT_VERIFIED</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>BANK_ID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>release_day</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
     <cluster_schema />
@@ -865,100 +691,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>356</xloc>
-      <yloc>126</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Source</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>SanimaConn</connection>
-    <sql>IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
-  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
-SELECT * INTO #FinalMaster FROM
-(
-	SELECT DISTINCT
-	 Name
-	,ClientCode
-	,AcType
-	,BranchCode
-	,Obligor
-	,AcOpenDate
-	,MainCode
-	,CyCode
-	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
-	--INTO #FinalMaster
-	FROM Master WITH (NOLOCK)
-	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
-	--ORDER BY ClientCode
-) AS t 
-WHERE t.SerialNumber = 1 ORDER BY 1;
-
-
-select distinct top 100
-'C0' + t1.ClientCode AS CORP_KEY
-,'C0' + t1.ClientCode AS CORP_REP_KEY
-,RIGHT(SPACE(50)+CAST('' AS VARCHAR(50)),50) AS BEN_OWN_KEY
-,'' AS DOCDUEDATE
-,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DOCRECEIVEDDATE
-,'30-12-2099' AS DOCEXPIRYDATE
-,'' AS DOCDELFLG
-,'' AS DOCREMARKS
-,'' AS SCANNED
-,'DOCCODE'= 
-CASE WHEN  IdType LIKE 'CREG%' THEN 'COMREG'
-WHEN  IdType LIKE 'GOVT%' THEN 'GOVT'
-ELSE 'DEF_DOC_TYPE' END 
-,'' AS DOCDESCR
-,'Id: '+CONVERT(VARCHAR,(ISNULL(ClientId,'')))+' PanNo: '+CONVERT(VARCHAR,(ISNULL(PANNumber,''))) AS REFERENCENUMBER
-,'' AS ISMANDATORY
-,'' AS SCANREQUIRED
-,'' AS ROLE
-,'DOCTYPECODE'= 
-CASE WHEN  IdType LIKE 'CREG%' THEN 'COMPANY_REG_ID'
-WHEN  IdType LIKE 'GOVT%' THEN 'GOVT'
-ELSE 'DEF_DOC_TYPE' END
-,'' AS DOCTYPEDESCR
-,'' AS MINDOCSREQD
-,'' AS WAIVEDORDEFEREDDATE
-,'NEPAL' AS COUNTRYOFISSUE
-,'DEF_PLACE' AS PLACEOFISSUE
-,'01-JAN-1900' AS DOCISSUEDATE
-,'' AS IDENTIFICATIONTYPE
-,'' AS CORE_CUST_ID
-,'' AS IS_DOCUMENT_VERIFIED
-,'01' AS BANK_ID
-FROM #FinalMaster t1
-JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-AND t1.MainCode in
-(
-	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' and CustType NOT IN ('11','12')
-)
-ORDER BY CORP_KEY</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>196</xloc>
-      <yloc>126</yloc>
+      <xloc>64</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

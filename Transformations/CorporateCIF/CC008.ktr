@@ -526,7 +526,7 @@
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>E:\Deepak\Personal\Projects\Personal Projects\Finacle Migration\GIT_Projects\SanimaMigration\SNMPKAPFMigration\Transformations\CorporateCIF\Extracts\CC008</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Corporate\CC008</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -838,7 +838,7 @@ DECLARE @RetailEmail TABLE (CORPKEY VARCHAR(32),PHONEEMAILTYPE VARCHAR(200), PHO
 
 
 INSERT INTO @RetailPhone         -- Populate ClientPhone table for clients having Phone or Mobile records only
-SELECT DISTINCT 'R0'+ t2.ClientCode AS CORPKEY,'P' AS PHONEEMAILTYPE,'PHONE' AS PHONEOREMAIL,
+SELECT DISTINCT top 50 'R0'+ t2.ClientCode AS CORPKEY,'P' AS PHONEEMAILTYPE,'PHONE' AS PHONEOREMAIL,
 CASE WHEN t2.Phone IS NOT NULL OR t2.Phone &lt;&gt; '' THEN t2.Phone 
 WHEN t2.MobileNo IS NOT NULL OR t2.MobileNo &lt;&gt; '' THEN t2.MobileNo 
 ELSE '' 
@@ -854,7 +854,7 @@ AND EXISTS
 ORDER BY 1;
 
 INSERT INTO @RetailEmail       -- Populate ClientEmail table for clients having email records only
-SELECT DISTINCT 'R0'+ t2.ClientCode AS CORPKEY,'E' AS PHONEEMAILTYPE,'EMAIL' AS PHONEOREMAIL,
+SELECT DISTINCT top 50 'R0'+ t2.ClientCode AS CORPKEY,'E' AS PHONEEMAILTYPE,'EMAIL' AS PHONEOREMAIL,
  '' AS USERFIELD3,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,
  t2.eMail AS EMAIL,'' AS EMAILPALM,'' AS URL,'EMAIL' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,

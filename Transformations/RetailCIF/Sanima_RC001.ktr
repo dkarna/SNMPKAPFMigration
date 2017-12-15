@@ -5864,7 +5864,7 @@
       <field>
         <name>KYC_REVIEWDATE</name>
         <type>String</type>
-        <format />
+        <format>dd-MM-yyyy</format>
         <currency />
         <decimal />
         <group />
@@ -6104,7 +6104,7 @@ FROM
 	) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
 
-SELECT DISTINCT TOP 1000
+SELECT DISTINCT TOP 100
 'R0' + t1.ClientCode AS ORGKEY
 ,'R0' + t1.ClientCode AS CIFID
 ,'CUSTOMER' AS ENTITYTYPE
@@ -6141,7 +6141,7 @@ END AS STAFFFLAG
 ,CASE WHEN t2.ClientTag2 &lt;&gt; '' THEN t2.ClientTag2 
 ELSE ''
 END AS STAFFEMPLOYEEID
-,'MANAGER1' AS MANAGER  -- Default value added as per understanding with bank
+,'UBSADMIN' AS MANAGER  -- Default value added as per understanding with bank
 ,CASE WHEN t4.CustType IN('CB','NB','XB','UB','AF','DB','MB','OB','RB','VB','WC') THEN 'Y'
 ELSE 'N'
 END AS CUSTOMERNREFLAG
@@ -6281,8 +6281,8 @@ END AS STATUS_CODE
 ,'' AS RELATIONSHIPVALUE
 ,'' AS CATEGORY
 ,'' AS NUMBEROFPRODUCTS
-,'' AS RELATIONSHIPMGRID
-,'' AS RELATIONSHIPCREATEDBYID
+,'UBSADMIN' AS RELATIONSHIPMGRID
+,'UBSADMIN' AS RELATIONSHIPCREATEDBYID
 ,t2.WebAddress AS URL
 ,t2.ClientStatus AS STATUS
 ,'' AS INDUSTRY
@@ -6341,7 +6341,7 @@ END AS STATUS_CODE
 ,'' AS DTDATE7
 ,'' AS DTDATE8
 ,'' AS DTDATE9
-,RIGHT(SPACE(20)+CAST('000' AS VARCHAR(20)),20) AS AMOUNT1  -- Default value will be given by the bank
+,RIGHT(SPACE(20)+CAST('100' AS VARCHAR(20)),20) AS AMOUNT1  -- Default value will be given by the bank
 ,'' AS AMOUNT2
 ,'' AS AMOUNT3
 ,'' AS AMOUNT4
@@ -6380,7 +6380,7 @@ END AS STATUS_CODE
 ,'' AS PRIORITYCODE
 ,'' AS CREATED_FROM
 ,'' AS CONSTITUTION_CODE
-,'' AS STRFIELD16  -- Bank will give the code
+,'N' AS STRFIELD16  -- Bank will give the code
 ,'' AS STRFIELD17
 ,'' AS STRFIELD18
 ,'' AS STRFIELD19
@@ -6465,7 +6465,7 @@ END AS STATUS_CODE
 ,'' AS INTROD_STATUS_CODE
 ,'' AS NATIVELANGTITLE_CODE
 ,'' AS GROUPID_CODE
-,'DEF_SECTOR' AS SECTOR
+,'Default' AS SECTOR
 ,'' AS SUBSECTOR
 ,'' AS CUSTCREATIONMODE
 ,'' AS FIRST_PRODUCT_PROCESSOR

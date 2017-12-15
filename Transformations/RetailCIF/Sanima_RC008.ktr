@@ -3243,7 +3243,7 @@ SELECT * INTO #FinalMaster FROM
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
 
-SELECT DISTINCT TOP 1000
+SELECT DISTINCT TOP 100
 'R0' + t1.ClientCode AS ORGKEY
 ,CASE WHEN MaritalStatus='N' THEN 'SNGLE' 
  WHEN MaritalStatus='S' THEN 'SNGLE' 

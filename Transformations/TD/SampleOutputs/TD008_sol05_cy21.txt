@@ -1,0 +1,2 @@
+Indicator|foracid|crncy_code|sol_id|nrml_accrued_amount_cr|interest_calc_upto_date_cr|accrued_upto_date_cr|booked_upto_date_cr|nrml_accrued_amount_dr|interest_calc_upto_date_dr|accrued_upto_date_dr|booked_upto_date_dr|Dummy|migr_cumbal_for_avgcalc_cr|migr_cumbal_date
+INT||21|005|26.52|20171125|20171126|20171126|||||||

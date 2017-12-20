@@ -847,7 +847,7 @@ DECLARE @RetailEmail TABLE (ORGKEY VARCHAR(32),PHONEEMAILTYPE VARCHAR(200), PHON
 
 
 INSERT INTO @RetailPhone         -- Populate ClientPhone table for clients having Phone or Mobile records only
-SELECT DISTINCT  TOP 500 'R0'+ t2.ClientCode AS ORGKEY,'P' AS PHONEEMAILTYPE,'PHONE' AS PHONEOREMAIL,
+SELECT DISTINCT  TOP 50 'R0'+ t2.ClientCode AS ORGKEY,'P' AS PHONEEMAILTYPE,'PHONE' AS PHONEOREMAIL,
 CASE WHEN t2.Phone IS NOT NULL OR t2.Phone &lt;&gt; '' THEN t2.Phone 
 WHEN t2.MobileNo IS NOT NULL OR t2.MobileNo &lt;&gt; '' THEN t2.MobileNo 
 ELSE '' 
@@ -856,20 +856,20 @@ END AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'977' AS PHONENOCOUN
 '' AS USERFIELD2,'' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
 -- AND t2.Phone is not null or t2.Phone &lt;&gt; '' or t2.MobileNo is not null or t2.MobileNo &lt;&gt; ''    -- to filter null mobile and landline
-AND EXISTS
+WHERE EXISTS
 (
        SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )
 ORDER BY 1;
 
 INSERT INTO @RetailEmail       -- Populate ClientEmail table for clients having email records only
-SELECT DISTINCT  TOP 500 'R0'+ t2.ClientCode AS ORGKEY,'E' AS PHONEEMAILTYPE,'EMAIL' AS PHONEOREMAIL,
+SELECT DISTINCT  TOP 50 'R0'+ t2.ClientCode AS ORGKEY,'E' AS PHONEEMAILTYPE,'EMAIL' AS PHONEOREMAIL,
  '' AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'' AS PHONENOCOUNTRYCODE,'' AS WORKEXTENSION,
  t2.eMail AS EMAIL,'' AS EMAILPALM,'' AS URL,'EMAIL' AS PREFERREDFLAG,'' AS START_DATE,'' AS END_DATE,
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
 '' AS USERFIELD2,'' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
-AND EXISTS
+WHERE EXISTS
 (
        SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )

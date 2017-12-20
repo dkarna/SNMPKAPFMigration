@@ -5864,7 +5864,7 @@
       <field>
         <name>KYC_REVIEWDATE</name>
         <type>String</type>
-        <format />
+        <format>dd-MM-yyyy</format>
         <currency />
         <decimal />
         <group />
@@ -6062,8 +6062,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>160</yloc>
+      <xloc>400</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6104,17 +6104,17 @@ FROM
 	) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
 
-SELECT DISTINCT TOP 1000
+SELECT DISTINCT TOP 100
 'R0' + t1.ClientCode AS ORGKEY
 ,'R0' + t1.ClientCode AS CIFID
 ,'CUSTOMER' AS ENTITYTYPE
 ,'RETAIL' AS CUST_TYPE_CODE
 ,t2.Salutation AS SALUTATION_CODE
-,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as CUST_FIRST_NAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) as CUST_FIRST_NAME
 ,'' AS CUST_MIDDLE_NAME
-,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(t2.Name)))) as CUST_LAST_NAME
-,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as PREFERREDNAME
-,t2.Name AS SHORT_NAME
+,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(LTRIM(RTRIM(t2.Name)))))) as CUST_LAST_NAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) as PREFERREDNAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) AS SHORT_NAME
 ,CASE WHEN t2.DateOfBirth IS NULL THEN REPLACE(REPLACE(CONVERT(VARCHAR,'01-01-1900',106), ' ','-'), ',','')
 ELSE
 REPLACE(REPLACE(CONVERT(VARCHAR,t2.DateOfBirth,106), ' ','-'), ',','') 
@@ -6141,12 +6141,12 @@ END AS STAFFFLAG
 ,CASE WHEN t2.ClientTag2 &lt;&gt; '' THEN t2.ClientTag2 
 ELSE ''
 END AS STAFFEMPLOYEEID
-,'MANAGER1' AS MANAGER  -- Default value added as per understanding with bank
+,'UBSADMIN' AS MANAGER  -- Default value added as per understanding with bank
 ,CASE WHEN t4.CustType IN('CB','NB','XB','UB','AF','DB','MB','OB','RB','VB','WC') THEN 'Y'
 ELSE 'N'
 END AS CUSTOMERNREFLAG
 ,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DATEOFBECOMINGNRE
-,tminor.CUSTOMERMINOR  -- changed
+,ISNULL(REPLACE(tminor.CUSTOMERMINOR,'','N'),'N') AS CUSTOMERMINOR  -- changed
 ,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'CIFMINOR' 
 ELSE '' 
 END AS MINORGAURDIANID --changed
@@ -6281,8 +6281,8 @@ END AS STATUS_CODE
 ,'' AS RELATIONSHIPVALUE
 ,'' AS CATEGORY
 ,'' AS NUMBEROFPRODUCTS
-,'' AS RELATIONSHIPMGRID
-,'' AS RELATIONSHIPCREATEDBYID
+,'UBSADMIN' AS RELATIONSHIPMGRID
+,'UBSADMIN' AS RELATIONSHIPCREATEDBYID
 ,t2.WebAddress AS URL
 ,t2.ClientStatus AS STATUS
 ,'' AS INDUSTRY
@@ -6341,7 +6341,7 @@ END AS STATUS_CODE
 ,'' AS DTDATE7
 ,'' AS DTDATE8
 ,'' AS DTDATE9
-,RIGHT(SPACE(20)+CAST('000' AS VARCHAR(20)),20) AS AMOUNT1  -- Default value will be given by the bank
+,RIGHT(SPACE(20)+CAST('100' AS VARCHAR(20)),20) AS AMOUNT1  -- Default value will be given by the bank
 ,'' AS AMOUNT2
 ,'' AS AMOUNT3
 ,'' AS AMOUNT4
@@ -6380,7 +6380,7 @@ END AS STATUS_CODE
 ,'' AS PRIORITYCODE
 ,'' AS CREATED_FROM
 ,'' AS CONSTITUTION_CODE
-,'' AS STRFIELD16  -- Bank will give the code
+,'N' AS STRFIELD16  -- Bank will give the code
 ,'' AS STRFIELD17
 ,'' AS STRFIELD18
 ,'' AS STRFIELD19
@@ -6427,7 +6427,7 @@ END AS STATUS_CODE
 ,'' AS NEGATED_NOTES
 ,'' AS NEGATED_REASON
 ,t4.CustType AS SEGMENTATION_CLASS
-,'' AS NAME
+,t2.Name AS NAME
 ,'' AS MANAGEROPINION
 ,'' AS INTROD_STATUS
 ,'Nepali' AS NATIVELANGCODE
@@ -6465,7 +6465,7 @@ END AS STATUS_CODE
 ,'' AS INTROD_STATUS_CODE
 ,'' AS NATIVELANGTITLE_CODE
 ,'' AS GROUPID_CODE
-,'DEF_SECTOR' AS SECTOR
+,'Default' AS SECTOR
 ,'' AS SUBSECTOR
 ,'' AS CUSTCREATIONMODE
 ,'' AS FIRST_PRODUCT_PROCESSOR
@@ -6619,7 +6619,7 @@ LEFT JOIN
 	END AS CUSTOMERMINOR
 	FROM #FinalMaster t1 LEFT JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
 ) AS tminor ON t1.ClientCode = tminor.ClientCode   -- logic added for minor account in join to pass to multiple column conditions
-AND LEFT(t2.ClientCode,1) &lt;&gt; '_'
+WHERE LEFT(t2.ClientCode,1) &lt;&gt; '_'
 AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
@@ -6639,7 +6639,7 @@ ORDER BY 1</sql>
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>160</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

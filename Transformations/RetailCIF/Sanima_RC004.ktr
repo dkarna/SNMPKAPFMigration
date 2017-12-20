@@ -1230,7 +1230,7 @@ SELECT * INTO #FinalMaster FROM
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
 
-SELECT DISTINCT TOP 1000
+SELECT DISTINCT TOP 100
 'R0' + t1.ClientCode AS ORGKEY
 ,'Customer' AS CHILDENTITY
 ,tminor.CUSTOMERMINOR AS CHILDENTITYID
@@ -1296,7 +1296,7 @@ LEFT JOIN
 	END AS CUSTOMERMINOR
 	FROM #FinalMaster t1 LEFT JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
 ) AS tminor ON t1.ClientCode = tminor.ClientCode   -- logic added for minor account in join to pass to multiple column conditions
-AND EXISTS
+WHERE EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )</sql>

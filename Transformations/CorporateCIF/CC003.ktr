@@ -430,7 +430,7 @@
     <created_date>2017/11/29 18:49:05.463</created_date>
     <modified_user>-</modified_user>
     <modified_date>2017/11/29 18:49:05.463</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -519,6 +519,7 @@ SELECT * INTO #FinalMaster FROM
 (
 	SELECT DISTINCT
 	 ClientCode
+	,MainCode
 	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
 	--INTO #FinalMaster
 	FROM Master WITH (NOLOCK)
@@ -528,7 +529,7 @@ SELECT * INTO #FinalMaster FROM
 WHERE t.SerialNumber = 1 ORDER BY 1;
 
 
-SELECT DISTINCT TOP 1000
+SELECT DISTINCT TOP 100
 'C0' + t1.ClientCode AS CORP_KEY
 ,'C0' + t1.ClientCode AS CIFID
 ,'' AS CORP_REP_KEY
@@ -655,6 +656,10 @@ SELECT DISTINCT TOP 1000
 ,'' AS LAST_NAME_ALT1
 ,'' AS FIRST_NAME_ALT1
 FROM #FinalMaster t1
+WHERE t1.MainCode in
+(
+	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
+)
 
 </sql>
     <limit>0</limit>

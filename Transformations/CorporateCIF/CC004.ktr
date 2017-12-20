@@ -535,7 +535,7 @@ SELECT * INTO #FinalMaster FROM
 ) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;
 
-SELECT DISTINCT TOP 1000
+SELECT DISTINCT TOP 100
  'C0' + t3.ClientCode AS CORP_KEY  
 ,'DEF_SAL' AS SALUTATION
 ,CASE WHEN t2.DateOfBirth IS NULL OR t2.DateOfBirth > GETDATE() THEN REPLACE(REPLACE(CONVERT(VARCHAR,'01-01-1900',106), ' ','-'), ',','')
@@ -647,7 +647,7 @@ END AS DOB
 ,'' AS FIRST_NAME_ALT1
 FROM #FinalMaster t1 JOIN ClientTable t3 ON t1.ClientCode = t3.ClientCode
 LEFT JOIN (SELECT ClientCode,isnull(Name,'') as Name,DateOfBirth,Alias from ClientExtraDetail) t2 ON t1.ClientCode = t2.ClientCode
-AND EXISTS
+WHERE EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
 )

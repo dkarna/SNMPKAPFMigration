@@ -2181,8 +2181,7 @@ SELECT DISTINCT TOP 100
 ,'' AS STRTEXT28
 ,'01' AS BANK_ID   -- Added by Deepak
 FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
-AND EXISTS
+WHERE EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )</sql>

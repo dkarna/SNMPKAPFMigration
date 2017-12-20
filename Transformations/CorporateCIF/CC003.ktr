@@ -519,6 +519,7 @@ SELECT * INTO #FinalMaster FROM
 (
 	SELECT DISTINCT
 	 ClientCode
+	,MainCode
 	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate) AS SerialNumber
 	--INTO #FinalMaster
 	FROM Master WITH (NOLOCK)
@@ -655,6 +656,10 @@ SELECT DISTINCT TOP 100
 ,'' AS LAST_NAME_ALT1
 ,'' AS FIRST_NAME_ALT1
 FROM #FinalMaster t1
+WHERE t1.MainCode in
+(
+	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
+)
 
 </sql>
     <limit>0</limit>

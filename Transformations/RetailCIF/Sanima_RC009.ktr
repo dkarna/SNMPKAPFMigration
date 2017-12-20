@@ -2259,7 +2259,7 @@ SELECT DISTINCT TOP 100
 ,'' AS RELATIONSHIP_PRICING_ID
 FROM #FinalMaster t1
 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-AND EXISTS
+WHERE EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )

@@ -1296,7 +1296,7 @@ LEFT JOIN
 	END AS CUSTOMERMINOR
 	FROM #FinalMaster t1 LEFT JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
 ) AS tminor ON t1.ClientCode = tminor.ClientCode   -- logic added for minor account in join to pass to multiple column conditions
-AND EXISTS
+WHERE EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )</sql>

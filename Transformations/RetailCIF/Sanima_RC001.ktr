@@ -6062,8 +6062,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>160</yloc>
+      <xloc>400</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6110,11 +6110,11 @@ SELECT DISTINCT TOP 100
 ,'CUSTOMER' AS ENTITYTYPE
 ,'RETAIL' AS CUST_TYPE_CODE
 ,t2.Salutation AS SALUTATION_CODE
-,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as CUST_FIRST_NAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) as CUST_FIRST_NAME
 ,'' AS CUST_MIDDLE_NAME
-,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(t2.Name)))) as CUST_LAST_NAME
-,SUBSTRING(t2.Name,1,CHARINDEX(' ',t2.Name)) as PREFERREDNAME
-,t2.Name AS SHORT_NAME
+,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(LTRIM(RTRIM(t2.Name)))))) as CUST_LAST_NAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) as PREFERREDNAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) AS SHORT_NAME
 ,CASE WHEN t2.DateOfBirth IS NULL THEN REPLACE(REPLACE(CONVERT(VARCHAR,'01-01-1900',106), ' ','-'), ',','')
 ELSE
 REPLACE(REPLACE(CONVERT(VARCHAR,t2.DateOfBirth,106), ' ','-'), ',','') 
@@ -6146,7 +6146,7 @@ END AS STAFFEMPLOYEEID
 ELSE 'N'
 END AS CUSTOMERNREFLAG
 ,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DATEOFBECOMINGNRE
-,tminor.CUSTOMERMINOR  -- changed
+,ISNULL(REPLACE(tminor.CUSTOMERMINOR,'','N'),'N') AS CUSTOMERMINOR  -- changed
 ,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'CIFMINOR' 
 ELSE '' 
 END AS MINORGAURDIANID --changed
@@ -6619,7 +6619,7 @@ LEFT JOIN
 	END AS CUSTOMERMINOR
 	FROM #FinalMaster t1 LEFT JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
 ) AS tminor ON t1.ClientCode = tminor.ClientCode   -- logic added for minor account in join to pass to multiple column conditions
-AND LEFT(t2.ClientCode,1) &lt;&gt; '_'
+WHERE LEFT(t2.ClientCode,1) &lt;&gt; '_'
 AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
@@ -6639,7 +6639,7 @@ ORDER BY 1</sql>
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>160</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

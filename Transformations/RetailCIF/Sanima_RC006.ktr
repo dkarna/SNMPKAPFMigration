@@ -856,7 +856,7 @@ END AS PHONENO,'' AS PHONENOLOCALCODE,'' AS PHONENOCITYCODE,'977' AS PHONENOCOUN
 '' AS USERFIELD2,'' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
 -- AND t2.Phone is not null or t2.Phone &lt;&gt; '' or t2.MobileNo is not null or t2.MobileNo &lt;&gt; ''    -- to filter null mobile and landline
-AND EXISTS
+WHERE EXISTS
 (
        SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )
@@ -869,7 +869,7 @@ SELECT DISTINCT  TOP 50 'R0'+ t2.ClientCode AS ORGKEY,'E' AS PHONEEMAILTYPE,'EMA
 'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
 '' AS USERFIELD2,'' AS USERFIELD3,'' AS DATE1, '' AS DATE2, '' AS DATE3,'01' AS BANK_ID
 FROM ClientTable t2 JOIN #FinalMaster t1  ON t1.ClientCode = t2.ClientCode
-AND EXISTS
+WHERE EXISTS
 (
        SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )

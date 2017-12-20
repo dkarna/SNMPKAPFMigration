@@ -4559,7 +4559,7 @@ LEFT JOIN
 	select max(SeqNo) as seq from ImageTable group by MainCode)
 ) as t3 ON t1.MainCode = t3.MainCode  -- need to be checked with bank data putting inner join
 JOIN AcCustType t4 ON t1.BranchCode = t4.BranchCode and t1.MainCode = t4.MainCode -- need to be checked with bank data putting inner join
-AND EXISTS
+WHERE EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
 )

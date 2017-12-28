@@ -521,7 +521,7 @@
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding />
+    <encoding>windows-1252</encoding>
     <endedLine />
     <fileNameInField>N</fileNameInField>
     <fileNameField />
@@ -6624,6 +6624,7 @@ AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )
+and t2.PassportExpiryDate is null
 ORDER BY 1</sql>
     <limit>1000</limit>
     <lookup />

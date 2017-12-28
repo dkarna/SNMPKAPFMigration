@@ -1,0 +1,30 @@
+Record 48: Rejected - Error on table MAINRETAIL_MIG, column STATUS_CODE.
+ORA-12899: value too large for column "MIGADM"."MAINRETAIL_MIG"."STATUS_CODE" (actual: 6, maximum: 5)
+=> Not properly define logic
+
+Record 1: Rejected - Error on table MAINRETAIL_MIG, column TFPARTYFLAG.
+ORA-12899: value too large for column "MIGADM"."MAINRETAIL_MIG"."TFPARTYFLAG" (actual: 2, maximum: 1)
+=> Not properly define logic
+
+Record 1: Rejected - Error on table MAINRETAIL_MIG, column RELATIONSHIPMGRID.
+ORA-01722: invalid number
+=> GIVE BLANK
+
+Record 5: Rejected - Error on table MAINRETAIL_MIG, column RELATIONSHIPCREATEDBYID.
+ORA-01722: invalid number
+=> GIVE BLANK
+
+Record 4: Rejected - Error on table MAINRETAIL_MIG, column PSPRT_EXP_DATE.
+ORA-01861: literal does not match format string
+=>GIVE date not time. 
+=> not in format DD-MMM-YYYY
+
+MINOR_GUARD_NAME
+ => Value=Default needs to rectify
+ 
+ SECTOR
+ => Value=Default needs to provide as RRCCDM
+
+ PREFERREDPHONE
+=> Value=Phone_Type should by CELL_PHONE
+

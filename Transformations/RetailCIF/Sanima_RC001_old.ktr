@@ -517,17 +517,17 @@
     <enclosure>"</enclosure>
     <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
+    <header>Y</header>
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding>windows-1252</encoding>
+    <encoding />
     <endedLine />
     <fileNameInField>N</fileNameInField>
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>F:\Sanima\ktr_file_output_RC001\RC001</name>
+      <name>D:\FinacleMigration\GitRepo\SNMPKAPFMigration\Extracts\Retail\RC001</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -535,7 +535,7 @@
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
-      <add_date>Y</add_date>
+      <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
       <date_time_format />
@@ -4459,13 +4459,13 @@
       </field>
       <field>
         <name>PSPRT_EXP_DATE</name>
-        <type>Date</type>
-        <format>dd-MM-yyyy</format>
+        <type>String</type>
+        <format />
         <currency />
         <decimal />
         <group />
         <nullif />
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -6062,7 +6062,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>400</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6079,15 +6079,15 @@
       <schema_name />
     </partitioning>
     <connection>SanimaConn</connection>
-    <sql>IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
-  DROP TABLE #FinalMaster;
+    <sql>-- Query for RC001
+
 IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
   DROP TABLE #FinalMaster;
 SELECT *
 INTO #FinalMaster
 FROM
 	(
-		SELECT DISTINCT
+		SELECT DISTINCT 
 		 [Name]
 		,ClientCode
 		,AcType
@@ -6104,7 +6104,7 @@ FROM
 	) AS t 
 WHERE t.SerialNumber = 1 ORDER BY 1;	
 
-SELECT DISTINCT  
+SELECT DISTINCT TOP 100
 'R0' + t1.ClientCode AS ORGKEY
 ,'R0' + t1.ClientCode AS CIFID
 ,'CUSTOMER' AS ENTITYTYPE
@@ -6114,14 +6114,14 @@ SELECT DISTINCT
 ,'' AS CUST_MIDDLE_NAME
 ,REVERSE(SUBSTRING(REVERSE(t2.Name),1,CHARINDEX(' ',REVERSE(LTRIM(RTRIM(t2.Name)))))) as CUST_LAST_NAME
 ,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) as PREFERREDNAME
-,SUBSTRING(left(t2.Name,10),1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) AS SHORT_NAME
+,SUBSTRING(t2.Name,1,CHARINDEX(' ',LTRIM(RTRIM(t2.Name)))) AS SHORT_NAME
 ,CASE WHEN t2.DateOfBirth IS NULL THEN REPLACE(REPLACE(CONVERT(VARCHAR,'01-01-1900',106), ' ','-'), ',','')
 ELSE
 REPLACE(REPLACE(CONVERT(VARCHAR,t2.DateOfBirth,106), ' ','-'), ',','') 
 END AS CUST_DOB
-,CASE WHEN t2.Gender = 'M' THEN 'M'
-WHEN t2.Gender = 'F' THEN 'F'
-ELSE 'O'
+,CASE WHEN t2.Gender = 'M' THEN 'MALE'
+WHEN t2.Gender = 'F' THEN 'FEMALE'
+ELSE 'OTHERS'
 END AS GENDER
 ,'' AS OCCUPATION_CODE
 ,CASE WHEN t2.CountryCode = '01' THEN 'NEPALESE'
@@ -6140,30 +6140,29 @@ ELSE 'Y'
 END AS STAFFFLAG
 ,CASE WHEN t2.ClientTag2 &lt;&gt; '' THEN t2.ClientTag2 
 ELSE ''
-END AS STAFFEMPLOYEEID		--need to be changed after BPD as Pumori employee_id need to be matched in Finacle
+END AS STAFFEMPLOYEEID
 ,'UBSADMIN' AS MANAGER  -- Default value added as per understanding with bank
 ,CASE WHEN t4.CustType IN('CB','NB','XB','UB','AF','DB','MB','OB','RB','VB','WC') THEN 'Y'
 ELSE 'N'
 END AS CUSTOMERNREFLAG
-,CASE WHEN t4.CustType IN('CB','NB','XB','UB','AF','DB','MB','OB','RB','VB','WC') THEN REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') ELSE '' END AS DATEOFBECOMINGNRE
+,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DATEOFBECOMINGNRE
 ,ISNULL(REPLACE(tminor.CUSTOMERMINOR,'','N'),'N') AS CUSTOMERMINOR  -- changed
 ,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'CIFMINOR' 
 ELSE '' 
 END AS MINORGAURDIANID --changed
-,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'F' 
-ELSE '' 
-END AS MINOR_GUARD_CODE  --changed to default father code 'F'
-,CASE WHEN tminor.CUSTOMERMINOR = 'Y' THEN 'Default Value' 
-ELSE '' 
-END AS MINOR_GUARD_NAME		--need value for Default Value 
+,'F' AS MINOR_GUARD_CODE  --changed to default father code 'F'
+,'Default Value' AS MINOR_GUARD_NAME
 ,'NEPAL' AS REGION
 ,RIGHT(SPACE(5)+CAST(t1.BranchCode AS VARCHAR(5)),5) AS PRIMARY_SERVICE_CENTRE
 ,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS RELATIONSHIPOPENINGDATE
-,CASE WHEN t2.ClientStatus = 'D' THEN 'DCSED'
-WHEN t2.ClientStatus in ('L','U','W','S') THEN 'OTHER' 
-WHEN t2.ClientStatus ='Z' THEN 'INACT' 
-ELSE 'ACTVE'		
-END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value customer status
+,CASE WHEN t2.ClientStatus = 'D' THEN 'DECEASED'
+WHEN t2.ClientStatus ='L' THEN 'LUNATIC' 
+WHEN t2.ClientStatus ='Z' THEN 'STOPPED' 
+WHEN t2.ClientStatus ='U' THEN 'UNRELIABLE'
+WHEN t2.ClientStatus ='W' THEN 'WANTED'
+WHEN t2.ClientStatus ='S' THEN 'SUSPECT'
+ELSE 'NORMAL'
+END AS STATUS_CODE
 ,'' AS CUSTSTATUSCHGDATE
 ,'' AS HOUSEHOLDID
 ,'' AS HOUSEHOLDNAME
@@ -6182,7 +6181,7 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS CARD_HOLDER
 ,'' AS CUST_HLTH
 ,'' AS CUST_HLTH_CODE
-,case when t1.AcType>='90' then 'Y' else 'N' end  AS TFPARTYFLAG	--need to map with the mapping sheet condition and value should be either Y or N
+,t1.AcType AS TFPARTYFLAG
 ,t1.BranchCode AS PRIMARY_SOL_ID
 ,'' AS CONSTITUTION_REF_CODE
 ,'' AS CUST_OTHR_BANK_CODE
@@ -6282,8 +6281,8 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS RELATIONSHIPVALUE
 ,'' AS CATEGORY
 ,'' AS NUMBEROFPRODUCTS
-,'' AS RELATIONSHIPMGRID
-,'' AS RELATIONSHIPCREATEDBYID
+,'UBSADMIN' AS RELATIONSHIPMGRID
+,'UBSADMIN' AS RELATIONSHIPCREATEDBYID
 ,t2.WebAddress AS URL
 ,t2.ClientStatus AS STATUS
 ,'' AS INDUSTRY
@@ -6428,7 +6427,7 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS NEGATED_NOTES
 ,'' AS NEGATED_REASON
 ,t4.CustType AS SEGMENTATION_CLASS
-,'' AS NAME
+,t2.Name AS NAME
 ,'' AS MANAGEROPINION
 ,'' AS INTROD_STATUS
 ,'Nepali' AS NATIVELANGCODE
@@ -6466,7 +6465,7 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS INTROD_STATUS_CODE
 ,'' AS NATIVELANGTITLE_CODE
 ,'' AS GROUPID_CODE
-,'Default' AS SECTOR		--after BPD, need to provide RRCDM value 
+,'Default' AS SECTOR
 ,'' AS SUBSECTOR
 ,'' AS CUSTCREATIONMODE
 ,'' AS FIRST_PRODUCT_PROCESSOR
@@ -6479,7 +6478,7 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS NATIVELANGCODE_CODE
 ,'' AS CREATEDBYSYSTEMID
 ,'Email_Type' AS PREFERREDEMAILTYPE
-,'CELL_PHONE' AS PREFERREDPHONE
+,'Phone_Type' AS PREFERREDPHONE
 ,'' AS FIRST_NAME_NATIVE
 ,'' AS MIDDLE_NAME_NATIVE
 ,'' AS LAST_NAME_NATIVE
@@ -6540,7 +6539,7 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS BACKENDID
 ,'' AS RISK_PROFILE_SCORE
 ,'' AS RISK_PROFILE_EXPIRY_DATE
-,'CELL_PHONE' AS PREFERREDPHONETYPE
+,'PHONE_TYPE' AS PREFERREDPHONETYPE
 ,t2.eMail AS PREFERREDEMAIL
 ,'' AS NOOFCREDITCARDS
 ,'' AS REASONFORMOVINGOUT
@@ -6551,7 +6550,7 @@ END AS STATUS_CODE			--to be changed after BPD as dependent on RRCDM value custo
 ,'' AS ASSET_CLASSIFICATION
 ,'' AS CUSTOMER_LEVEL_PROVISIONING
 ,'' AS ISLAMIC_BANKING_CUSTOMER
-,'GREGORIAN' AS PREFERREDCALENDAR
+,'GEORGIAN' AS PREFERREDCALENDAR
 ,'' AS IDTYPER1
 ,'' AS IDTYPER2
 ,'' AS IDTYPER3
@@ -6587,7 +6586,7 @@ ELSE ' NEPAL' END AS COUNTRY
 ,'' AS ZIP
 ,'' AS BOCREATEDBYLOGINID
 ,'' AS SUBMITFORKYC
-,replace(replace(convert(varchar,t2.Review_Date,106),' ','-'),',','') AS KYC_REVIEWDATE
+,t2.Review_Date AS KYC_REVIEWDATE
 ,'' AS KYC_DATE
 ,t2.Key_Risk_Grade AS RISKRATING
 ,CASE WHEN t1.AcType = 'OB' THEN 'Y'
@@ -6624,9 +6623,9 @@ WHERE LEFT(t2.ClientCode,1) &lt;&gt; '_'
 AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
-) 
+)
 ORDER BY 1</sql>
-    <limit />
+    <limit>1000</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>

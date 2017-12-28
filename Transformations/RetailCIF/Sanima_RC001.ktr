@@ -6624,7 +6624,12 @@ WHERE LEFT(t2.ClientCode,1) &lt;&gt; '_'
 AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+<<<<<<< HEAD
 ) 
+=======
+)
+and t2.PassportExpiryDate is null
+>>>>>>> 28d8195b20474d02c2dca2d44972c4a50cf8190a
 ORDER BY 1</sql>
     <limit />
     <lookup />

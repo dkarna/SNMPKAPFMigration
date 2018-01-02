@@ -1,95 +1,107 @@
 -- Query for RL001
-'' AS foracid
-,'' AS cust_cr_pref_pcnt
-,'' AS cust_dr_pref_pcnt
-,'' AS id_cr_pref_pcnt
-,'' AS id_dr_pref_pcnt
-,'' AS repricing_plan
-,'' AS peg_frequency_in_months
-,'' AS peg_frequency_in_days
-,'' AS int_route_flg
-,'' AS acct_crncy_code
-,'' AS sol_id
-,'' AS gl_sub_head_code
-,'' AS schm_code
-,'' AS cif_id
-,'' AS acct_opn_date
-,'' AS sanct_lim
+DECLARE @CToday DATE;
+SELECT  @CToday = Today FROM ControlTable;
+SELECT
+'' AS foracid  -- will be obtained from NNTM setup
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_cr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_dr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_cr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_dr_pref_pcnt
+,'V' AS repricing_plan   -- as per developer's understanding
+,RIGHT(SPACE(4)+CAST('0' AS VARCHAR(4)),4) AS peg_frequency_in_months
+,RIGHT(SPACE(3)+CAST('0' AS VARCHAR(3)),3) AS peg_frequency_in_days
+,'O' AS int_route_flg   -- as per developer's understanding
+,curt.CyDesc AS acct_crncy_code
+,m.BranchCode AS sol_id
+,'GLSHC' AS gl_sub_head_code  -- will be replaced by subhead code given
+,m.AcType AS schm_code   -- need to be confirmed
+,m.ClientCode AS cif_id
+,CONVERT(VARCHAR(10),tmaster.mindate,105) AS acct_opn_date
+,RIGHT(SPACE(17)+CAST(m.Limit AS VARCHAR(17)),17) AS sanct_lim
 ,'' AS ledg_num
-,'' AS sector_code
-,'' AS sub_sector_code
-,'' AS purpose_of_advn
-,'' AS nature_of_advn
-,'' AS free_code_3
+,'DSECT' AS sector_code   -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
+,'DSECT' AS sub_sector_code -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
+,'DSECT' AS purpose_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
+,'DSECT' AS nature_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
+,'DSECT' AS free_code_3 -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
 ,'' AS sanct_ref_num
-,'' AS lim_sanct_date
-,'' AS sanct_levl_code
-,'' AS lim_exp_date
-,'' AS sanct_auth_code
-,'' AS loan_paper_date
-,'' AS op_acid
-,'' AS op_crncy_code
-,'' AS op_sol_id
-,'' AS dmd_satisfy_mthd
-,'' AS lien_on_oper_acct_flg
+,CONVERT(VARCHAR(10),tmaster.mindate,105) AS lim_sanct_date
+,CASE WHEN m.BranchCode = '001' THEN 'HO'
+ ELSE 'BR'
+ END AS sanct_levl_code
+,CASE WHEN m.LimitExpiryDate IS NOT NULL         -- else value given on the developer's understanding
+ THEN CONVERT(VARCHAR(10),m.LimitExpiryDate,105) 
+ ELSE '01-01-9999'
+ END AS lim_exp_date
+,'RRCDM' AS sanct_auth_code  -- CEO value need to be confirmed. Will obtain value after RRCDM
+,CONVERT(VARCHAR(10),tmaster.mindate,105) AS loan_paper_date
+,lm.Nominee AS op_acid
+,curt.CyDesc AS op_crncy_code
+,m.BranchCode AS op_sol_id
+,'E' AS dmd_satisfy_mthd
+,'Y' AS lien_on_oper_acct_flg
 ,'' AS ds_rate_code
-,'' AS int_tbl_code
-,'' AS int_on_p_flg
-,'' AS pi_on_pdmd_ovdu_flg
-,'' AS pdmd_ovdu_eom_flg
-,'' AS int_on_idmd_flg
-,'' AS pi_on_idmd_ovdu_flg
-,'' AS idmd_ovdu_eom_flg
-,'' AS xfer_eff_date
+,'TBD' AS int_tbl_code    -- need to be confirmed
+,'Y' AS int_on_p_flg
+,'Y' AS pi_on_pdmd_ovdu_flg
+,'N' AS pdmd_ovdu_eom_flg
+,'Y' AS int_on_idmd_flg
+,'Y' AS pi_on_idmd_ovdu_flg
+,'N' AS idmd_ovdu_eom_flg
+,CONVERT(VARCHAR(10),@CToday,105) AS xfer_eff_date
 ,'' AS cum_norm_int_amt
 ,'' AS cum_pen_int_amt
 ,'' AS cum_addnl_int_amt
-,'' AS liab_as_on_xfer_eff_date
-,'' AS rephasement_principal
-,'' AS interest_calc_upto_date_dr
-,'' AS rep_shdl_date
-,'' AS rep_perd_mths
+,RIGHT(SPACE(17)+CAST(m.Balance AS VARCHAR(17)),17) AS liab_as_on_xfer_eff_date
+,RIGHT(SPACE(17)+CAST(lm.TotDisburse AS VARCHAR(17)),17) AS rephasement_principal
+,CONVERT(VARCHAR(10),DATEADD(D,-1,@CToday),105) AS interest_calc_upto_date_dr
+,CONVERT(VARCHAR(10),lm.RepayStartDate,105) AS rep_shdl_date
+,RIGHT(SPACE(3)+CAST(lm.NoOfPeriods AS VARCHAR(3)),3) AS rep_perd_mths
 ,'' AS rep_perd_days
-,'' AS pd_flg
-,'' AS pd_xfer_date
-,'' AS prv_to_pd_gl_sub_head_code
-,'' AS int_suspense_amt
-,'' AS penal_int_suspense_amt
-,'' AS chrge_off_flg
-,'' AS chrge_off_date
-,'' AS chrge_off_principal
-,'' AS pending_interest
-,'' AS principal_recovery
-,'' AS interest_recovery
+,CASE WHEN npdl.ReferenceNo IS NULL THEN 'F'
+ ELSE 'T'
+ END AS pd_flg
+,CASE WHEN npdl.ReferenceNo IS NULL THEN ''
+ ELSE CONVERT(VARCHAR(10),npdl.pduedate,105)
+ END AS pd_xfer_date
+,'BPD' AS prv_to_pd_gl_sub_head_code     -- Need to confirm. will obtain code from BPD
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS int_suspense_amt   -- sepearate table will be provided
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS penal_int_suspense_amt  -- need to confirm
+,'N' AS chrge_off_flg
+,NULL AS chrge_off_date   -- Need to be confirmed
+,'0' AS chrge_off_principal  -- Need to confirm
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS pending_interest
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS principal_recovery
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS interest_recovery
 ,'' AS source_deal_code
 ,'' AS disburse_deal_code
-,'' AS apply_late_fee_flg
+,'N' AS apply_late_fee_flg
 ,'' AS late_fee_grace_perd_mnths
 ,'' AS late_fee_grace_perd_days
 ,'' AS upfront_instl_coll
 ,'' AS num_advance_instlmnt
 ,'' AS upfront_instl_amt
 ,'' AS dpd_cntr
-,'' AS sum_principal_dmd_amt
-,'' AS payoff_flg
-,'' AS xclude_for_comb_stmt
+,RIGHT(SPACE(17)+CAST(mlrs.DuePrincipal AS VARCHAR(17)),17) AS sum_principal_dmd_amt
+,'N' AS payoff_flg
+,'N' AS xclude_for_comb_stmt
 ,'' AS stmt_cif_id
-,'' AS xfer_cycle_str
+,'0' AS xfer_cycle_str
 ,'' AS bank_irr_rate
 ,'' AS value_of_asset
-,'' AS acct_occp_code
-,'' AS borrower_category_code
+,'MIGR' AS acct_occp_code
+,'' AS borrower_category_code  -- Need to be confirmed as mapping is seen in the sheet
 ,'' AS mode_of_advn
 ,'' AS type_of_advn
 ,'' AS guar_cover_code
 ,'' AS industry_type
-,'' AS free_code_1
-,'' AS free_code_2
-,'' AS free_code_4
-,'' AS free_code_5
-,'' AS free_code_6
-,'' AS free_code_7
-,'' AS free_code_8
+,'Q' AS free_code_1
+,'D' AS free_code_2
+,'d' AS free_code_4
+,'M' AS free_code_5
+,'G' AS free_code_6
+,'U' AS free_code_7
+,'e' AS free_code_8
 ,'' AS free_code_9
 ,'' AS free_code_10
 ,'' AS acct_locn_code
@@ -97,9 +109,17 @@
 ,'' AS dicgc_fee_pcnt
 ,'' AS last_compound_date
 ,'' AS daily_comp_int_flg
-,'' AS calc_ovdu_int_flg
-,'' AS ei_perd_start_date
-,'' AS ei_perd_end_date
+,'Y' AS calc_ovdu_int_flg   -- Need to confirm
+,CASE WHEN lm.HasRepaySched = 'T' THEN 
+	CONVERT(VARCHAR(10),mlrs.mduedate,105)
+ ELSE 
+	CONVERT(VARCHAR(10),tmaster.mindate,105) 
+ END AS ei_perd_start_date
+,CASE WHEN lm.HasRepaySched = 'T' THEN 
+	CONVERT(VARCHAR(10),mlrs.maxduedate,105)
+ ELSE 
+	CONVERT(VARCHAR(10),m.LimitExpiryDate,105) 
+ END AS ei_perd_end_date
 ,'' AS irr_rate
 ,'' AS adv_int_amount
 ,'' AS amortized_amount
@@ -107,25 +127,25 @@
 ,'' AS adv_int_coll_upto_date
 ,'' AS accrual_rate
 ,'' AS int_rate_based_on_sanct_lim
-,'' AS int_rest_freq
+,'D' AS int_rest_freq
 ,'' AS int_rest_basis
-,'' AS chrg_route_flg
+,'O' AS chrg_route_flg
 ,'' AS final_disb_flg
-,'' AS auto_reshdl_after_hldy_perd
+,'N' AS auto_reshdl_after_hldy_perd
 ,'' AS tot_num_defmnts
 ,'' AS num_defmnt_curr_shdl
 ,'' AS peg_review_date
-,'' AS pi_based_on_outstanding
+,'O' AS pi_based_on_outstanding
 ,'' AS charge_off_type
 ,'' AS def_appl_int_rate_flg
 ,'' AS def_appl_int_rate
 ,'' AS deferred_int_amt
-,'' AS auto_reshdl_not_allowed
+,'Y' AS auto_reshdl_not_allowed
 ,'' AS reshdl_overdue_prin
 ,'' AS reshdl_overdue_int
-,'' AS loan_type
+,'N' AS loan_type
 ,'' AS payoff_reason_code
-,'' AS rel_deposit_acid
+,dep.MainCode AS rel_deposit_acid
 ,'' AS last_aod_aos_date
 ,'' AS refin_sanct_date
 ,'' AS refin_amt
@@ -145,16 +165,16 @@
 ,'' AS probation_prd_days
 ,'' AS comp_date_flg
 ,'' AS disc_rate_flg
-,'' AS int_coll_flg
-,'' AS ps_despatch_mode
+,'Y' AS int_coll_flg
+,'N' AS ps_despatch_mode
 ,'' AS acct_mgr_user_id
-,'' AS mode_of_oper_code
+,'SNGLE' AS mode_of_oper_code
 ,'' AS ps_freq_type
 ,'' AS ps_freq_week_num
 ,'' AS ps_freq_week_day
 ,'' AS ps_freq_start_dd
 ,'' AS ps_freq_hldy_stat
-,'' AS pb_ps_code
+,'N' AS pb_ps_code
 ,'' AS ps_next_due_date
 ,'' AS fixedterm_mnths
 ,'' AS fixedterm_years
@@ -162,7 +182,7 @@
 ,'' AS max_int_pcnt_dr
 ,'' AS install_income_ratio
 ,'' AS product_group
-,'' AS free_text
+,lm.Remarks AS free_text
 ,'' AS linked_acct_id
 ,'' AS delinq_reshdl_mthd_flg
 ,'' AS total_num_of_switchover
@@ -176,44 +196,54 @@
 ,'' AS topup_acid
 ,'' AS topup_type
 ,'' AS negotiated_rate_dr
-,'' AS penal_prod_mthd_flg
-,'' AS penal_rate_mthd_flg
-,'' AS full_penal_mthd_flg
+,'F' AS penal_prod_mthd_flg
+,'D' AS penal_rate_mthd_flg
+,'Y' AS full_penal_mthd_flg
 ,'' AS hldy_prd_frm_first_disb_flg
-,'' AS ei_schm_flg
-,'' AS ei_method
-,'' AS ei_formula_flg
+,CASE WHEN lm.HasRepaySched = 'T' THEN 'Y' 
+ ELSE NULL 
+ END AS ei_schm_flg
+,CASE WHEN lm.HasRepaySched = 'T' THEN 'R' 
+ ELSE NULL 
+ END AS ei_method
+,CASE WHEN lm.HasRepaySched = 'T' THEN 'P' 
+ ELSE NULL 
+ END AS ei_formula_flg
 ,'' AS nrml_hldy_perd_mnths
 ,'' AS hldy_perd_int_flg
 ,'' AS hldy_perd_int_amt
 ,'' AS rshdl_tenor_ei_flg
 ,'' AS rshdl_disbt_flg
-,'' AS rshdl_rate_chng_flg
-,'' AS rshdl_prepay_flg
-,'' AS rshdl_amt_flg
-,'' AS rephase_capitalize_int
-,'' AS rephase_carry_ovdu_dmds
-,'' AS type_of_instlmnt_comb
-,'' AS cap_emi_flg
+,'B' AS rshdl_rate_chng_flg   -- Need to discuss with loan team
+,'Y' AS rshdl_prepay_flg	-- Need to discuss with loan team
+,'O' AS rshdl_amt_flg
+,'N' AS rephase_capitalize_int
+,CASE WHEN lm.HasRepaySched = 'T' THEN NULL 
+ ELSE 'A'
+ END AS rephase_carry_ovdu_dmds
+,'I' AS type_of_instlmnt_comb
+,CASE WHEN lm.HasRepaySched = 'T' THEN 'Y' 
+ ELSE NULL 
+ END AS cap_emi_flg                        -- Still need to be discussed due to confusion posted
 ,'' AS emicap_deferred_int
 ,'' AS start_dfmnt_mnth
 ,'' AS num_mnths_deferred
-,'' AS chnl_cr_pref_pcnt
-,'' AS chnl_dr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS chnl_cr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS chnl_dr_pref_pcnt
 ,'' AS channel_id
 ,'' AS channel_level_code
 ,'' AS instlmnt_grace_perd_term_flg
 ,'' AS instlmnt_grace_perd_mnths
-,'' AS shift_instlmnt_flg
-,'' AS include_matu_date_flg
+,'Y' AS shift_instlmnt_flg
+,'Y' AS include_matu_date_flg      -- Confusion, refer to mapping sheet
 ,'' AS rule_code
 ,'' AS cum_capitalize_fees
 ,'' AS upfront_instl_int_amt
-,'' AS recall_flg
+,'N' AS recall_flg
 ,'' AS recall_date
 ,'' AS ps_diff_freq_rel_party_flg
 ,'' AS swift_diff_freq_rel_party_flg
-,'' AS penal_int_tbl_code
+,'' AS penal_int_tbl_code   -- customization required
 ,'' AS penal_pref_pcnt
 ,'' AS resp_acct_ref_no
 ,'' AS int_version
@@ -227,8 +257,12 @@
 ,'' AS markup_int_rate_appl_flg
 ,'' AS preferred_cal_base
 ,'' AS purchase_ref
-,'' AS frez_code
-,'' AS frez_reason_code
+,CASE WHEN m.IsBlocked IN ('B','T','L','D') THEN 'T'
+ WHEN m.IsBlocked = '-' THEN 'C'
+ WHEN m.IsBlocked = '+' THEN 'D'
+ END  AS frez_code
+,CASE WHEN m.IsBlocked &lt;&gt; '' THEN 'OTHER'
+ END AS frez_reason_code
 ,'' AS RL001_232
 ,'' AS RL001_233
 ,'' AS RL001_234
@@ -346,3 +380,27 @@
 ,'' AS RL001_346
 ,'' AS RL001_347
 ,'' AS RL001_348
+FROM Master m
+LEFT JOIN LoanMaster lm on m.MainCode = lm.MainCode and m.BranchCode = lm.BranchCode
+LEFT JOIN DealTable dt on dt.MainCode = m.MainCode and dt.BranchCode = m.BranchCode and dt.MaturityDate > @CToday
+LEFT JOIN DependancyTable dep on dt.MainCode = dep.MainCode and dt.BranchCode = dep.BranchCode
+LEFT JOIN 
+(
+	SELECT ReferenceNo,BranchCode,MIN(DueDate) AS pduedate FROM PastDuedList GROUP BY ReferenceNo,BranchCode
+) as npdl ON m.MainCode = npdl.ReferenceNo AND m.BranchCode = npdl.BranchCode
+LEFT JOIN 
+(
+	SELECT MainCode,BranchCode,MIN(DueDate) AS mduedate,SUM(DuePrincipal) AS DuePrincipal,MAX(DueDate) AS maxduedate FROM LoanRepaySched lrs1,ControlTable ct WHERE lrs1.DueDate > ct.Today GROUP BY MainCode,BranchCode
+) AS mlrs ON m.MainCode = mlrs.MainCode and m.BranchCode = mlrs.BranchCode
+LEFT JOIN 
+(							-- Filters the clientcode with minimum account open date
+	SELECT t.ClientCode,MIN(t.AcOpenDate) AS mindate FROM Master t GROUP BY t.ClientCode 
+) AS tmaster ON m.ClientCode = tmaster.ClientCode
+LEFT JOIN CurrencyTable curt ON m.CyCode = curt.CyCode
+WHERE 1=1 
+and m.AcType IN('30','31','32','33','36','37','38','39','3A','3B','3E','3F','3K','3L','3M','3N','3O','3P','3Q','3R','3S','3T','3U','3X','40','42','43','46','4A','4B','4F','4G','4I','4J','4K','4M','4O','4P','4Q','4S','3V','3Y','3Z','47','48','4C','4D','4E')
+AND m.Balance &lt;&gt; 0 AND m.Limit &lt;&gt; 0
+AND m.IsBlocked NOT IN ('C','o')
+AND EXISTS (SELECT 1 FROM AcCustType where MainCode = m.MainCode and CustTypeCode = 'Z')
+--and dt.MaturityDate > Getdate()
+ORDER BY m.MainCode,m.BranchCode 

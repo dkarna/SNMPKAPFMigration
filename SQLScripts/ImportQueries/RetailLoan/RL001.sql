@@ -7,10 +7,10 @@ SELECT
 ,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_dr_pref_pcnt
 ,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_cr_pref_pcnt
 ,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_dr_pref_pcnt
-,'V' AS repricing_plan   -- as per developer's understanding
+,'V' AS repricing_plan   
 ,RIGHT(SPACE(4)+CAST('0' AS VARCHAR(4)),4) AS peg_frequency_in_months
 ,RIGHT(SPACE(3)+CAST('0' AS VARCHAR(3)),3) AS peg_frequency_in_days
-,'O' AS int_route_flg   -- as per developer's understanding
+,'O' AS int_route_flg   
 ,curt.CyDesc AS acct_crncy_code
 ,m.BranchCode AS sol_id
 ,'GLSHC' AS gl_sub_head_code  -- will be replaced by subhead code given
@@ -19,11 +19,11 @@ SELECT
 ,CONVERT(VARCHAR(10),tmaster.mindate,105) AS acct_opn_date
 ,RIGHT(SPACE(17)+CAST(m.Limit AS VARCHAR(17)),17) AS sanct_lim
 ,'' AS ledg_num
-,'DSECT' AS sector_code   -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
-,'DSECT' AS sub_sector_code -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
-,'DSECT' AS purpose_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
-,'DSECT' AS nature_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
-,'DSECT' AS free_code_3 -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM
+,'DSECT' AS sector_code   -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
+,'DSECT' AS sub_sector_code -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
+,'DSECT' AS purpose_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
+,'DSECT' AS nature_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
+,'DSECT' AS free_code_3 -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
 ,'' AS sanct_ref_num
 ,CONVERT(VARCHAR(10),tmaster.mindate,105) AS lim_sanct_date
 ,CASE WHEN m.BranchCode = '001' THEN 'HO'
@@ -31,7 +31,7 @@ SELECT
  END AS sanct_levl_code
 ,CASE WHEN m.LimitExpiryDate IS NOT NULL         -- else value given on the developer's understanding
  THEN CONVERT(VARCHAR(10),m.LimitExpiryDate,105) 
- ELSE '01-01-9999'
+ ELSE '01-01-1900'
  END AS lim_exp_date
 ,'RRCDM' AS sanct_auth_code  -- CEO value need to be confirmed. Will obtain value after RRCDM
 ,CONVERT(VARCHAR(10),tmaster.mindate,105) AS loan_paper_date
@@ -68,8 +68,8 @@ SELECT
 ,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS int_suspense_amt   -- sepearate table will be provided
 ,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS penal_int_suspense_amt  -- need to confirm
 ,'N' AS chrge_off_flg
-,NULL AS chrge_off_date   -- Need to be confirmed
-,'0' AS chrge_off_principal  -- Need to confirm
+,NULL AS chrge_off_date   
+,'0' AS chrge_off_principal 
 ,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS pending_interest
 ,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS principal_recovery
 ,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS interest_recovery
@@ -109,9 +109,9 @@ SELECT
 ,'' AS dicgc_fee_pcnt
 ,'' AS last_compound_date
 ,'' AS daily_comp_int_flg
-,'Y' AS calc_ovdu_int_flg   -- Need to confirm
+,'Y' AS calc_ovdu_int_flg   -- Need to confirm (If in pastduedlist table then Y otherwise N)
 ,CASE WHEN lm.HasRepaySched = 'T' THEN 
-	CONVERT(VARCHAR(10),mlrs.mduedate,105)
+	CONVERT(VARCHAR(10),mlrs.mduedate,105) 
  ELSE 
 	CONVERT(VARCHAR(10),tmaster.mindate,105) 
  END AS ei_perd_start_date
@@ -214,8 +214,8 @@ SELECT
 ,'' AS hldy_perd_int_amt
 ,'' AS rshdl_tenor_ei_flg
 ,'' AS rshdl_disbt_flg
-,'B' AS rshdl_rate_chng_flg   -- Need to discuss with loan team
-,'Y' AS rshdl_prepay_flg	-- Need to discuss with loan team
+,'N' AS rshdl_rate_chng_flg   
+,'N' AS rshdl_prepay_flg	
 ,'O' AS rshdl_amt_flg
 ,'N' AS rephase_capitalize_int
 ,CASE WHEN lm.HasRepaySched = 'T' THEN NULL 
@@ -235,7 +235,7 @@ SELECT
 ,'' AS instlmnt_grace_perd_term_flg
 ,'' AS instlmnt_grace_perd_mnths
 ,'Y' AS shift_instlmnt_flg
-,'Y' AS include_matu_date_flg      -- Confusion, refer to mapping sheet
+,'Y' AS include_matu_date_flg      
 ,'' AS rule_code
 ,'' AS cum_capitalize_fees
 ,'' AS upfront_instl_int_amt
@@ -243,7 +243,7 @@ SELECT
 ,'' AS recall_date
 ,'' AS ps_diff_freq_rel_party_flg
 ,'' AS swift_diff_freq_rel_party_flg
-,'' AS penal_int_tbl_code   -- customization required
+,'' AS penal_int_tbl_code   -- customization required (same as interest table code)
 ,'' AS penal_pref_pcnt
 ,'' AS resp_acct_ref_no
 ,'' AS int_version

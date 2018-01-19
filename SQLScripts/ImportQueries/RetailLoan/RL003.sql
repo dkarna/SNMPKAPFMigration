@@ -2,8 +2,8 @@
 
 SELECT
 lrs.MainCode AS foracid
-,CASE WHEN lrs.DueInterest > 0 THEN 'INDEM'
- ELSE 'PRDEM'
+,CASE WHEN lrs.DueInterest > 0 THEN 'EIDEM'
+ ELSE 'EIDEM'
  END AS flow_id  -- Need to be confirmed
 ,CONVERT(VARCHAR(10),mlrs.DUEDATE,105) AS flow_start_date   -- Need to be confirmed
 ,CASE WHEN lm.RepayFreq = '1' THEN 'D'

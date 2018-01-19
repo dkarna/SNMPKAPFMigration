@@ -17,7 +17,7 @@ SELECT
 ,'N' AS advance_payment_flg
 ,'' AS prepayment_type
 ,'' AS int_coll_on_prepayment_flg
-,m.Remarks AS tran_rmks   -- Need to confirm
+,m.Remarks AS tran_rmks   -- Need to confirm  (Loan Master remarks)
 ,@MIGRATION_DATE AS tran_particular
 FROM PastDuedList pdl
 LEFT JOIN Master m on pdl.ReferenceNo = m.MainCode AND pdl.BranchCode = m.BranchCode

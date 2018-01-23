@@ -21,7 +21,7 @@ END  AS lr_freq_type
 ,'' AS lr_freq_days
 ,'N' AS lr_freq_hldy_stat
 ,RIGHT(SPACE(3)+CAST(clrs.FLOWNO AS VARCHAR(3)),3) AS num_of_flows
-,RIGHT(SPACE(17)+CAST(lrs.TotPayment AS VARCHAR(17)),17) AS flow_amt  -- Need to be confirmed
+,RIGHT(SPACE(17)+CAST(lrs.TotPayment AS VARCHAR(17)),17) AS flow_amt  -- Need to be confirmed (For now, its fine, but in some case this may not work)
 ,'' AS instlmnt_pcnt
 ,RIGHT(SPACE(3)+CAST('0' AS VARCHAR(3)),3) AS num_of_dmds
 ,'' AS next_dmd_date   

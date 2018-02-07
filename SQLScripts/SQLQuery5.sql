@@ -1,6 +1,40 @@
 -- Query for RL001
 DECLARE @CToday DATE;
 SELECT  @CToday = Today FROM ControlTable;
+
+IF OBJECT_ID('tempdb.dbo.#tempAcCustType', 'U') IS NOT NULL
+  DROP TABLE #tempAcCustType;
+SELECT DISTINCT fn.MainCode,fn.BranchCode,
+ a.CustType AS Cval,
+  pc.CustType AS Xval,
+  ln.CustType AS Fval,
+  an.CustType AS Pval,
+  ad.CustType AS Nval
+INTO #tempAcCustType
+FROM AcCustType fn
+LEFT JOIN AcCustType a
+  ON fn.MainCode = a.MainCode
+  AND fn.BranchCode = a.BranchCode
+  AND a.CustTypeCode = 'C'
+LEFT JOIN AcCustType pc
+  ON fn.MainCode = pc.MainCode
+  AND fn.BranchCode = pc.BranchCode
+  AND pc.CustTypeCode = 'X'
+LEFT JOIN AcCustType ln
+  ON fn.MainCode = ln.MainCode
+  AND fn.BranchCode = ln.BranchCode
+  AND ln.CustTypeCode = 'F'
+LEFT JOIN AcCustType an
+  ON fn.MainCode = an.MainCode
+  AND fn.BranchCode = an.BranchCode
+  AND an.CustTypeCode = 'P'
+LEFT JOIN AcCustType ad
+  ON fn.MainCode = ad.MainCode
+  AND fn.BranchCode = ad.BranchCode
+  AND ad.CustTypeCode = 'N'
+WHERE fn.CustTypeCode IN ('C','X','F','P','N') ORDER by 1,2
+
+
 SELECT
 '' AS foracid  -- will be obtained from NNTM setup
 ,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_cr_pref_pcnt
@@ -13,27 +47,32 @@ SELECT
 ,'O' AS int_route_flg   
 ,curt.CyDesc AS acct_crncy_code
 ,m.BranchCode AS sol_id
-,'GLSHC' AS gl_sub_head_code  -- will be replaced by subhead code given
-,m.AcType AS schm_code   -- need to be confirmed
+,flt.FinacleSubGL AS gl_sub_head_code  -- value replaced from FinacleLoanTable as specified by the bank
+,flt.FinacleSchCode AS schm_code   -- value replaced from FinacleLoanTable as specified by the bank
 ,m.ClientCode AS cif_id
 ,CONVERT(VARCHAR(10),tmaster.mindate,105) AS acct_opn_date
 ,RIGHT(SPACE(17)+CAST(m.Limit AS VARCHAR(17)),17) AS sanct_lim
 ,'' AS ledg_num
-,'DSECT' AS sector_code   -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
-,'DSECT' AS sub_sector_code -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
-,'DSECT' AS purpose_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
-,'DSECT' AS nature_of_advn -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
-,'DSECT' AS free_code_3 -- need to be confirmed. default value as per developer's understanding. may be obtained after RRCDM (FinacleLoanTable)
+--,(SELECT CustType FROM AcCustType WHERE MainCode = lm.MainCode AND BranchCode = lm.BranchCode AND CustTypeCode = 'C') AS sector_code
+,tact.Cval AS sector_code   -- Replaced with the FinacleLoanTable and AcCustType table values
+--,(SELECT CustType FROM AcCustType WHERE MainCode = lm.MainCode AND BranchCode = lm.BranchCode AND CustTypeCode = 'X') AS sub_sector_code
+,tact.Xval AS sub_sector_code -- Replaced with the FinacleLoanTable and AcCustType table values
+--,(SELECT CustType FROM AcCustType WHERE MainCode = lm.MainCode AND BranchCode = lm.BranchCode AND CustTypeCode = 'F') AS purpose_of_advn
+,tact.Fval AS purpose_of_advn -- Replaced with the FinacleLoanTable and AcCustType table values
+--,(SELECT CustType FROM AcCustType WHERE MainCode = lm.MainCode AND BranchCode = lm.BranchCode AND CustTypeCode = 'P') AS nature_of_advn
+,tact.Pval AS nature_of_advn -- Replaced with the FinacleLoanTable and AcCustType table values
+--,(SELECT CustType FROM AcCustType WHERE MainCode = lm.MainCode AND BranchCode = lm.BranchCode AND CustTypeCode = 'N') AS free_code_3
+,tact.Nval AS free_code_3 -- Replaced with the FinacleLoanTable and AcCustType table values
 ,'' AS sanct_ref_num
 ,CONVERT(VARCHAR(10),tmaster.mindate,105) AS lim_sanct_date
 ,CASE WHEN m.BranchCode = '001' THEN 'HO'
  ELSE 'BR'
  END AS sanct_levl_code
-,CASE WHEN m.LimitExpiryDate IS NOT NULL         -- else value given on the developer's understanding
+,CASE WHEN m.LimitExpiryDate IS NOT NULL         
  THEN CONVERT(VARCHAR(10),m.LimitExpiryDate,105) 
  ELSE '01-01-1900'
  END AS lim_exp_date
-,'RRCDM' AS sanct_auth_code  -- CEO value need to be confirmed. Will obtain value after RRCDM
+,'CEO' AS sanct_auth_code  -- As confirmed from bank
 ,CONVERT(VARCHAR(10),tmaster.mindate,105) AS loan_paper_date
 ,lm.Nominee AS op_acid
 ,curt.CyDesc AS op_crncy_code
@@ -41,7 +80,7 @@ SELECT
 ,'E' AS dmd_satisfy_mthd
 ,'Y' AS lien_on_oper_acct_flg
 ,'' AS ds_rate_code
-,'TBD' AS int_tbl_code    -- need to be confirmed
+,flt.FinacleIntCode AS int_tbl_code    -- Currently no value, need to get value
 ,'Y' AS int_on_p_flg
 ,'Y' AS pi_on_pdmd_ovdu_flg
 ,'N' AS pdmd_ovdu_eom_flg
@@ -64,9 +103,9 @@ SELECT
 ,CASE WHEN npdl.ReferenceNo IS NULL THEN ''
  ELSE CONVERT(VARCHAR(10),npdl.pduedate,105)
  END AS pd_xfer_date
-,'BPD' AS prv_to_pd_gl_sub_head_code     -- Need to confirm. will obtain code from BPD
-,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS int_suspense_amt   -- sepearate table will be provided
-,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS penal_int_suspense_amt  -- need to confirm
+,flt.FinaclePDSubGL AS prv_to_pd_gl_sub_head_code     --Currently no value, need value
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS int_suspense_amt   -- sepearate table will be provided (optional)
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS penal_int_suspense_amt  -- need to confirm (optional)
 ,'N' AS chrge_off_flg
 ,NULL AS chrge_off_date   
 ,'0' AS chrge_off_principal 
@@ -90,7 +129,7 @@ SELECT
 ,'' AS bank_irr_rate
 ,'' AS value_of_asset
 ,'MIGR' AS acct_occp_code
-,'' AS borrower_category_code  -- Need to be confirmed as mapping is seen in the sheet
+,'' AS borrower_category_code  -- Need to be confirmed as mapping is seen in the sheet (optional)
 ,'' AS mode_of_advn
 ,'' AS type_of_advn
 ,'' AS guar_cover_code
@@ -109,7 +148,9 @@ SELECT
 ,'' AS dicgc_fee_pcnt
 ,'' AS last_compound_date
 ,'' AS daily_comp_int_flg
-,'Y' AS calc_ovdu_int_flg   -- Need to confirm (If in pastduedlist table then Y otherwise N)
+,CASE WHEN pdl.BranchCode IS NOT NULL THEN 'Y' 
+ ELSE 'N'
+ END AS calc_ovdu_int_flg   -- Need to confirm (If in pastduedlist table then Y otherwise N)
 ,CASE WHEN lm.HasRepaySched = 'T' THEN 
 	CONVERT(VARCHAR(10),mlrs.mduedate,105) 
  ELSE 
@@ -243,7 +284,7 @@ SELECT
 ,'' AS recall_date
 ,'' AS ps_diff_freq_rel_party_flg
 ,'' AS swift_diff_freq_rel_party_flg
-,'' AS penal_int_tbl_code   -- customization required (same as interest table code)
+,flt.FinacleIntCode AS penal_int_tbl_code   -- Currently no value, need value in FinacleLoanTable
 ,'' AS penal_pref_pcnt
 ,'' AS resp_acct_ref_no
 ,'' AS int_version
@@ -380,9 +421,10 @@ SELECT
 ,'' AS RL001_346
 ,'' AS RL001_347
 ,'' AS RL001_348
-FROM Master m
-LEFT JOIN LoanMaster lm on m.MainCode = lm.MainCode and m.BranchCode = lm.BranchCode
-LEFT JOIN DealTable dt on dt.MainCode = m.MainCode and dt.BranchCode = m.BranchCode and dt.MaturityDate > @CToday
+FROM LoanMaster lm
+LEFT JOIN Master m ON lm.MainCode = m.MainCode and lm.BranchCode = m.BranchCode
+--LEFT JOIN LoanMaster lm on m.MainCode = lm.MainCode and m.BranchCode = lm.BranchCode
+LEFT JOIN DealTable dt on dt.MainCode = m.MainCode and dt.BranchCode = m.BranchCode-- and dt.MaturityDate > @CToday
 LEFT JOIN DependancyTable dep on dt.MainCode = dep.MainCode and dt.BranchCode = dep.BranchCode
 LEFT JOIN 
 (
@@ -396,12 +438,14 @@ LEFT JOIN
 (							-- Filters the clientcode with minimum account open date
 	SELECT t.ClientCode,MIN(t.AcOpenDate) AS mindate FROM Master t GROUP BY t.ClientCode 
 ) AS tmaster ON m.ClientCode = tmaster.ClientCode
+LEFT JOIN #tempAcCustType tact ON tact.MainCode = lm.MainCode AND tact.BranchCode = lm.BranchCode
 LEFT JOIN CurrencyTable curt ON m.CyCode = curt.CyCode
-JOIN FinacleLoanTable flt ON lm.MainCode = flt.PumoriMainCode -- AND dt.AcType =  use the join from master table
+LEFT JOIN FinacleLoanTable flt ON m.MainCode = flt.PumoriMainCode AND m.AcType = flt.PumoriAcType AND m.CyCode = flt.PumoriCyCode -- use the join from master table
+LEFT JOIN PastDuedList pdl ON lm.MainCode = pdl.ReferenceNo AND lm.BranchCode = pdl.BranchCode
 WHERE 1=1 
-and m.AcType IN('30','31','32','33','36','37','38','39','3A','3B','3E','3F','3K','3L','3M','3N','3O','3P','3Q','3R','3S','3T','3U','3X','40','42','43','46','4A','4B','4F','4G','4I','4J','4K','4M','4O','4P','4Q','4S','3V','3Y','3Z','47','48','4C','4D','4E')
+AND m.AcType IN('30','31','32','33','36','37','38','39','3A','3B','3E','3F','3K','3L','3M','3N','3O','3P','3Q','3R','3S','3T','3U','3X','40','42','43','46','4A','4B','4F','4G','4I','4J','4K','4M','4O','4P','4Q','4S','3V','3Y','3Z','47','48','4C','4D','4E')
 AND m.Balance = 0 AND m.Limit = 0
 AND m.IsBlocked NOT IN ('C','o')
-AND EXISTS (SELECT 1 FROM AcCustType where MainCode = m.MainCode and CustTypeCode = 'Z')
+--AND EXISTS (SELECT 1 FROM AcCustType where MainCode = m.MainCode and CustTypeCode = 'Z')
 --and dt.MaturityDate > Getdate()
 ORDER BY m.MainCode,m.BranchCode 

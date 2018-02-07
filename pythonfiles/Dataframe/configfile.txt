@@ -1,0 +1,5 @@
+inputfile=input/example.csv
+logfile=log/filerecordslog.txt
+outputpath=output/
+solcol=sol
+curcol=cur

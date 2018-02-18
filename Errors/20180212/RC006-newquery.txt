@@ -1,0 +1,37 @@
+SELECT DISTINCT 'RO'+ t2.ClientCode AS ORGKEY
+,CASE WHEN t2.Phone <> '' OR t2.MobileNo <> '' THEN  'HOMEPH1' 
+	 WHEN t2.eMail IS NOT NULL OR t2.eMail <> '' THEN 'COMMEML'
+ ELSE 'COMMEML'
+ END AS PHONEEMAILTYPE,
+CASE WHEN t2.Phone <> '' OR  t2.MobileNo <> '' THEN 'PHONE' 
+    WHEN t2.eMail IS NOT NULL OR t2.eMail <> '' THEN 'EMAIL'
+	ELSE 'EMAIL'
+END AS PHONEOREMAIL,
+CASE WHEN t2.Phone <> '' THEN t2.Phone 
+WHEN t2.MobileNo <> '' THEN t2.MobileNo 
+ELSE '' 
+END AS PHONENO, 
+'' AS PHONENOLOCALCODE,
+'' AS PHONENOCITYCODE,
+'977' AS PHONENOCOUNTRYCODE,
+'' AS WORKEXTENSION,
+CASE WHEN t2.eMail IS NOT NULL OR t2.eMail <> '' THEN t2.eMail
+  WHEN t2.Phone = '' OR t2.MobileNo = '' THEN 'migr@migr.com' 
+END AS EMAIL,
+'' AS EMAILPALM,
+'' AS URL,
+'Y' AS PREFERREDFLAG,
+Replace(Replace(Convert(VARCHAR,GETDATE()-2,106), ' ','-'), ',','') AS START_DATE,NULL AS END_DATE,
+'Mobile No- '+ISNULL(MobileNo,'')+'/'+'Phone No- '+ISNULL(Phone,'')+'/'+'Email - '+ISNULL(eMail,'')+'/'+'Fax No- '+ISNULL(FaxNo,'') AS USERFIELD1,
+'NA' AS USERFIELD2,'NA' AS USERFIELD3,
+NULL AS DATE1,
+ NULL AS DATE2,
+ NULL AS DATE3,'01' AS BANK_ID
+FROM ClientTable t2 JOIN Master t1  ON t1.ClientCode = t2.ClientCode
+WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+ AND (t2.Phone is not null or t2.Phone <> '') or (t2.MobileNo is not null or t2.MobileNo <> '')    -- to filter null mobile and landline
+AND EXISTS
+(
+       SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY 1;

@@ -1,0 +1,106 @@
+-- SQL query for RC005
+
+IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
+  DROP TABLE #FinalMaster;									-- Drop temporary table if it exists
+SELECT * INTO #FinalMaster FROM
+(
+	SELECT DISTINCT ClientCode
+	,AcType
+	,BranchCode
+	,Obligor
+	,AcOpenDate
+	,MainCode
+	,CyCode
+	,IsBlocked
+	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate,MainCode) AS SerialNumber
+	--INTO #FinalMaster
+	FROM Master WITH (NOLOCK)
+	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+	--ORDER BY ClientCode
+) AS t 
+WHERE t.SerialNumber = 1 ORDER BY 1;	
+
+SELECT DISTINCT --TOP 1000
+'R0'+t1.ClientCode AS ORGKEY
+,'' AS DOCDUEDATE
+,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DOCRECEIVEDDATE 
+,'' AS DOCEXPIRYDATE
+,'N' AS DOCDELFLG
+,'' AS DOCREMARKS
+,'Y' AS SCANNED
+,CASE WHEN  (t2.IdType LIKE 'C%' AND t2.IdType NOT IN ('COMME','CREG','CREG#','CIT') ) THEN 'CITIZENSHIP'
+ WHEN ( (t2.IdType IN ('PASS','PASSP') OR (t2.IdType LIKE ('%PP%')))) THEN 'PASSPORT'
+WHEN  t2.IdType LIKE 'PAN%' THEN 'PAN'
+WHEN t2.IdType LIKE 'VOT%' THEN 'VOTER ID'
+WHEN t2.IdType LIKE 'REG%' THEN 'REG NO'
+WHEN  t2.IdType LIKE 'REF%' THEN 'REFUGEE_ID'
+WHEN  t2.IdType LIKE 'EMBAS%' THEN 'EMBASSY LETTER'
+WHEN  t2.IdType LIKE 'GOVT%' THEN 'GOVTREFERENCELETTER'
+WHEN ((t2.IdType LIKE 'CREG%') AND t2.ClientCode NOT IN (SELECT ClientCode FROM Master WHERE MainCode IN (SELECT MainCode FROM AcCustType WHERE CustTypeCode='B' AND CustType='NA') AND IsBlocked<>'C') 
+ ) THEN 'COMPANY REG ID'
+ELSE 'MIGR' END AS DOCCODE
+,CASE WHEN  (t2.IdType LIKE 'C%' AND t2.IdType NOT IN ('COMME','CREG','CREG#','CIT') ) THEN 'CITIZENSHIP'
+ WHEN ( (t2.IdType IN ('PASS','PASSP') OR (t2.IdType LIKE ('%PP%')))) THEN 'PASSPORT'
+WHEN  t2.IdType LIKE 'PAN%' THEN 'PAN'
+WHEN t2.IdType LIKE 'VOT%' THEN 'VOTER ID'
+WHEN t2.IdType LIKE 'REG%' THEN 'REG NO'
+WHEN  t2.IdType LIKE 'REF%' THEN 'REFUGEE_ID'
+WHEN  t2.IdType LIKE 'EMBAS%' THEN 'EMBASSY LETTER'
+WHEN  t2.IdType LIKE 'GOVT%' THEN 'GOVT REFERENCE LETTER'
+WHEN ((t2.IdType LIKE 'CREG%') AND t2.ClientCode NOT IN (SELECT ClientCode FROM Master WHERE MainCode IN (SELECT MainCode FROM AcCustType WHERE CustTypeCode='B' AND CustType='NA') AND IsBlocked<>'C') 
+ ) THEN 'COMPANY REG ID'
+ELSE 'MIGR' END AS DOCDESCR
+,CASE WHEN ( (t2.IdType IN ('PASS','PASSP') OR (t2.IdType LIKE ('%PP%')))) THEN (CASE WHEN t2.PassportNo is null or t2.PassportNo = '' THEN 'MIGR' ELSE t2.PassportNo end)
+ WHEN  (t2.IdType LIKE 'C%' AND t2.IdType NOT IN ('COMME','CREG','CREG#','CIT') ) THEN (CASE WHEN t2.CitizenshipNo is null or t2.CitizenshipNo = '' THEN 'MIGR' ELSE t2.CitizenshipNo end)
+WHEN t2.IdType IS NULL THEN 'MIGR' WHEN t2.IdType = '' THEN 'MIGR' 
+ELSE 'MIGR' END AS REFERENCENUMBER
+,--CASE WHEN  (t2.IdType LIKE 'C%' AND t2.IdType NOT IN ('COMME','CREG','CREG#','CIT') ) THEN 'CITIZENSHIP'
+ --WHEN ( (t2.IdType IN ('PASS','PASSP') OR (t2.IdType LIKE ('%PP%')))) THEN 'PASSPORT'
+-- WHEN  t2.IdType LIKE 'PAN%' THEN 'PAN'
+--WHEN t2.IdType LIKE 'VOT%' THEN 'VOTER ID'
+--WHEN t2.IdType LIKE 'REG%' THEN 'REG NO'
+--WHEN  t2.IdType LIKE 'REF%' THEN 'REFUGEE_ID'
+--WHEN  t2.IdType LIKE 'EMBAS%' THEN 'EMBASSY LETTER'
+--WHEN  t2.IdType LIKE 'GOVT%' THEN 'GOVT REFERENCE LETTER'
+--WHEN ((t2.IdType LIKE 'CREG%') AND t2.ClientCode NOT IN (SELECT ClientCode FROM Master WHERE MainCode IN (SELECT MainCode FROM AcCustType WHERE CustTypeCode='B' AND CustType='NA') AND IsBlocked<>'C') 
+ --) THEN 'COMPANY REG ID'
+--ELSE 'MIGR' END  AS TYPE
+''AS TYPE
+,'N' AS ISMANDATORY
+,'' AS SCANREQUIRED
+,'' AS ROLE
+,'IDENTIFICATION' DOCTYPECODE
+,'IDENTIFICATION PROOF' AS DOCTYPEDESCR
+,'' AS MINDOCSREQD
+,'' AS WAIVEDORDEFEREDDATE
+,CASE WHEN ct.ISOCode = 'GB' THEN 'UK'
+WHEN ct.ISOCode IS NULL OR ct.ISOCode = '' THEN 'NP' ELSE  ct.ISOCode END AS COUNTRYOFISSUE
+,'MIGR' AS PLACEOFISSUE		--Default value as per BPD
+,REPLACE(REPLACE(CONVERT(VARCHAR,t1.AcOpenDate,106), ' ','-'), ',','') AS DOCISSUEDATE
+,CASE WHEN  (t2.IdType LIKE 'C%' AND t2.IdType NOT IN ('COMME','CREG','CREG#','CIT') ) THEN 'CITIZENSHIP'
+ WHEN ( (t2.IdType IN ('PASS','PASSP') OR (t2.IdType LIKE ('%PP%')))) THEN 'PASSPORT'
+WHEN  t2.IdType LIKE 'PAN%' THEN 'PAN'
+WHEN t2.IdType LIKE 'VOT%' THEN 'VOTER ID'
+WHEN t2.IdType LIKE 'REG%' THEN 'REG NO'
+WHEN  t2.IdType LIKE 'REF%' THEN 'REFUGEE_ID'
+WHEN  t2.IdType LIKE 'EMBAS%' THEN 'EMBASSY LETTER'
+WHEN  t2.IdType LIKE 'GOVT%' THEN 'GOVT REFERENCE LETTER'
+WHEN ((t2.IdType LIKE 'CREG%') AND t2.ClientCode NOT IN (SELECT ClientCode FROM Master WHERE MainCode IN (SELECT MainCode FROM AcCustType WHERE CustTypeCode='B' AND CustType='NA') AND IsBlocked<>'C') 
+) THEN 'COMPANY REG ID'
+ELSE 'MIGR' END AS IDENTIFICATIONTYPE
+--'' AS IDENTIFICATIONTYPE
+,'' AS CORE_CUST_ID
+,'' AS IS_DOCUMENT_VERIFIED
+,'' AS BEN_OWN_KEY
+,'01' AS BANK_ID
+,'' AS DOCTYPEDESCR_ALT1
+,'' AS DOCDESCR_ALT1
+,'Received' AS STATUS
+FROM #FinalMaster t1
+JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+left join CountryTable ct on ct.CountryCode = t2.CountryCode
+WHERE EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+ORDER BY ORGKEY

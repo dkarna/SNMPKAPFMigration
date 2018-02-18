@@ -1,23 +1,65 @@
 -- Query for RC004
 
+ 
+
+IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
+  DROP TABLE #FinalMaster;                                                        -- Drop temporary table if it exists
+
+SELECT * INTO #FinalMaster FROM
+(
+       SELECT DISTINCT
+        Name 
+       ,ClientCode
+       ,AcType
+       ,BranchCode
+       ,Obligor
+       ,AcOpenDate
+       ,MainCode
+       ,CyCode
+       ,IsBlocked
+       ,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate,MainCode) AS SerialNumber
+       --INTO #FinalMaster
+       FROM Master WITH (NOLOCK)
+       WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+       --ORDER BY ClientCode
+) AS t
+WHERE t.SerialNumber = 1 ORDER BY 1;    
+
+IF OBJECT_ID('tempdb.dbo.#ClientName', 'U') IS NOT NULL
+  DROP TABLE #ClientName;
+SELECT ClientCode, CASE WHEN CHARINDEX('/',Name)  > 0 THEN SUBSTRING(Name,0,CHARINDEX('/',Name)) 
+ELSE Name
+END as Name,Name AS Orig_Name,
+Gender,Salutation
+INTO #ClientName
+FROM ClientTable
+
+ 
 SELECT DISTINCT
-'RO' + t1.ClientCode AS ORGKEY
-,'Customer' AS CHILDENTITY
---,CASE WHEN ((UPPER(t1.Name) LIKE UPPER('%MINOR%')) OR (t1.GENDER='m') OR (t1.ClientCode IN (SELECT ClientCode FROM Master WHERE AcType IN('OM','OH','OI'))) OR t1.MaritalStatus='N') THEN 'Y' 
---ELSE 'N'
---END AS  CHILDENTITYID
+'R0' + t1.ClientCode AS ORGKEY
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'Customer'
+	ELSE '' 
+ END AS CHILDENTITY
 ,tminor.CUSTOMERMINOR AS CHILDENTITYID
-,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'DEF_GUARDIAN'
-ELSE '' 
-END AS RELATIONSHIP
-,'' AS TITLE
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'Father'
+   ELSE ''
+ END AS RELATIONSHIP
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN t2.Salutation
+   ELSE ''
+ END AS TITLE
 ,'' AS FIRSTNAME
 ,'' AS MIDDLENAME
-,'' AS LASTNAME
+,CASE WHEN isnull(reverse(SUBSTRING(reverse(ltrim(rtrim(t2.Name))),0,charindex(' ',reverse(ltrim(rtrim(t2.Name)))))),'.') = '' THEN '.'
+ ELSE isnull(reverse(SUBSTRING(reverse(ltrim(rtrim(t2.Name))),0,charindex(' ',reverse(ltrim(rtrim(t2.Name)))))),'.')
+ END AS LASTNAME
 ,'' AS DOB
-,'' AS GENDER
+,CASE WHEN t2.Gender = 'M' OR t2.Gender = 'm' THEN 'MALE'
+   WHEN t2.Gender = 'F' THEN 'FEMALE'
+ END AS GENDER
 ,'' AS ISDEPENDANT
-,'' AS GAURDIANTYPE
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'F'
+ ELSE '' 
+ END AS GAURDIANTYPE
 ,'' AS ISPRIMARY
 ,'' AS HOUSE_NO
 ,'' AS PREMISE_NAME
@@ -34,7 +76,9 @@ END AS RELATIONSHIP
 ,'' AS COUNTRY_CODE
 ,'' AS STATUS_CODE
 ,'' AS NEWCONTACTSKEY
-,'' AS CIFID
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'R0' + t1.ClientCode
+ ELSE '' 
+ END AS CIFID
 ,'' AS START_DATE
 ,'' AS PERCENTAGEBENEFITED
 ,'' AS PHONENO1LOCALCODE
@@ -54,22 +98,29 @@ END AS RELATIONSHIP
 ,'' AS PAGERNOCITYCODE
 ,'' AS PAGERNOCOUNTRYCODE
 ,'' AS EMAIL
-,'RETAIL' AS CHILDENTITYTYPE
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'RETAIL'
+ ELSE '' 
+ END AS CHILDENTITYTYPE
 ,'' AS BEN_OWN_KEY
-,'SNMANPKA' AS BANK_ID
+,'01' AS BANK_ID
 ,'' AS RELATIONSHIP_ALT1
-,'' AS RELATIONSHIP_CATEGORY
-FROM Master t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-LEFT JOIN
+,CASE WHEN tminor.CUSTOMERMINOR <> '' THEN 'Banking'
+ ELSE '' 
+ END AS RELATIONSHIP_CATEGORY
+FROM #FinalMaster t1
+--JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+JOIN #ClientName t2 ON t1.ClientCode = t2.ClientCode
+JOIN
 (
-	SELECT t1.ClientCode,
-	CASE WHEN ((UPPER(t1.Name) LIKE UPPER('%MINOR%')) OR (t2.Gender='m') OR (t1.ClientCode IN (SELECT ClientCode FROM Master WHERE AcType IN('OM','OH','OI'))) OR t2.MaritalStatus='N') THEN 'RO'+t1.ClientCode 
-	ELSE ''
-	END AS CUSTOMERMINOR
-	FROM Master t1 LEFT JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
+       SELECT t1.ClientCode,
+       CASE WHEN ((UPPER(t1.Name) LIKE UPPER('%MINOR%')) OR (t2.Gender='m') OR (t1.ClientCode IN (SELECT ClientCode FROM Master WHERE AcType IN('OM','OH','OI'))) OR t2.MaritalStatus='N') THEN 'R0'+t1.ClientCode
+        ELSE ''
+       END AS CUSTOMERMINOR
+       FROM #FinalMaster t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
 ) AS tminor ON t1.ClientCode = tminor.ClientCode   -- logic added for minor account in join to pass to multiple column conditions
-WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+WHERE tminor.CUSTOMERMINOR <> '' 
 AND EXISTS
 (
-	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+       SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )
+ORDER BY 1

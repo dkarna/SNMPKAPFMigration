@@ -1,0 +1,16 @@
+select 
+BranchCode SOL_ID
+, SizeCode Locker_Type
+, LockerCode Locker_No
+, KeyNo Key_No
+, case when LockerStatus = 'O' then 'Y' else 'N' end Occupied_Flag
+, 'Y' Freeze_Code
+, 'LOCKR' Freeze_Reason
+, '' Purpose_Used
+, '' Remarks
+, 'N' Del_Flag
+, '' Pref_Lang_Code
+, '' Pref_Lang_Freeze_Reason
+from LockerMaster
+where LockerCode<>''
+and BranchCode<>'0'

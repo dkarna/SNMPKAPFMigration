@@ -1,0 +1,93 @@
+select
+  M.BranchCode SOL_ID
+, cif.ClientCode Cif_Id
+, M.Name Customer_Name
+, M.SizeCode Locker_Type
+, M.LockerCode Locker_No
+, stuff ((select '/' + AuthName from LockerAuth a where a.BranchCode = M.BranchCode and a.LockerCode = M.LockerCode 
+  for xml path('')),1,1,'') Joint_Holder_Name1
+, NULL Joint_Holder_Cif_Id1
+, NULL Joint_Holder_Relation1
+, NULL Joint_Holder_Name2
+, NULL Joint_Holder_Cif_Id2
+, NULL Joint_Holder_Relation2
+, NULL Joint_Holder_Name3
+, NULL Joint_Holder_Cif_Id3
+, NULL Joint_Holder_Relation3
+, M.Nominee Opacc
+, NULL Sdacc
+, M.KeyNo Code_Word
+, M.EnteredDate Open_Date
+, NULL Closed_Date
+, NULL Frequency
+, M.Rent Total_Rent
+, M.Remarks Remarks
+, M.EnteredDate Last_Rent_Date
+, dateadd(year,1,M.EnteredDate) Due_Date
+, NULL Due_notice_Date
+, '0' Due_Rent
+, 'N' Delete_Flag
+, stuff((select '/' + Remarks from LockerAuth a where a.BranchCode = M.BranchCode and a.LockerCode = M.LockerCode
+  for xml path('')),1,1,'' ) Free_Text1
+, NULL Free_Text2
+, 'T' Payment_Mode
+, dateadd(year,1,M.EnteredDate) Payment_Date
+, NULL Rent_Paid
+, NULL Preferable_Language_Code
+, NULL Customer_Name_in_Pref_Lang_Code
+, case when A.LockerCode is not null then 'ANY1S' else 'SNGLE' end Mode_of_oper_code 
+from LockerMaster M 
+left join Master cif  on cif.MainCode = M.Nominee and cif.BranchCode = M.BranchCode
+left join (select top 1 LockerCode , BranchCode from LockerAuth) A 
+on A.LockerCode = M.LockerCode and A.BranchCode = M.BranchCode 
+where M.BranchCode<>'0'
+and M.LockerCode<>''
+and (Nominee<> '9710100' or Nominee is null)
+
+union all 
+
+select
+  M.BranchCode SOL_ID
+, cif.ClientCode Cif_Id
+, M.Name Customer_Name
+, M.SizeCode Locker_Type
+, M.LockerCode Locker_No
+, stuff ((select '/' + AuthName from LockerAuth a where a.BranchCode = M.BranchCode and a.LockerCode = M.LockerCode 
+  for xml path('')),1,1,'') Joint_Holder_Name1
+, NULL Joint_Holder_Cif_Id1
+, NULL Joint_Holder_Relation1
+, NULL Joint_Holder_Name2
+, NULL Joint_Holder_Cif_Id2
+, NULL Joint_Holder_Relation2
+, NULL Joint_Holder_Name3
+, NULL Joint_Holder_Cif_Id3
+, NULL Joint_Holder_Relation3
+, M.Nominee Opacc
+, NULL Sdacc
+, M.KeyNo Code_Word
+, M.EnteredDate Open_Date
+, NULL Closed_Date
+, NULL Frequency
+, M.Rent Total_Rent
+, M.Remarks Remarks
+, M.EnteredDate Last_Rent_Date
+, dateadd(year,1,M.EnteredDate) Due_Date
+, NULL Due_notice_Date
+, '0' Due_Rent
+, 'N' Delete_Flag
+, stuff((select '/' + Remarks from LockerAuth a where a.BranchCode = M.BranchCode and a.LockerCode = M.LockerCode
+  for xml path('')),1,1,'' ) Free_Text1
+, NULL Free_Text2
+, 'T' Payment_Mode
+, dateadd(year,1,M.EnteredDate) Payment_Date
+, NULL Rent_Paid
+, NULL Preferable_Language_Code
+, NULL Customer_Name_in_Pref_Lang_Code
+, case when A.LockerCode is not null then 'ANY1S' else 'SNGLE' end Mode_of_oper_code 
+from LockerMaster M 
+left join Master cif  on cif.MainCode = M.Nominee and cif.BranchCode = M.BranchCode
+left join (select top 1 LockerCode , BranchCode from LockerAuth) A 
+on A.LockerCode = M.LockerCode and A.BranchCode = M.BranchCode 
+where M.BranchCode<>'0'
+and M.LockerCode<>''
+and Nominee = '9710100'

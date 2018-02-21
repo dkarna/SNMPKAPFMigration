@@ -71,7 +71,7 @@ SELECT
 ,'' AS deposit_period_mths
 ,'' AS deposit_period_days
 ,'' AS int_tbl_code				-- will be provided after BPD
-,'' AS mode_of_oper_code		-- available in RRCDM so need to be provided
+,'' AS mode_of_oper_code		-- available in RRCDM so need to be provided (bank will provide)
 ,'' AS acct_locn_code
 ,'N' AS auto_renewal_flg
 ,'' AS perd_mths_for_auto_renew

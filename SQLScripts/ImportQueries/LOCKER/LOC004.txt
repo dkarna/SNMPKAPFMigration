@@ -1,0 +1,10 @@
+select NULL SOL_ID
+,NULL Locker_Type
+,NULL Branch_Classification
+,NULL Remarks
+,NULL Start_Date
+,NULL End_Date
+,NULL Del_Flag
+,NULL Rent_Event_id
+from LockerSizes
+

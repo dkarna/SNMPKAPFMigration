@@ -1,0 +1,38 @@
+select
+  m.ClientCode Cif_Id
+, lm.BranchCode Sol_Id
+, lm.SizeCode Locker_Type
+, LockerCode Locker_No
+, m.Beneficiary Nominee_Name
+, NULL Nominee_Customer_Id
+, NULL Registration_No
+, NULL Relation			--need mapping
+, NULL Address_Line_1	--need mapping
+, NULL Address_Line_2
+, NULL Address_Line_3
+, NULL City_Code
+, NULL State_Code
+, NULL Country_Code
+, NULL Pin_Code
+, NULL Date_of_Birth
+, NULL Minor_Flag
+, NULL Code_Word
+, NULL Remarks
+, NULL Delete_Flag
+, NULL Free_Text_1
+, NULL Free_Text_2
+, NULL Preferable_Language_Code
+, NULL Alternate_Nominee_Name
+, NULL Guardian_Name
+, NULL Guardian_Code
+, NULL Guardian_address_line_1
+, NULL Guardian_address_line_2
+, NULL Guardian_city_code
+, NULL Guardian_state_code
+, NULL Guardian_country_code
+, NULL Guardian_pin_code
+from LockerMaster lm
+left join (select M.ClientCode , c.Beneficiary , M.MainCode , M.BranchCode from ClientTable c , Master M where c.ClientCode = M.ClientCode) m
+on lm.BranchCode = m.BranchCode and lm.Nominee = m.MainCode
+where lm.BranchCode<>'0'
+and lm.LockerCode<>''

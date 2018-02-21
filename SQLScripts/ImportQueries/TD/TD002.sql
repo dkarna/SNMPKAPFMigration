@@ -1,29 +1,6 @@
--- SQL for TD002
-
-IF OBJECT_ID('tempdb.dbo.#tempdealtable', 'U') IS NOT NULL
-  DROP TABLE #tempdealtable;									-- Drop temporary tempdealtable table if it exists
-
--- Creation of temporary DealTable as #tempdealtable
-SELECT * INTO #tempdealtable FROM DealTable 
-WHERE MaturityDate > GETDATE() 
-AND (AcType >= '13' AND AcType <= '21') 
-ORDER BY MainCode,ReferenceNo;
-
-IF OBJECT_ID('tempdb.dbo.#tempdealmaster', 'U') IS NOT NULL
-  DROP TABLE #tempdealmaster;    -- Drop temporary tempdealmaster table if it exists
-  
--- creation of temporary Master AS #tempdealmaster
-SELECT * INTO #tempdealmaster FROM Master 
-WHERE MainCode IN
-(
-	SELECT DISTINCT MainCode FROM #tempdealtable
-) 
-ORDER BY MainCode;
-
 IF OBJECT_ID('tempdb.dbo.#tempinttrandetail', 'U') IS NOT NULL
   DROP TABLE #tempinttrandetail;    -- Drop temporary tempinttrandetail table if it exists
-  
--- creation of temporary IntTranDetail AS #tempinttrandetail
+
 SELECT tdt.* INTO #tempinttrandetail FROM IntTranDetail tdt 
 JOIN
 (
@@ -36,16 +13,14 @@ AND tdt.ReferenceNo = tempinttrandetail.ReferenceNo
 AND tdt.CalcDate = tempinttrandetail.CalcDate 
 ORDER by tdt.MainCode,tdt.ReferenceNo
 
--- Main Query
-
 SELECT
 '' AS emp_id
-,'' AS cust_cr_pref_pcnt
-,'' AS cust_dr_pref_pcnt
-,'0' AS id_cr_pref_pcnt
-,'0' AS id_dr_pref_pcnt
-,'0' AS chnl_cr_pref_pcnt
-,'0' AS chnl_dr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_cr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_dr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_cr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_dr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS chnl_cr_pref_pcnt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS chnl_dr_pref_pcnt
 ,'Y' AS pegged_flg
 ,'' AS peg_frequency_in_months
 ,'' AS peg_frequency_in_days
@@ -55,19 +30,19 @@ SELECT
 ,'P' AS wtax_amount_scope_flg
 ,'W' AS wtax_flg
 ,'N' AS safe_custody_flg
-,'' AS cash_excp_amt_lim
-,'' AS clg_excp_amt_lim
-,'' AS xfer_excp_amt_lim
-,'' AS cash_cr_excp_amt_lim
-,'' AS clg_cr_excp_amt_lim
-,'' AS xfer_cr_excp_amt_lim
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS cash_excp_amt_lim
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS clg_excp_amt_lim
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS xfer_excp_amt_lim
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS cash_cr_excp_amt_lim
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS clg_cr_excp_amt_lim
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS xfer_cr_excp_amt_lim
 ,'' AS foracid					-- will be provided after BPD
-,t2.CyCode AS acct_crncy_code   -- ct.CyDesc to be used to replace CyCode
-,t2.BranchCode AS sol_id
-,'' AS gl_sub_head_code			-- will be provided after BPD
-,'' AS schm_code				-- will be provided after BPD
-,t1.ClientCode AS cif_id					
-,t2.DealAmt AS deposit_amount
+,ctd.CyDesc AS acct_crncy_code   
+,dt.BranchCode AS sol_id
+,ftdt.FinacleSubGL AS gl_sub_head_code			-- updated from lookup FinacleTDTable
+,ftdt.FinacleSchCode AS schm_code				-- updated from lookup FinacleTDTable
+,m.ClientCode AS cif_id					
+,RIGHT(SPACE(17)+CAST(dt.DealAmt AS VARCHAR(17)),17) AS deposit_amount
 ,'' AS deposit_period_mths
 ,'' AS deposit_period_days
 ,'' AS int_tbl_code				-- will be provided after BPD
@@ -76,37 +51,37 @@ SELECT
 ,'N' AS auto_renewal_flg
 ,'' AS perd_mths_for_auto_renew
 ,'' AS perd_days_for_auto_renew
-,t2.DealOpenDate AS acct_opn_date
-,t2.DealOpenDate AS open_effective_date
+,CONVERT(VARCHAR(10),dt.DealOpenDate,105) AS acct_opn_date  -- CONVERT(VARCHAR(10),lm.IssueDate,105)
+,CONVERT(VARCHAR(10),dt.DealOpenDate,105) AS open_effective_date
 ,'N' AS nominee_print_flg
 ,'Y' AS printing_flg
 ,'' AS ledg_num
-,t3.CalcDate AS interest_calc_upto_date_cr
-,t3.CalcDate AS last_interest_run_date_cr
-,t2.IntCalcFrom AS last_int_provision_date
-,t2.DealOpenDate AS printed_date
-,t2.IntPaid AS cumulative_int_paid
-,t2.IntPaid AS cumulative_int_credited
-,t2.DealAmt AS cumulative_instl_paid
-,t2.DealAmt AS maturity_amount
-,t2.NomAcInterest AS int_cr_acid
-,t1.CyCode AS op_acct_crncy_code
-,LEFT(t2.NomAcInterest,3) AS op_acct_sol_id
+,CONVERT(VARCHAR(10),titd.CalcDate,105) AS interest_calc_upto_date_cr
+,CONVERT(VARCHAR(10),titd.CalcDate,105) AS last_interest_run_date_cr
+,CONVERT(VARCHAR(10),dt.IntCalcFrom,105) AS last_int_provision_date
+,CONVERT(VARCHAR(10),dt.DealOpenDate,105) AS printed_date
+,RIGHT(SPACE(17)+CAST(dt.IntPaid AS VARCHAR(17)),17) AS cumulative_int_paid
+,RIGHT(SPACE(17)+CAST(dt.IntPaid AS VARCHAR(17)),17) AS cumulative_int_credited
+,RIGHT(SPACE(17)+CAST(dt.DealAmt AS VARCHAR(17)),17) AS cumulative_instl_paid
+,RIGHT(SPACE(17)+CAST(dt.DealAmt AS VARCHAR(17)),17) AS maturity_amount
+,dt.NomAcInterest AS int_cr_acid
+,ctd.CyDesc AS op_acct_crncy_code
+,LEFT(dt.NomAcInterest,3) AS op_acct_sol_id
 ,'' AS notice_period_mnths
 ,'' AS notice_period_days
 ,'' AS notice_date
 ,'' AS Stamp_Duty_Borne_By_Cust
-,'' AS Stamp_Duty_Amount
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS Stamp_Duty_Amount
 ,'' AS stamp_duty_amount_crncy_code
-,'' AS original_deposit_amount
-,t2.IntRate AS abs_rate_of_int
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS original_deposit_amount
+,dt.IntRate AS abs_rate_of_int
 ,'' AS xclude_for_comb_stmt
 ,'' AS stmt_cust_id
-,t2.MaturityDate AS maturity_date
+,CONVERT(VARCHAR(10),dt.MaturityDate,105) AS maturity_date
 ,'' AS treasury_rate_pcnt
 ,'' AS renewal_option
-,'' AS renewal_amount
-,'' AS renewal_addnl_amt
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS renewal_amount
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS renewal_addnl_amt
 ,'' AS renewal_addnl_amt_crncy
 ,'' AS renewal_crncy
 ,'' AS renewal_master_acct_id
@@ -116,11 +91,11 @@ SELECT
 ,'' AS renewal_rate_code
 ,'' AS additional_rate
 ,'' AS renewal_rate
-,t2.NomAcInterest AS link_oper_account
-,'' AS outflow_multiple_amt
+,dt.NomAcInterest AS link_oper_account
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS outflow_multiple_amt
 ,'A' AS wtax_level_flg    -- need to confirm from CAS
-,t2.TaxPercentOnDeal AS wtax_pcnt
-,'' AS wtax_floor_limit
+,RIGHT(SPACE(8)+CAST(dt.TaxPercentOnDeal AS VARCHAR(8)),8) AS wtax_pcnt
+,dt.TaxPercentOnDeal AS wtax_floor_limit
 ,'' AS iban_number
 ,'' AS ias_code
 ,'' AS channel_id
@@ -131,8 +106,8 @@ SELECT
 ,'' AS dummy
 ,'' AS ps_diff_freq_rel_party_flg
 ,'' AS swift_diff_freq_rel_party_flg
-,'' AS fixed_installment_amt
-,'' AS nrml_installment_pcnt
+,RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS fixed_installment_amt
+,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS nrml_installment_pcnt
 ,'' AS installment_basis
 ,'' AS max_miss_contrib_allow
 ,'' AS auto_closure_of_irregular_acct
@@ -181,7 +156,12 @@ SELECT
 ,'' AS continuation_ind 
 ,'' AS unclaim_status 
 ,'' AS unclaim_status_date 
-,'' AS orig_gl_sub_head_code 
-FROM #tempdealmaster t1 JOIN #tempdealtable t2 ON t1.MainCode = t2.MainCode
-JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.ReferenceNo
--- JOIN CurrencyTable ct ON t1.CyCode = ct.CyCode
+,'' AS orig_gl_sub_head_code
+from DealTable dt 
+join Master m on dt.MainCode = m.MainCode and dt.BranchCode=m.BranchCode
+join FinacleTDTable ftdt on m.AcType = ftdt.PumoriAcType and m.CyCode=ftdt.PumoriCyCode and m.IntPostFrqCr=ftdt.PumoriIntPostFrqCr
+join #tempinttrandetail titd on dt.MainCode=titd.MainCode and dt.ReferenceNo = titd.ReferenceNo
+join CurrencyTable ctd on m.CyCode = ctd.CyCode,
+ControlTable ct
+where (dt.AcType >= '13' AND dt.AcType <= '21') --and dt.CyCode in ('01','21')
+and dt.MaturityDate > ct.Today

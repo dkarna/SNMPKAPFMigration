@@ -62,7 +62,7 @@ SELECT
 ,'' AS clg_cr_excp_amt_lim
 ,'' AS xfer_cr_excp_amt_lim
 ,'' AS foracid					-- will be provided after BPD
-,t2.CyCode AS acct_crncy_code   
+,t2.CyCode AS acct_crncy_code   -- ct.CyDesc to be used to replace CyCode
 ,t2.BranchCode AS sol_id
 ,'' AS gl_sub_head_code			-- will be provided after BPD
 ,'' AS schm_code				-- will be provided after BPD
@@ -184,3 +184,4 @@ SELECT
 ,'' AS orig_gl_sub_head_code 
 FROM #tempdealmaster t1 JOIN #tempdealtable t2 ON t1.MainCode = t2.MainCode
 JOIN #tempinttrandetail t3 ON t2.MainCode = t3.MainCode and t2.ReferenceNo = t3.ReferenceNo
+-- JOIN CurrencyTable ct ON t1.CyCode = ct.CyCode

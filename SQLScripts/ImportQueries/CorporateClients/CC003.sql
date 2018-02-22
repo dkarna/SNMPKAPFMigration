@@ -1,11 +1,33 @@
-SELECT
-'CO' + t1.ClientCode AS CORP_KEY
-,'CO' + t1.ClientCode AS CIFID
-,'' AS CORP_REP_KEY
+--select top 1 * from Master
+
+IF OBJECT_ID('tempdb.dbo.#FinalMaster', 'U') IS NOT NULL
+  DROP TABLE #FinalMaster;			-- Drop temporary table if it exists
+SELECT * INTO #FinalMaster FROM
+(
+	SELECT DISTINCT
+	 ClientCode
+	,MainCode
+	,AcOpenDate
+	,ROW_NUMBER() OVER( PARTITION BY ClientCode ORDER BY AcOpenDate, MainCode) AS SerialNumber
+	--INTO #FinalMaster
+	FROM Master WITH (NOLOCK)
+	WHERE IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
+	--ORDER BY ClientCode
+) AS t 
+WHERE t.SerialNumber = 1 ORDER BY 1;
+
+
+SELECT DISTINCT 
+'C0' + t1.ClientCode AS CORP_KEY
+,'C0' + t1.ClientCode AS CIFID
+,'C0' + t1.ClientCode AS CORP_REP_KEY
 ,'' AS GENDER_CODE
-,'' AS DOB
+--,CASE WHEN ct.DateOfBirth IS NULL OR ct.DateOfBirth = '' THEN '01-Jan-1980'
+ -- ELSE  REPLACE(REPLACE(CONVERT(VARCHAR,ct.DateOfBirth,106), ' ','-'), ',','') 
+ -- END AS DOB
+, '01-Jan-1980' AS DOB
 ,'' AS DESIGNATION
-,'' AS ACTIVE_INACTICE_CODE
+,'Y' AS ACTIVE_INACTICE_CODE		--mandatory field
 ,'' AS SMALL_STR1
 ,'' AS SMALL_STR2
 ,'' AS SMALL_STR3
@@ -61,26 +83,26 @@ SELECT
 ,'' AS DECIMAL8
 ,'' AS DECIMAL9
 ,'' AS DECIMAL10
-,'' AS ENTITYKEY
+,'C0' + t1.ClientCode AS ENTITYKEY   --mandatory field(CIF ID of the corporate representative.)
 ,'' AS ISSIGNATORY
-,'' AS CIFADDRENTITY
-,'' AS ADDRESSCATEOGRY
+,'Registered' AS CIFADDRENTITY		--mandatory field 'Registered'
+,'Registered' AS ADDRESSCATEOGRY
 ,'' AS FIRST_NAME_NATIVE
 ,'' AS LAST_NAME_NATIVE
 ,'' AS CORPORATE_NAME_NATIVE
 ,'' AS FIRST_NAME
-,'' AS LAST_NAME
+,'.' AS LAST_NAME			--mandatory field
 ,'' AS EMAIL_ID
-,'' AS ENTITY_TYPE
+,'CUST' AS ENTITY_TYPE
 ,'' AS QUALIFICATION
-,'' AS PREF_COMM_CHANNEL
-,'' AS REPORTS_TO
+,'MIGR' AS PREF_COMM_CHANNEL
+,'MIGR' AS REPORTS_TO
 ,'' AS PREF_LANGUAGE
 ,'' AS PREF_CONTACT_NUMBER
 ,'' AS PREF_CONTACT_TIME
 ,'' AS PREF_NAME
 ,'' AS PREF_ADDRESS_MODE
-,'' AS SALUATION_CODE
+,'M/S.' AS SALUATION_CODE
 ,'' AS STR1
 ,'' AS STR2
 ,'' AS STR3
@@ -121,7 +143,13 @@ SELECT
 ,'' AS MLUSERFIELD8
 ,'' AS MLUSERFIELD9
 ,'' AS MLUSERFIELD10
-,'' AS BANK_ID
+,'01' AS BANK_ID
 ,'' AS LAST_NAME_ALT1
 ,'' AS FIRST_NAME_ALT1
-FROM Master t1
+FROM #FinalMaster t1
+LEFT JOIN ClientTable ct ON t1.ClientCode=ct.ClientCode
+WHERE t1.MainCode in
+(
+	SELECT MainCode FROM AcCustType WHERE CustTypeCode = 'Z' AND CustType NOT IN ('11','12')
+)
+ORDER BY CORP_KEY

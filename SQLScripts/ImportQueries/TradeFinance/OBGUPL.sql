@@ -7,7 +7,7 @@ SELECT
 ,RIGHT(SPACE(17)+CAST(gm.BaseAmount AS VARCHAR(17)),17) AS OBGUPL_004
 ,'' AS OBGUPL_005
 ,DATEPART(DAY,gm.ExpiryDate) AS OBGUPL_006  
-,gm.ExpiryDate AS OBGUPL_007
+,CONVERT(VARCHAR(10),gm.ExpiryDate,105) AS OBGUPL_007
 ,'' AS OBGUPL_008
 ,'' AS OBGUPL_009
 ,CONVERT(VARCHAR(10),gm.ExpiryDate,105) AS OBGUPL_010
@@ -180,7 +180,7 @@ SELECT
 ,'' AS OBGUPL_167
 ,'' AS OBGUPL_168
 FROM GtMaster gm
-LEFT JOIN Master m ON gm.MainCode = m.MainCode AND gm.BranchCode = m.BranchCode
-LEFT JOIN ClientTable ct ON m.ClientCode = ct.ClientCode
-LEFT JOIN TransDetail td ON gm.MainCode = td.MainCode AND gm.BranchCode = td.BranchCode
-LEFT JOIN CurrencyTable ctbl ON gm.CyCodeGt = ctbl.CyCode
+JOIN Master m ON gm.MainCode = m.MainCode AND gm.BranchCode = m.BranchCode
+JOIN ClientTable ct ON m.ClientCode = ct.ClientCode
+JOIN TransDetail td ON gm.MainCode = td.MainCode AND gm.BranchCode = td.BranchCode
+JOIN CurrencyTable ctbl ON gm.CyCodeGt = ctbl.CyCode

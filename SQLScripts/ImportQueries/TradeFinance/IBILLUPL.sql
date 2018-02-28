@@ -1,4 +1,5 @@
 -- TOTAL Record = 4538
+-- SQL Code for IBILLUPL
 select 
   'G' Func_Code
 , NULL Bill_Param_Type

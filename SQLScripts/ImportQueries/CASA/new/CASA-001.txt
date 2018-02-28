@@ -1,10 +1,27 @@
-select top 5
-m.MainCode foracid													,											
-case 
-when TaxPercentOnInt = 0 or TaxPercentOnInt is null or TaxPostFrq=9 
-or IntPostFrqCr=9 or AcType in ('01','02','03','04','28','0X') then 'N'
-else 'W' end wtax_flg                    ,
-'P' wtax_amount_scope_flg                                      ,
+select m.MainCode as foracid
+--,count(*) as duplicacy
+,case when m.AcType in ('01','03','04','05','06') then 'N'
+     when m.AcType < '48' and m.TaxPercentOnInt='0' and m.IntPostFrqCr <> '9' and m.TaxPostFrq <> '9' then 'N'
+	 when m.AcType < '48' and m.TaxPercentOnInt<> '0' and (m.IntPostFrqCr <> '9' or m.TaxPostFrq <> '9') and m.IntCrRate='0' then 'N'
+     else 'W'
+end as wtax_flg
+into #tempwtx_flg
+from Master m
+where left(m.ClientCode,1)<>'_'
+and AcType in ('05','07','08','09','0A','0B','0C','0D','0E','0F','0G','0H','0I','0J','0K','0L','0M','0N','0O','0P','0Q','0R','0S','0T','0U','0V','0W','0Y','0Z','10','11','12');
+
+-- main query
+
+select
+m.MainCode as foracid													,											
+--case 
+--when TaxPercentOnInt = 0 or TaxPercentOnInt is null or TaxPostFrq=9 
+--or IntPostFrqCr=9 or AcType in ('01','02','03','04','28','0X') then 'N'
+--else 'W' end 
+wtemp.wtax_flg as  wtax_flg                    ,
+case when wtemp.wtax_flg='N' then NULL 
+else 'P' 
+END as wtax_amount_scope_flg                                      ,
 case when TaxPostFrq=9 or IntPostFrqCr=9 or 
 AcType in ('01','02','03','04','28','0X') then 	RIGHT(SPACE(8)+CAST('0' AS VARCHAR(8)),8)
 else RIGHT(SPACE(8)+CAST(TaxPercentOnInt AS VARCHAR(8)),8) end wtax_pcnt                     ,
@@ -23,35 +40,35 @@ RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_dr_pref_pcnt                 
 RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS chnl_cr_pref_pcnt                                          ,
 RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS chnl_dr_pref_pcnt                                          ,
 'N' Pegged_flg                                                 ,
-0 peg_frequency_in_months                                    ,
-0 peg_frequency_in_days                                      ,
+' ' peg_frequency_in_months                                    ,
+' ' peg_frequency_in_days                                      ,
 case when IntPostFrqCr = 4 then 'M'
 when IntPostFrqCr in (5,6) then 'Q'
 when IntPostFrqCr = 7 then 'Y' end int_freq_type_cr          ,  --no mapping for 8 and 9
 ' ' int_freq_week_num_cr                                       ,
-0 int_freq_week_day_cr                                       ,
-0 int_freq_start_dd_cr                                       ,
+' ' int_freq_week_day_cr                                       ,
+' ' int_freq_start_dd_cr                                       ,
 'S' int_freq_hldy_stat_cr                                      ,	
-convert(varchar(10),ct.Today,105) next_int_run_date_cr               ,			--BOD DATE
-'' int_freq_type_dr                                           ,
-'' int_freq_week_num_dr                                       ,
-'' int_freq_week_day_dr                                       ,
-0 int_freq_start_dd_dr                                       ,
-'' int_freq_hldy_stat_dr                                      ,
-'' next_int_run_date_dr                                       ,
-'' ledg_num                                                   ,
+' ' next_int_run_date_cr               ,			--BOD DATE
+' ' int_freq_type_dr                                           ,
+' ' int_freq_week_num_dr                                       ,
+' ' int_freq_week_day_dr                                       ,
+' ' int_freq_start_dd_dr                                       ,
+' ' int_freq_hldy_stat_dr                                      ,
+' ' next_int_run_date_dr                                       ,
+' ' ledg_num                                                   ,
 fe.EmpId emp_id                                                     ,
 CONVERT(VARCHAR,AcOpenDate,105)  acct_opn_date                                 ,
-'' Mode_of_oper_code                                          ,
+' ' Mode_of_oper_code                                          ,
 fs.FinacleSubGL Gl_sub_head_code                                           ,
 fs.FinacleSchCode Schm_code                                                  ,
 case when AcType in ('02','03','04','05','07','0X','0Z','28') then 'N' else 'Y' end Chq_alwd_flg                                               ,	--need to check condition
 'S' Pb_ps_code                                                 ,
-case when IsBlocked in ('B' ,'T','L','D') then 'T'											
+case when IsBlocked in ('B' ,'T','L','D') then 'T' 																																																																																																																																																																																																																																																																																																																																																																												
 when IsBlocked ='-' then 'C' 
 when IsBlocked ='+' then 'D' 
 else ' ' end Frez_code                                        ,		
-case when IsBlocked in ('B' ,'T', 'L','D','-','+') then 'OTH' else '' end Frez_reason_code    ,		-- after bpd for now only this query
+case when IsBlocked in ('B' ,'T', 'L','D','-','+') then 'OTH' else ' ' end Frez_reason_code    ,		-- after bpd for now only this query
 m.MainCode free_text                                                  ,
 case when IsDormant = 'T' then 'D' else 'A' end  acct_Status                                                ,
 ' ' free_code_1                                                ,
@@ -67,7 +84,7 @@ case when IsDormant = 'T' then 'D' else 'A' end  acct_Status                    
 ' ' int_tbl_code                                               ,
 ' ' acct_loc_code                                              ,
 c.CyDesc acct_crncy_code              , 	
-m.BranchCode sol_id                                                     ,
+BranchCode sol_id                                                     ,
 'UBSADMIN' acct_mgr_user_id                                           ,
 m.Name acct_name                                                  ,
 'N' swift_allowed_flg                                          ,
@@ -140,11 +157,12 @@ RIGHT(SPACE(17)+CAST('0' AS VARCHAR(17)),17) AS Profit_to_be_recovered          
 ' ' Accrued_amt_till_interest_calc_date_cr                     ,           
 ' ' Unclaim_status                
 from Master m 
+left join #tempwtx_flg wtemp on wtemp.foracid =m.MainCode
 left join CurrencyTable c on m.CyCode = c.CyCode
 left join FinacleEmployeeTable fe on fe.ClientCode = m.ClientCode and fe.MainCode = m.MainCode
-left join FinacleSchemeTable fs on fs.PumoriAcType = m.AcType and fs.PumoriCyCode = m.CyCode,ControlTable ct
+left join FinacleSchemeTable fs on fs.PumoriAcType = m.AcType and fs.PumoriCyCode = m.CyCode
 where left(m.ClientCode,1)<>'_'
 and AcType in ('05','07','08','09','0A','0B','0C','0D','0E','0F','0G','0H','0I','0J','0K','0L','0M','0N','0O','0P','0Q','0R','0S','0T','0U','0V','0W','0Y','0Z','10','11','12')
 
 
-
+-- 314586

@@ -90,4 +90,3 @@ and S.ShowFreq<>'9'
 and M.IsBlocked not in ('C','o')
 and D.IsBlocked not in ('C','o')
 and S.BranchCode  = D.BranchCode 
-

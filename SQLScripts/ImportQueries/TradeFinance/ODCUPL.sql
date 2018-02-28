@@ -22,7 +22,7 @@ SELECT
 ,'' AS ODCUPL_019  -- Need to be confirmed as default value is given
 ,'' AS ODCUPL_020  -- Need to be confirmed as default value is given
 ,'MID' AS ODCUPL_021
-,lm.CyRate AS ODCUPL_022
+,RIGHT(SPACE(17)+CAST(lm.CyRate AS VARCHAR(17)),17) AS ODCUPL_022
 ,'' AS ODCUPL_023
 ,'' AS ODCUPL_024
 ,'' AS ODCUPL_025
@@ -259,7 +259,7 @@ SELECT
 ,'' AS ODCUPL_245
 ,'' AS ODCUPL_246
 FROM LcMaster lm
-LEFT JOIN Master m ON lm.MainCode = m.MainCode AND lm.BranchCode = m.BranchCode
-LEFT JOIN ClientTable ct ON m.ClientCode = ct.ClientCode
+JOIN Master m ON lm.MainCode = m.MainCode AND lm.BranchCode = m.BranchCode
+JOIN ClientTable ct ON m.ClientCode = ct.ClientCode
 LEFT JOIN LcMaster1 lm1 ON lm.ReferenceNo = lm1.ReferenceNo AND lm.BranchCode = lm1.BranchCode 
-LEFT JOIN CurrencyTable ctable ON lm.CyCodeLc = ctable.CyCode
+JOIN CurrencyTable ctable ON lm.CyCodeLc = ctable.CyCode

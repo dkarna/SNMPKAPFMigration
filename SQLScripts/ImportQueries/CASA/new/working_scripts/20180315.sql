@@ -10,7 +10,9 @@ when ci.CheqStatus = 'V' then 'U'
 end chq_lvs_stat  
 ,ROW_NUMBER() over(partition by ci.MainCode,ci.BranchCode order by ci.MainCode,ci.BranchCode) as rownum
 into #newchequeinven
- from ChequeInven ci where len(ci.ChequeNo)=10 and len(ci.MainCode) >= 8 
+ from ChequeInven ci 
+ join Master M on M.MainCode=ci.MainCode and M.BranchCode=ci.BranchCode
+ where len(ci.ChequeNo)=10 and len(ci.MainCode) >= 8 
  order by ci.MainCode,ci.BranchCode  -- step 1 to generate a temp table with proper cheque status and rownum
 
 -- select * from #newchequeinven --order by MainCode,BranchCode

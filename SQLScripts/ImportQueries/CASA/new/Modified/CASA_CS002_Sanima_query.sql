@@ -116,8 +116,6 @@ WHERE t.SerialNumber = 1 ORDER BY 1;
 
 IF OBJECT_ID('tempdb.dbo.#ClientName', 'U') IS NOT NULL
   DROP TABLE #ClientName;
-IF OBJECT_ID('tempdb.dbo.#ClientName', 'U') IS NOT NULL
-  DROP TABLE #ClientName;
   
 SELECT ClientCode, CASE WHEN CHARINDEX('/',Name)  > 0 THEN SUBSTRING(Name,0,CHARINDEX('/',Name)) 
 ELSE Name

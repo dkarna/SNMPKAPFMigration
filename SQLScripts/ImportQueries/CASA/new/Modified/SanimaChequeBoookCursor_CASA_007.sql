@@ -6,7 +6,8 @@ SELECT	 MainCode
 		,CheqStatus
 		,ROW_NUMBER() OVER (PARTITION BY MainCode, BranchCode ORDER BY MainCode, BranchCode ) RowNum
 INTO #NewChequeNum
-FROM ChequeInven
+FROM ChequeInven ci
+join Master M on M.MainCode=ci.MainCode and M.BranchCode=ci.BranchCode
 WHERE LEN(ChequeNo) = 10
 AND LEN(MainCode) >= 8
 

@@ -1,18 +1,12 @@
 -- Query for RC003
-DECLARE @multiplecur AS TABLE
-(
-	custcurr VARCHAR(3)
-)
-
-INSERT INTO @multiplecur VALUES('EUR'),('GBP'),('USD'),('INR')  -- prepare 7 currency temp table
 
 SELECT DISTINCT
-'R0' + t1.ClientCode AS ORGKEY
-,'R0' + t1.ClientCode AS CIFID
+'RO' + t1.ClientCode AS ORGKEY
+,'RO' + t1.ClientCode AS CIFID
 ,'' AS STRTEXT2
 ,'' AS STRTEXT1
 ,'CURRENCY' AS TYPE
-,mcur.custcurr AS CUSTOMERCURRENCY
+,'NPR' AS CUSTOMERCURRENCY
 ,'' AS CREDITDISCOUNTPERCENT
 ,'' AS DEBITDISCOUNTPERCENT
 ,'NA' AS WITHHOLDTAXPCNT
@@ -130,11 +124,8 @@ SELECT DISTINCT
 ,'NA' AS STRTEXT28
 ,'SNMANPKA' AS BANK_ID   -- Added by Deepak
 FROM Master t1 JOIN ClientTable t2 ON t1.ClientCode = t2.ClientCode
-,@multiplecur mcur
---JOIN CurrencyTable ct ON ct.CyCode=t1.CyCode
 WHERE t1.IsBlocked NOT IN ('C','o')  -- Filters the closed or invalid or unapproved accounts
 AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = t1.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 )
-order by ORGKEY

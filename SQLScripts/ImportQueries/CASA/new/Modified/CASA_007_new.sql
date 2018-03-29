@@ -1,31 +1,21 @@
 -- Query for CS007
 
-SELECT 
+SELECT * FROM
+(
+SELECT --DISTINCT
  'CBS' AS indicator
 ,M.MainCode			AS foracid
 ,Cur.CyDesc			AS acct_crncy_code
-,Chq.MinChequeNo	AS begin_chq_num    -- actual value will come from recently made checkstatus table
+,cbs.BeginCheqNo	AS begin_chq_num    -- actual value will come from recently made checkstatus table
 ,'100'		AS chq_num_of_lvs
-,case when CheqStatus = 'I' then 'P'   -- actual value will come from recently made checkstatus table
-when CheqStatus = 'Z' then 'I'
-when CheqStatus = 'S' then 'S'
-when CheqStatus = 'D' then 'D'
-when CheqStatus = 'R' then 'D'
-when CheqStatus = 'C' then 'D'
-when CheqStatus = 'V' then 'U'
-end chq_lvs_stat 
+,cbs.CheqStat AS chq_lvs_stat 
 ,'' AS begin_chq_alpha
-,'' AS dummy
+,cbs.BundleNo AS dummy
 FROM Master M
+JOIN ChequeInven ci on ci.MainCode=M.MainCode and ci.BranchCode=M.BranchCode
+JOIN CheqBundleStat cbs on ci.MainCode=cbs.MainCode and ci.BranchCode=cbs.BranchCode
 LEFT JOIN CurrencyTable Cur ON M.CyCode = Cur.CyCode
 LEFT JOIN ClientTable C ON M.ClientCode = C.ClientCode and M.BranchCode = M.BranchCode
-LEFT JOIN AcCustType ACT ON ACT.MainCode = M.MainCode AND ACT.BranchCode = M.BranchCode
-LEFT JOIN
-(
-	SELECT MainCode, BranchCode, MIN(ChequeNo) MinChequeNo, COUNT(ChequeNo) NoOfCheque,CheqStatus
-	FROM ChequeInven
-	GROUP BY MainCode, BranchCode,CheqStatus
-) Chq ON Chq.MainCode = M.MainCode AND Chq.BranchCode = M.BranchCode
 WHERE LEFT(C.ClientCode , 1) <>'_'
 AND IsBlocked NOT IN ('C','o')
 AND C.ClientStatus <> 'Z'
@@ -40,32 +30,20 @@ AND EXISTS
 UNION
 
 
-SELECT 
+SELECT --DISTINCT
  'CBS' AS indicator
 ,M.MainCode			AS foracid
 ,Cur.CyDesc			AS acct_crncy_code
-,Chq.MinChequeNo	AS begin_chq_num   -- actual value will come from recently made checkstatus table
-,Chq.NoOfCheque		AS chq_num_of_lvs   
-,case when CheqStatus = 'I' then 'P'    -- actual value will come from recently made checkstatus table
-when CheqStatus = 'Z' then 'I'
-when CheqStatus = 'S' then 'S'
-when CheqStatus = 'D' then 'D'
-when CheqStatus = 'R' then 'D'
-when CheqStatus = 'C' then 'D'
-when CheqStatus = 'V' then 'U'
-end chq_lvs_stat 
+,cbs.BeginCheqNo	AS begin_chq_num    -- actual value will come from recently made checkstatus table
+,'100'		AS chq_num_of_lvs
+,cbs.CheqStat AS chq_lvs_stat 
 ,'' AS begin_chq_alpha
-,'' AS dummy
+,cbs.BundleNo AS dummy
 FROM Master M
+JOIN ChequeInven ci on ci.MainCode=M.MainCode and ci.BranchCode=M.BranchCode
+JOIN CheqBundleStat cbs on ci.MainCode=cbs.MainCode and ci.BranchCode=cbs.BranchCode
 LEFT JOIN CurrencyTable Cur ON M.CyCode = Cur.CyCode
 LEFT JOIN ClientTable C ON M.ClientCode = C.ClientCode and M.BranchCode = M.BranchCode
-LEFT JOIN AcCustType ACT ON ACT.MainCode = M.MainCode AND ACT.BranchCode = M.BranchCode
-LEFT JOIN
-(
-	SELECT MainCode, BranchCode, MIN(ChequeNo) MinChequeNo, COUNT(ChequeNo) NoOfCheque,CheqStatus
-	FROM ChequeInven
-	GROUP BY MainCode, BranchCode,CheqStatus
-) Chq ON Chq.MainCode = M.MainCode AND Chq.BranchCode = M.BranchCode
 WHERE LEFT(C.ClientCode , 1) <>'_'
 AND IsBlocked NOT IN ('C','o')
 AND C.ClientStatus <> 'Z'
@@ -76,3 +54,5 @@ AND EXISTS
 (
 	SELECT 1 FROM AcCustType WHERE MainCode = M.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
 ) 
+) as t 
+order by t.foracid,t.dummy,t.acct_crncy_code

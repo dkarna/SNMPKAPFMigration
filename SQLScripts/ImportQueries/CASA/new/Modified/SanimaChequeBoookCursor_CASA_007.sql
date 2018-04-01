@@ -3,18 +3,25 @@
 SELECT	 MainCode
 		,BranchCode
 		,ChequeNo
-		,CheqStatus
-		,ROW_NUMBER() OVER (PARTITION BY MainCode, BranchCode ORDER BY MainCode, BranchCode ) RowNum
+		,case when ci.CheqStatus = 'I' then 'P'
+		when ci.CheqStatus = 'Z' then 'I'
+		when ci.CheqStatus = 'S' then 'S'
+		when ci.CheqStatus = 'D' then 'D'
+		when ci.CheqStatus = 'R' then 'D'
+		when ci.CheqStatus = 'C' then 'D'
+		when ci.CheqStatus = 'V' then 'U'
+		end  as CheqStatus
+		,ROW_NUMBER() OVER (PARTITION BY ci.MainCode, ci.BranchCode ORDER BY ci.MainCode, ci.BranchCode, ci.ChequeNo ) RowNum
 INTO #NewChequeNum
 FROM ChequeInven ci
 join Master M on M.MainCode=ci.MainCode and M.BranchCode=ci.BranchCode
 WHERE LEN(ChequeNo) = 10
 AND LEN(MainCode) >= 8
 
-SELECT MainCode, BranchCode, MIN(RowNum) MinRow, MAX(RowNum) MaxRow
-INTO #MinMaxChequeNum
-FROM #NewChequeNum
-GROUP BY MainCode, BranchCode
+-- SELECT MainCode, BranchCode, MIN(RowNum) MinRow, MAX(RowNum) MaxRow
+-- INTO #MinMaxChequeNum
+-- FROM #NewChequeNum
+-- GROUP BY MainCode, BranchCode
 
 --SELECT * FROM #MinMaxChequeNum WHERE MaxRow  > 200
 --drop table #ChequePartition

@@ -1,10 +1,9 @@
-select NULL SOL_ID
-,NULL Locker_Type
-,NULL Branch_Classification
-,NULL Remarks
-,NULL Start_Date
-,NULL End_Date
-,NULL Del_Flag
-,NULL Rent_Event_id
-from LockerSizes
-
+select 'ALL' SOL_ID   -- Need to be confirmed
+,ls.SizeCode as Locker_Type
+,NULL Branch_Classification   -- Need to confirm as it is mandatory
+,ls.LockerSize as Remarks
+,convert(varchar(10),'01-01-1900',105) as Start_Date
+,convert(varchar(10),'01-01-2117',105) as End_Date
+,'N' Del_Flag
+,'Charge_Event_Id' as Rent_Event_id   -- Need to be confirmed
+from LockerSizes ls

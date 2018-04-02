@@ -1,9 +1,9 @@
 select 
-BranchCode SOL_ID
-, SizeCode Locker_Type
-, LockerCode Locker_No
-, KeyNo Key_No
-, case when LockerStatus = 'O' then 'Y' else 'N' end Occupied_Flag
+M.BranchCode SOL_ID
+, M.SizeCode Locker_Type
+, M.LockerCode Locker_No
+, M.KeyNo Key_No
+, case when M.LockerStatus = 'O' then 'Y' else 'N' end Occupied_Flag
 , 'Y' Freeze_Code
 , 'LOCKR' Freeze_Reason
 , '' Purpose_Used
@@ -11,6 +11,41 @@ BranchCode SOL_ID
 , 'N' Del_Flag
 , '' Pref_Lang_Code
 , '' Pref_Lang_Freeze_Reason
-from LockerMaster
-where LockerCode<>''
-and BranchCode<>'0'
+from LockerMaster M
+join Master cif  on cif.MainCode = M.Nominee and cif.BranchCode = M.BranchCode
+where M.LockerCode <> ''
+and M.BranchCode <> '0'
+and LEFT(cif.ClientCode , 1) <>'_'
+and cif.IsBlocked NOT IN ('C','o')
+and len(cif.MainCode) >= 8
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = cif.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
+)
+
+UNION
+
+select 
+M.BranchCode SOL_ID
+, M.SizeCode Locker_Type
+, M.LockerCode Locker_No
+, M.KeyNo Key_No
+, case when M.LockerStatus = 'O' then 'Y' else 'N' end Occupied_Flag
+, 'Y' Freeze_Code
+, 'LOCKR' Freeze_Reason
+, '' Purpose_Used
+, '' Remarks
+, 'N' Del_Flag
+, '' Pref_Lang_Code
+, '' Pref_Lang_Freeze_Reason
+from LockerMaster M
+join Master cif  on cif.MainCode = M.Nominee and cif.BranchCode = M.BranchCode
+where M.LockerCode <> ''
+and M.BranchCode <> '0'
+and LEFT(cif.ClientCode , 1) <>'_'
+and cif.IsBlocked NOT IN ('C','o')
+and len(cif.MainCode) >= 8
+AND EXISTS
+(
+	SELECT 1 FROM AcCustType WHERE MainCode = cif.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
+)

@@ -31,13 +31,15 @@ LEFT JOIN AcCustType an
 LEFT JOIN AcCustType ad
   ON fn.MainCode = ad.MainCode
   AND fn.BranchCode = ad.BranchCode
-  AND ad.CustTypeCode = 'N'
-WHERE fn.CustTypeCode IN ('C','X','F','P','N') ORDER by 1,2
+  AND ad.CustTypeCode = 'R'
+WHERE fn.CustTypeCode IN ('C','X','F','P','R') ORDER by 1,2
+
+
 
 SELECT * FROM
 (
 	SELECT
-	lm.Maincode AS foracid  -- will be obtained from NNTM setup
+	lm.MainCode AS foracid  -- will be obtained from NNTM setup
 	,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_cr_pref_pcnt
 	,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_dr_pref_pcnt
 	,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_cr_pref_pcnt
@@ -95,8 +97,8 @@ SELECT * FROM
 	,RIGHT(SPACE(17)+CAST(m.Balance AS VARCHAR(17)),17) AS liab_as_on_xfer_eff_date
 	,RIGHT(SPACE(17)+CAST(lm.TotDisburse AS VARCHAR(17)),17) AS rephasement_principal
 	,CONVERT(VARCHAR(10),DATEADD(D,-1,@CToday),105) AS interest_calc_upto_date_dr
-	,CONVERT(VARCHAR(10),lm.RepayStartDate,105) AS rep_shdl_date
-	,RIGHT(SPACE(3)+CAST(lm.NoOfPeriods AS VARCHAR(3)),3) AS rep_perd_mths
+	,ISNULL(CONVERT(VARCHAR(10),lm.RepayStartDate,105),CONVERT(VARCHAR(10),tmaster.mindate,105)) AS rep_shdl_date
+	,ISNULL(RIGHT(SPACE(3)+CAST(lm.NoOfPeriods AS VARCHAR(3)),3),0) AS rep_perd_mths
 	,'' AS rep_perd_days
 	,CASE WHEN npdl.ReferenceNo IS NULL THEN 'F'
 	 ELSE 'T'
@@ -423,8 +425,7 @@ SELECT * FROM
 	,'' AS RL001_347
 	,'' AS RL001_348
 	FROM LoanMaster lm
-	LEFT JOIN Master m ON lm.MainCode = m.MainCode and lm.BranchCode = m.BranchCode
-	--LEFT JOIN LoanMaster lm on m.MainCode = lm.MainCode and m.BranchCode = lm.BranchCode
+	JOIN Master m ON lm.MainCode = m.MainCode and lm.BranchCode = m.BranchCode
 	LEFT JOIN DealTable dt on dt.MainCode = m.MainCode and dt.BranchCode = m.BranchCode-- and dt.MaturityDate > @CToday
 	LEFT JOIN DependancyTable dep on dt.MainCode = dep.MainCode and dt.BranchCode = dep.BranchCode
 	LEFT JOIN 
@@ -453,13 +454,10 @@ SELECT * FROM
 		SELECT 1 FROM AcCustType WHERE MainCode = m.MainCode and CustTypeCode = 'Z' and CustType IN ('11','12')
 	) 
 
-	UNION
-	--AND EXISTS (SELECT 1 FROM AcCustType where MainCode = m.MainCode and CustTypeCode = 'Z')
-	--and dt.MaturityDate > Getdate()
-	--ORDER BY m.MainCode,m.BranchCode 
+	UNION 
 
 	SELECT
-	lm.Maincode AS foracid  -- will be obtained from NNTM setup
+	lm.MainCode AS foracid 
 	,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_cr_pref_pcnt
 	,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS cust_dr_pref_pcnt
 	,RIGHT(SPACE(10)+CAST('0' AS VARCHAR(10)),10) AS id_cr_pref_pcnt
@@ -517,8 +515,8 @@ SELECT * FROM
 	,RIGHT(SPACE(17)+CAST(m.Balance AS VARCHAR(17)),17) AS liab_as_on_xfer_eff_date
 	,RIGHT(SPACE(17)+CAST(lm.TotDisburse AS VARCHAR(17)),17) AS rephasement_principal
 	,CONVERT(VARCHAR(10),DATEADD(D,-1,@CToday),105) AS interest_calc_upto_date_dr
-	,CONVERT(VARCHAR(10),lm.RepayStartDate,105) AS rep_shdl_date
-	,RIGHT(SPACE(3)+CAST(lm.NoOfPeriods AS VARCHAR(3)),3) AS rep_perd_mths
+	,ISNULL(CONVERT(VARCHAR(10),lm.RepayStartDate,105),CONVERT(VARCHAR(10),tmaster.mindate,105)) AS rep_shdl_date
+	,ISNULL(RIGHT(SPACE(3)+CAST(lm.NoOfPeriods AS VARCHAR(3)),3),0) AS rep_perd_mths
 	,'' AS rep_perd_days
 	,CASE WHEN npdl.ReferenceNo IS NULL THEN 'F'
 	 ELSE 'T'

@@ -120,3 +120,7 @@ GROUP BY MainCode, BranchCode
 --update #ChequePartition set [Partition]=1 where ChqCount=100
 
 select top 1 * from #NewChequeNum
+
+select distinct MainCode,BranchCode from ChequeInven
+where len(MainCode) >= 8
+and len(ChequeNo) = 10

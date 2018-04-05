@@ -1,7 +1,10 @@
 select top 1 * from FinacleLoanTable
+select top 1 * from #tempFinacleLoanTable
 select distinct FinacleSchemeType from FinacleLoanTable
 
-
+select t.* into #tempFinacleLoanTable from 
+(
+	
 -- LAA
 
 	-- Without AcType 36
@@ -47,3 +50,4 @@ select distinct FinacleSchemeType from FinacleLoanTable
 	and dt.DealAmt > 0
 	--and (m.Balance < 0 and m.Limit > 0)
 	and m.AcType IN('30','31','32','33','37','38','39','3A','3B','3E','3F','3K','3L','3M','3N','3O','3P','3Q','3R','3S','3T','3U','3X','40','42','43','46','4A','4B','4F','4G','4I','4J','4K','4M','4O','4P','4Q','4S','3V','3Y','3Z','47','48','4C','4D','4E')
+) as t

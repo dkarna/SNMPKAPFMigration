@@ -1,4 +1,29 @@
 -- Query for RL001
+
+-- If LAA (except Pumori AcType 36, 40, 42) then Interest Table Code: LNGEN
+
+-- If ODA (except Pumori AcType 4N) then ODGEN
+
+-- If PCA then PCALN
+
+-- If LAA, if AcType 40 then, STFHP
+
+-- If LAA, if AcType 42 then STFHL
+
+-- If LAA, if AcType 36 then ZEROL
+
+-- If ODA, if AcType 4N, then ODSTF
+-- case when flt.PumoriAcType='LAA' and m.AcType not in('36','40','42') then 'LNGEN'
+--  when flt.PumoriAcType='ODA' and m.AcType <> '4N' then 'ODGEN'
+--  when flt.PumoriAcType='PCA' then 'PCLAN'
+--  when flt.PumoriAcType='LAA' and m.AcType='40' then 'STFHP'
+--  when flt.PumoriAcType='LAA' and m.AcType='42' then 'STFHL'
+--  when flt.PumoriAcType='LAA' and m.AcType='36' then 'ZEROL'
+--  when flt.PumoriAcType='ODA' and m.AcType='4N' then 'ODSTF'
+-- else '' 
+-- end 
+
+
 DECLARE @CToday DATE;
 SELECT  @CToday = Today FROM ControlTable;
 
@@ -35,8 +60,21 @@ LEFT JOIN AcCustType ad
 WHERE fn.CustTypeCode IN ('C','X','F','P','R') ORDER by 1,2
 
 -- Temporary FinacleLoanTable with various logics for LAA, ODA and PCA type of loans
+IF OBJECT_ID('tempdb.dbo.#tempFinacleLoanTable', 'U') IS NOT NULL
+  DROP TABLE #tempFinacleLoanTable;
 
-select t.* into #tempFinacleLoanTable from 
+select t.*,
+case when t.FinacleSchemeType='LAA' and t.PumoriAcType not in('36','40','42') then 'LNGEN'
+  when t.FinacleSchemeType='ODA' and t.PumoriAcType <> '4N' then 'ODGEN'
+  when t.FinacleSchemeType='PCA' then 'PCLAN'
+  when t.FinacleSchemeType='LAA' and t.PumoriAcType='40' then 'STFHP'
+  when t.FinacleSchemeType='LAA' and t.PumoriAcType='42' then 'STFHL'
+  when t.FinacleSchemeType='LAA' and t.PumoriAcType='36' then 'ZEROL'
+  when t.FinacleSchemeType='ODA' and t.PumoriAcType='4N' then 'ODSTF'
+ else '' 
+ end  as int_table_code
+ into #tempFinacleLoanTable 
+ from 
 (
 	
 -- LAA
@@ -136,7 +174,7 @@ SELECT * FROM
 	,'E' AS dmd_satisfy_mthd
 	,'Y' AS lien_on_oper_acct_flg
 	,'' AS ds_rate_code
-	,flt.FinacleIntCode AS int_tbl_code    -- Currently no value, need to get value
+	,flt.int_table_code AS int_tbl_code    -- Currently no value, need to get value
 	,'Y' AS int_on_p_flg
 	,'Y' AS pi_on_pdmd_ovdu_flg
 	,'N' AS pdmd_ovdu_eom_flg
@@ -554,7 +592,7 @@ SELECT * FROM
 	,'E' AS dmd_satisfy_mthd
 	,'Y' AS lien_on_oper_acct_flg
 	,'' AS ds_rate_code
-	,flt.FinacleIntCode AS int_tbl_code    -- Currently no value, need to get value
+	,flt.int_table_code AS int_tbl_code 
 	,'Y' AS int_on_p_flg
 	,'Y' AS pi_on_pdmd_ovdu_flg
 	,'N' AS pdmd_ovdu_eom_flg
@@ -926,4 +964,5 @@ SELECT * FROM
 		SELECT 1 FROM AcCustType WHERE MainCode = m.MainCode and CustTypeCode = 'Z' and CustType NOT IN ('11','12')
 	) 
 ) as t
+--where t.int_tbl_code <> 'LNGEN'
 ORDER BY t.foracid

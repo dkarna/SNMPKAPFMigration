@@ -2,8 +2,9 @@
 -- SQL Code for IBILLUPL
 select 
   'G' Func_Code
-, NULL Bill_Param_Type
-, cm.ClientCode CIF_ID 		--need to put CO or not?
+,  CASE WHEN m.AcType ='90' THEN 'S'
+	WHEN m.AcType = '9F' THEN 'U' END Bill_Param_Type
+, cm.ClientCode CIF_ID 		
 , lc.CyCodeLc CCY
 , 'Y' underDC
 , ld.BranchCode solId
@@ -191,8 +192,11 @@ select
 , NULL inwardDcRefNum
 from LcMaster lc
 left join LcDocArrived ld on ld.ParentReferenceNo = lc.ReferenceNo and ld.CyCodeLc = lc.CyCodeLc and ld.BranchCode = lc.BranchCode
-left join (select m.MainCode , m.Name , m.ClientCode , m.BranchCode , m.AcType , c.Address1 , c.Address2 
-from Master m , ClientTable c where m.ClientCode = c.ClientCode) cm on cm.MainCode = lc.MainCode 
+left join 
+(
+	select m.MainCode , m.Name , m.ClientCode , m.BranchCode , m.AcType , c.Address1 , c.Address2 
+	from Master m , ClientTable c where m.ClientCode = c.ClientCode
+) cm on cm.MainCode = lc.MainCode 
 
 
  
